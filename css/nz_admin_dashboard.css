@@ -1,0 +1,606 @@
+
+  @import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap');
+    *
+
+{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'ubuntu' , sans-serif;
+}
+
+:root
+{
+    --nzyellow: #dca10e;
+    --nzgrey: #1f2828;
+    --white: #fff6e5;
+    --black: #1e1e1e;
+}
+
+body
+{
+    min-height: 100vh;
+    /* overflow: hidden; */
+    overflow-x: hidden;
+    background: white;
+    align-items: center;
+}
+
+.containerDash
+{
+    position: relative;
+    width: 100%;
+}
+
+.navigation
+{
+    position: fixed;
+    width: 300px;
+    height: 100%;
+    background: var(--nzyellow);
+    border-left: 10px solid var(--nzyellow);
+    transition: 0.5s;
+    /* cursor: none; */
+}
+
+.navigation.active
+{
+    width: 80px;
+    transition: 0.5s;
+}
+
+.navigation ul
+{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+
+.navigation ul li 
+{
+    position: relative;
+    width: 100%;
+    list-style: none;
+    border-top-left-radius: 30px;
+    border-bottom-left-radius: 30px;
+}
+
+
+.navigation ul li.activeNav
+
+{
+    background: var(--white);
+}
+
+.navigation ul li:nth-child(1)
+{
+    margin-bottom: 40px;
+    pointer-events: none;
+}
+
+.navigation ul li a 
+{
+    position: relative;
+    display: block;
+    width: 100%;
+    display: flex;
+    text-decoration: none;
+    color: var(--black);
+
+
+}
+
+
+.navigation ul li.activeNav a
+
+{
+    color: var(--nzyellow);
+
+
+}
+
+.navigation ul li a .icon
+{
+    position: relative;
+    display: block;
+    min-width: 60px;
+    height: 60px;
+    line-height: 70px;
+    text-align: center;
+}
+
+.navigation ul li a .icon ion-icon
+{
+    font-size: 1.75em;
+}
+
+.navigation ul li a .title
+{
+    position: relative;
+    display: block;
+    padding: 0 10px;
+    height: 60px;
+    line-height: 60px;
+    text-align: start;
+    white-space: nowrap;
+}
+
+
+.navigation ul li.activeNav a::before
+
+{
+    content: '';
+    position: absolute;
+    right: 0;
+    top: -50px;
+    width: 50px;
+    height: 50px;
+    background: transparent;
+    border-radius: 50px;
+    box-shadow: 35px 35px 0 10px var(--white);
+    pointer-events: none;
+}
+
+
+.navigation ul li.activeNav a::after
+{
+    content: '';
+    position: absolute;
+    right: 0;
+    bottom: -50px;
+    width: 50px;
+    height: 50px;
+    background: transparent;
+    border-radius: 50px;
+    box-shadow: 35px -35px 0 10px var(--white);
+    pointer-events: none;
+}
+
+/* Main CSS Starts here */
+
+.main
+{
+    position: absolute;
+    width: calc(100% - 300px);
+    left: 300px;
+    min-height: 100vh;
+    background-color: var(--white);
+    transition: 0.5s;
+}
+
+.main.active
+{
+    width: calc(100% - 80px);
+    left: 80px;
+    transition: 0.5s;
+}
+
+.topbar
+{
+    width: 100%;
+    height: 60%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 10px;
+}
+
+.toggle
+{
+    position: relative;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2.5em;
+    cursor: pointer; 
+}
+
+.user
+{
+    position: relative;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    overflow: hidden;
+    cursor: pointer;
+    margin-top: 10px;
+    margin-right: 10px;
+    box-shadow: 1px 2px 20px 1px rgba(128, 128, 128, 0.612);
+}
+
+.user img
+{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Home Page Content CSS Here */
+
+/* Product Card */
+
+.content
+{
+    margin: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 10px;
+    width: fit-content;
+    height: fit-content;
+
+}
+
+.mainCard
+{
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 50px;
+    padding-top: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    background: var(--nzgrey);
+    color: var(--black);
+    width: fit-content;
+    height: fit-content;
+    border-radius: 40px;
+    box-shadow: 1px 2px 20px 1px rgba(128, 128, 128, 0.612);
+    justify-content: center;
+    text-align: center;
+    text-decoration: none;
+
+}
+
+.subCard
+{
+    margin-left: 5px;
+    margin-top: 20px !important;
+    margin-bottom: 20px !important;
+    margin-right: 5px !important;
+    background: var(--nzyellow);
+    width: fit-content;
+    height: fit-content;
+    border-radius: 20px;
+    box-shadow: 1px 0px 15px 0px rgba(99, 100, 99, 0.774);
+    display: inline-block;
+    transition: 0.3s;
+    padding: 15px;
+    text-decoration: none;
+
+}
+
+.subCard:hover
+{
+    box-shadow: 1px 0px 3px 0px rgba(28, 29, 28, 0.774);
+    transition: 0.3s;
+}
+
+.subCard a
+{
+    text-decoration: none;
+    color: var(--black);
+}
+
+.crdIcon
+{
+    display: block;
+    padding: 0%;
+    font-size: 1.75em;
+    text-align: center;
+}
+
+
+.crdTitle
+{
+    justify-content: center;
+    margin: auto;
+}
+
+.mainCrdTitle
+{
+    display: block;
+    text-align: center;
+    color: white;
+}
+
+
+
+
+/* Add Product Page Starts Here */
+
+.mainCardAddPdt
+{
+    background: var(--nzyellow);
+    width: fit-content;
+    height: fit-content;
+    padding: 30px;
+    margin: 50px;
+    border-radius: 20px;
+    box-shadow: 1px 2px 20px 1px rgba(128, 128, 128, 0.612);
+    color: var(--black);
+    /* text-shadow: 10px 20px 20px 1px black; */
+}
+
+/* .addPdtForm
+{
+    display: inline-block;
+} */
+
+.form-group
+{
+    width: 100%;
+    display: inline-block;
+    box-sizing: border-box;
+}
+
+.imgUpload-grp
+{
+    /* border-radius: 30px; */
+    margin: 10px;
+    margin-bottom: 30px;
+}
+
+
+
+/* .addPdtCtgry
+{
+    display: inline-block !important;   
+} */
+
+.addPdtCtgryDrpDwn
+{
+    margin-left: 38px;
+    margin-bottom: 50px;
+    /* display: inline-block !important; */
+    width: 50% !important;
+    border-radius: 30px;
+    border: #FFF6E5;
+    font-size: 15px;
+    color: #999999;
+    padding: 5px;
+    box-sizing: border-box;
+    background: #FFF6E5;
+    box-shadow: 1px 2px 7px 1px #ab7a1ec5;
+}
+
+.addPdtTB
+{
+    background: #FFF6E5;
+    border-radius: 30px;
+    box-shadow: 1px 2px 7px 1px #ab7a1ec5;
+}
+
+.addPdt-Dscrpt
+{
+    vertical-align: middle;
+}
+
+.addPdtTB-Dscrpt
+{
+    width: 50% !important;
+    display: inline-block;
+    margin-left: 60px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+.frmbtn
+{
+    color: #f0ce8f !important;
+    
+    width: fit-content;
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    display: inline-block !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+
+}
+
+
+
+.addPdtbtn
+{
+    display: inline-block !important;
+    font-family: 'Roboto', sans-serif;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 2.5px;
+    font-weight: 500;
+    color: #000;
+    background-color: #fff;
+    padding: 15px;
+    border: none;
+    border-radius: 45px;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.311);
+    transition: all 0.3s ease 0s;
+    cursor: pointer;
+    outline: none;
+    margin-bottom: 15px;
+}
+
+.resetPdtbtn
+{
+    text-align: center;
+    display: inline-block;
+    font-family: 'Roboto', sans-serif;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 2.5px;
+    font-weight: 500;
+    color: #000;
+    background-color: #fff;
+    padding: 15px;
+    border: none;
+    border-radius: 45px;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.311);
+    transition: all 0.3s ease 0s;
+    cursor: pointer;
+    outline: none;
+    margin-left: 15px;
+    margin-bottom: 15px;
+}
+
+.homePdtbtn
+{
+    justify-content: center;
+    text-align: center;
+    display: inline-block;
+    font-family: 'Roboto', sans-serif;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 2.5px;
+    font-weight: 500;
+    color: #000;
+    background-color: #fff;
+    padding: 15px;
+    border: none;
+    border-radius: 45px;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.311);
+    transition: all 0.3s ease 0s;
+    cursor: pointer;
+    outline: none;
+    margin-left: 15px;
+}
+
+.addPdtbtn:hover
+{
+    font-weight: bold;
+    background-color: #0ab16f;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.311);
+    color: #fff;
+    /* transform: translateY(-7px); */
+    transition: all 0.3s ease 0s;
+}
+
+.resetPdtbtn:hover
+{
+    font-weight: bold;
+    background-color: #bd1e0f;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.311);
+    color: #fff;
+    /* transform: translateY(-7px); */
+    transition: all 0.3s ease 0s;
+}
+
+
+.homePdtbtn:hover
+{
+    font-weight: bold;
+    background-color: #1283ac;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.311);
+    color: #fff;
+    /* transform: translateY(-7px); */
+    transition: all 0.3s ease 0s;
+}
+
+/* QTY Start */
+
+.value-button 
+{
+    display: inline-block;
+    /* border: 1px solid #ddd; */
+    /* padding: 50px; */
+    text-align: center;
+    vertical-align: middle;
+    /* padding: 11px 0; */
+    background: #eee;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+  
+  .value-button:hover 
+  {
+    cursor: pointer;
+  }
+  
+  form #decrease 
+  {
+    margin-right: 5px;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    font-size: 30px;
+    background: #16a169;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.200);
+    transition: 0.2s;
+  }
+  
+  form #increase 
+  {
+    margin-left: 5px;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    font-size: 30px;
+    background: #b12b1f;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.200);
+    transition: 0.2s;
+  }
+
+  form #decrease:hover
+  {
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.200);
+    width: 28px;
+    height: 28px;
+    transition: 0.2s;
+  }
+
+  form #increase:hover
+  {
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.200);
+    width: 28px;
+    height: 28px;
+    transition: 0.2s;
+  }
+  
+  form #input-wrap 
+  {
+    margin: 0px;
+    padding: 0px;
+    
+  }
+  
+  input#number 
+  {
+    text-align: center;
+    border: none;
+    border-top: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+    background: #FFF6E5;
+    margin: 0px;
+    width: 50px;
+    height: 40px;
+    border-radius: 40px;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.200);
+    margin-bottom: 10px;
+  }
+  
+  input[type=number]::-webkit-inner-spin-button,
+  input[type=number]::-webkit-outer-spin-button 
+  {
+      -webkit-appearance: none;
+      margin: 0;
+  }
+
+
+/* QTY End */
+
+/* Add Product Page Ends Here */
+
+/* .qty-container .qty-btn-plus{
+    background: ;
+  }
+  .qty-container .qty-btn-minus{
+    background: ;
+  } */

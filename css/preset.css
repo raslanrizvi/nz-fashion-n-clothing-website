@@ -1,0 +1,256 @@
+/*
+  Theme Name: Stellar - Creative & Agency Responsive HTML5 Template
+  Theme URL: http://themewar.com/html/stellar
+  Author: ThemeWar
+  Author URI: http://themewar.com
+  Description: Stellar is a Premium One page creative responsive HTML5 template best suitable for Design agencies, freelancers, photographers, personal portfolios etc. The template comes with 3 Home Page designs with blog pages.
+  Version: 1.0
+*/
+
+/*========================================================
+/ Fonts 
+=========================================================*/
+@import url(https://fonts.googleapis.com/css?family=Cabin:400,400italic,500,500italic,600,600italic,700,700italic);
+@import url(https://fonts.googleapis.com/css?family=Poppins:400,300,500,600,700);
+@import url(https://fonts.googleapis.com/css?family=Raleway:400,500,500italic,600italic,700,700italic,800,800italic,900,900italic);
+@import url(https://fonts.googleapis.com/css?family=Playfair+Display:400,400italic,700,700italic,900,900italic);
+
+
+body, html{
+    font-size: 15px;
+    color: #777777;
+    line-height: 26px;
+    letter-spacing: .45px;
+    font-family: 'Cabin', sans-serif;
+    font-weight: 400;
+}
+
+.poppins{
+    font-family: 'Poppins', sans-serif;
+}
+.raleway{
+    font-family: 'Raleway', sans-serif;
+}
+.playfair{
+    font-family: 'Playfair Display', serif;
+}
+
+h1, h2, h3, h4, h5, h6{
+    font-weight: 600;
+    color: #222;
+    margin: 0 0 15px;
+    line-height: .7;
+    font-family: 'Poppins', sans-serif;
+}
+
+a{
+    transition: all ease 500ms;
+    -moz-transition: all ease 500ms;
+    -ms-transition: all ease 500ms;
+    -webkit-transition: all ease 500ms;
+    -o-transition: all ease 500ms;
+}
+a:hover{
+    text-decoration: none;
+}
+a:focus{
+    outline: 0;
+    text-decoration: none;
+}
+.vol_btn{
+    font-size: 13px;
+    color: #222;
+    text-transform: uppercase;
+    font-weight: 600;
+    letter-spacing: .195px;
+    display: inline-block;
+    line-height: .8;
+    border: thin solid #000000;
+    height: 50px;
+    padding: 20px 42px 18px;
+    font-family: 'Poppins', sans-serif;
+    transition: all ease 500ms;
+    -moz-transition: all ease 500ms;
+    -ms-transition: all ease 500ms;
+    -webkit-transition: all ease 500ms;
+    -o-transition: all ease 500ms;
+}
+.vol_btn i{
+    color: #222;
+    font-size: 12px;
+    margin-left: 10px;
+}
+.vol_btn_bg{
+    background: #222;
+    border-color: #222;
+    color: #FFF;
+}
+.vol_btn:hover{
+    color: #fff;
+    background: #000000;
+}
+.vol_btn:hover i{
+    color: #fff;
+}
+.vol_btn_bg:hover{
+    color: #fff;
+}
+.vol_btn_bg i, .vol_btn_bg:hover i{
+    color: #fff;
+}
+
+.comonSection{
+    position: relative;
+    padding: 100px 0;
+}
+.greys{
+    background: #fafafa;
+}
+.normalHr{
+    background: #e6e6e6;
+    height: 1px;
+    width: 100%;
+    margin: 0 0 100px;
+}
+.normalHr2{
+    background: #ebebeb;
+    height: 1px;
+    width: 100%;
+}
+.sectionTitle{
+    position: relative;
+    margin-bottom: 53px;
+}
+.sectionTitle h2{
+    font-size: 25px;
+    letter-spacing: .375px;
+    text-transform: uppercase;
+    color: #222;
+    line-height: .7;
+    margin: 0 0 40px;
+    font-weight: 600;
+}
+.titleBars{
+    position: relative;
+    width: 67px;
+    height: 3px;
+    margin: 0 auto 33px;
+}
+.titleBars:before{
+    width: 57px;
+    height: 1px;
+    background: #222;
+    left: 0;
+    top: 0;
+    position: absolute;
+    content: "";
+}
+.titleBars:after{
+    width: 57px;
+    height: 1px;
+    background: #222;
+    right: 0;
+    bottom: 0;
+    position: absolute;
+    content: "";
+}
+.sectionTitle p{
+    margin: 0 auto;
+    width: 70%;
+}
+.sectionTitle2{
+    width: 100%;
+    position: relative;
+    font-family: 'Poppins', sans-serif;
+    margin-bottom: 67px;
+}
+.sectionTitle2 h2{
+    margin: 0;
+    line-height: .8;
+    text-transform: uppercase;
+    font-weight: 600;
+    color: #222222;
+    letter-spacing: .375px;
+
+}
+.pageTitleSection-shop{
+    position: relative;
+    background: url(../images/shopbanner.png) no-repeat center center;
+    padding: 160px 0;
+}
+
+.pageTitleSection-aboutus{
+    position: relative;
+    background: url(../images/aboutusbanner.png) no-repeat center center;
+    padding: 160px 0;
+}
+
+.pageTitleSection-contactus{
+    position: relative;
+    background: url(../images/contactusbanner.png) no-repeat center center;
+    padding: 160px 0;
+}
+
+.pageTitleContent{
+    position: relative;
+    text-align: center;
+}
+.pageTitleContent h2{
+    font-size: 35px;
+    text-transform: uppercase;
+    font-weight: 600;
+    letter-spacing: .525px;
+    font-family: 'Poppins', sans-serif;
+    margin: 0 0 78px;
+    line-height: .8;
+    color: #fff;
+}
+.breadcrumbs{
+    position: relative;
+    text-align: center;
+    line-height: .8;
+    font-size: 13px;
+    letter-spacing: .39px;
+    text-transform: uppercase;
+    color: #ffffff;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+}
+.breadcrumbs a{
+    color: #fff;
+    display: inline-block;
+    line-height: .8;
+}
+
+
+
+.noPaddingTop{
+    padding-top: 0px;
+}
+.noPaddingBottom{
+    padding-bottom: 0px;
+}
+.paddingRight5px{
+    padding-right: 5px;
+}
+.paddingLeft5px{
+    padding-left: 5px;
+}
+.noPadding{
+    padding: 0;
+}
+.noPaddingRight{
+    padding-right: 0px;
+}
+.noPaddingLeft{
+    padding-left: 0;
+}
+.noMarginBottom{
+    margin-bottom: 0;
+}
+.paddRight2half{
+    padding-right: 2.5px;
+}
+.paddLeft2half{
+    padding-left: 2.5px;
+}
