@@ -197,7 +197,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="name">Description</label>
-                                <textarea class=" addPdt-Dscrpt form-control addPdtTB addPdtTB-Dscrpt" name="desc" id="exampleFormControlTextarea1" rows="3"></textarea>
+                                <textarea class=" addPdt-Dscrpt form-control addPdtTB addPdtTB-Dscrpt" name="description" id="exampleFormControlTextarea1" rows="3"></textarea>
                               </div>
                             <div class="form-group row">
                                 <label for="name" class="col-sm-2 col-form-label">Price</label>

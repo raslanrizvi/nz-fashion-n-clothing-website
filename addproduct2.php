@@ -21,12 +21,12 @@
         $new_arrivals = $_REQUEST['new_arrivals'];
         $sale         = $_REQUEST['sale'];
         $qty          = $_REQUEST['qty'];
-        $desc         = $_REQUEST['desc'];
+        $description  = $_REQUEST['description'];
         $price        = $_REQUEST['price'];
         $sale_price   = $_REQUEST['sale_price'];
 
-    // SQL Command to push data to database
-        $sql = "insert into product (title,brand,size_xs,size_s,size_m,size_l,size_xl,size_xxl,ctgy,new_arrivals,sale,qty,desc,price,sale_price) values(";
+    // building dynamic SQL Commands
+        $sql = "insert into product (title,brand,size_xs,size_s,size_m,size_l,size_xl,size_xxl,ctgy,new_arrivals,sale,qty,description,price,sale_price) values(";
         $sql .= "'$title',";
         $sql .= "'$brand',";
         $sql .= "'$size_xs',";
@@ -39,12 +39,24 @@
         $sql .= "'$new_arrivals',";
         $sql .= "'$sale',";
         $sql .= "$qty,";
-        $sql .= "'$desc',";
+        $sql .= "'$description',";
         $sql .= "$price,";
         $sql .= "$sale_price)";
 
 
     // lets display the SQL Command
-        echo "$sql"
- 
+        // echo "$sql"
+
+    // Execute SQL Commands
+        $x = $mysqli->query($sql);
+
+        if($x>0){
+            // echo "record successfully added";
+            header("location:addproduct3.php?status=pass");
+        }
+        else{
+            // echo "Adding New Record Failed";
+            header("location:addproduct3.php?status=fail");
+        }
+  
 ?>
