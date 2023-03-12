@@ -18,7 +18,7 @@
     <link rel="stylesheet" type="text/css" href="css/nz_admin_dashboard.css"/>
     <!-- End Styles -->
 
-    <title>NZ Admin Dashboard</title>
+    <title>Delete Product</title>
 
 
 </head>
@@ -40,19 +40,19 @@
                     </a>
                 </li>
                 <li>
-                    <a href="">
+                    <a>
                         <span class="icon"><ion-icon name="people-outline"></ion-icon></span>
                         <span class="title">Employee Management</span>
                     </a>
                 </li>
                 <li class="activeNav">
-                    <a href="">
+                    <a>
                         <span class="icon"><ion-icon name="basket-outline"></ion-icon></span>
                         <span class="title">Product Management</span>
                     </a>
                 </li>
                 <li>
-                    <a href="">
+                    <a>
                         <span class="icon"><ion-icon name="receipt-outline"></ion-icon></span>
                         <span class="title">Order Management</span>
                     </a>
@@ -82,41 +82,29 @@
                 </div>
             </div>
 
+            
 
             <div class="content">
                 <div class="mainCardAddPdt">
-
-                    <?php
-
-                        if($_REQUEST['status']=="pass"){
-                           ?>
-
-                           <div class="alert alert-success pdtAddedAlert" role="alert">
-                                <h4 class="alert-heading">Product Added</h4>
-                                <p>The product has been successfully added.</p>
-                                <hr>
-                                <a href="addproduct.php" class="addPdtbtn">Add New Product</a>
-                                <a href="nz_admin_dashboard.php" class="homePdtbtn">Back To Home</a>
+                    <div class="addPdtForm">
+                        <form action="deleteproduct2.php" method="post">
+                            
+                            <div class="form-group row">
+                                <label for="name" class="col-sm-2 col-form-label">Enter Product ID</label>
+                                <div class="col-sm-10">
+                                  <input type="text" class="form-control addPdtTB" name="ptd_id" id="ptd_id" placeholder="Enter The Product ID">
+                                </div>
                             </div>
-
-                           <?php
-                        }
-                        else{
-                            ?>
-
-                            <div class="alert alert-danger pdtAddedAlert" role="alert">
-                                <h4 class="alert-heading">Error Adding Product</h4>
-                                <p>An Error occurred While adding the Product, Please check and Try Again.</p>
-                                <hr>
-                                <a href="addproduct.php" class="addPdtbtn">Add Product Again</a>
-                                <a href="nz_admin_dashboard.php" class="homePdtbtn">Back To Home</a>
+                            <div class="frmbtn">
+                                    <input type="submit" class="addPdtbtn" name="submit" id="submit" value="Search Product">
+                                    <input type="reset" class="resetPdtbtn" name="reset"  id="reset" value="RESET">
+                                    <a class="homePdtbtn" href="nz_admin_dashboard.php">
+                                        Back to Home
+                                    </a>
+                                </div>
                             </div>
-
-                            <?php
-                        }
-
-                    ?>
-
+                        </form>
+                    </div>
                 </div>
             </div>
 

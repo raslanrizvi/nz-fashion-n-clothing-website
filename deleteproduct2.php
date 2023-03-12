@@ -26,7 +26,7 @@
     <link rel="stylesheet" type="text/css" href="css/nz_admin_dashboard.css"/>
     <!-- End Styles -->
 
-    <title>Edit Product</title>
+    <title>Delete Product</title>
 
 
 </head>
@@ -82,8 +82,11 @@
                 </div>
 
                 <!-- user Image -->
-                <div class="user">
-                    <img src="images\employee_user_dp\user_dp1.png" alt="">
+                <div class="userDetails">
+                    <span class="userText1">Raslan</span>
+                    <br>
+                    <span class="userText2">Admin</span>
+                    <img class="userImg" src="images\employee_user_dp\user_dp1.png" alt="">
                 </div>
             </div>
 
@@ -118,7 +121,7 @@
                                 // echo "</pre>";
                     ?>
 
-                        <form action="editproduct3.php" method="post">
+                        <form action="deleteproduct3.php" method="post">
                             <div class="custom-file imgUpload-grp">
                                 <label class="custom-file-label" for="name">Upload Product Image</label>
                                 <input type="file" class="custom-file-input imgUpload" name="picture1" id="picture1">
@@ -249,7 +252,7 @@
                                 </div>
                             </div>
                             <div class="frmbtn">
-                                    <input type="submit" class="addPdtbtn" name="submit" id="submit" value="Update Product">
+                                    <input type="submit" class="addPdtbtn" name="submit" id="submit" value="Delete Product">
                                     <input type="reset" class="resetPdtbtn" name="reset"  id="reset" value="RESET">
                                     <a class="homePdtbtn" href="editproduct.php">
                                         Back
@@ -268,7 +271,7 @@
                                 <h4 class="alert-heading">No Matching Records Found</h4>
                                 <p>Please check if the Product ID is correct and Try Again.</p>
                                 <hr>
-                                <a href="editproduct.php" class="resetPdtbtn">Try Again</a>
+                                <a href="deleteproduct.php" class="resetPdtbtn">Try Again</a>
                                 <a href="nz_admin_dashboard.php" class="homePdtbtn">Back To Home</a>
                             </div>
 

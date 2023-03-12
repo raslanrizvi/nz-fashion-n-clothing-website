@@ -18,7 +18,7 @@
     <link rel="stylesheet" type="text/css" href="css/nz_admin_dashboard.css"/>
     <!-- End Styles -->
 
-    <title>NZ Admin Dashboard</title>
+    <title>Delete Product</title>
 
 
 </head>
@@ -28,7 +28,7 @@
         <div class="navigation">
             <ul>
                 <li>
-                    <a href="">
+                    <a>
                         <span class="icon"></span>
                         <span class="title">NZ F&C Dashboard</span>
                     </a>
@@ -40,19 +40,19 @@
                     </a>
                 </li>
                 <li>
-                    <a href="">
+                    <a>
                         <span class="icon"><ion-icon name="people-outline"></ion-icon></span>
                         <span class="title">Employee Management</span>
                     </a>
                 </li>
                 <li class="activeNav">
-                    <a href="">
+                    <a>
                         <span class="icon"><ion-icon name="basket-outline"></ion-icon></span>
                         <span class="title">Product Management</span>
                     </a>
                 </li>
                 <li>
-                    <a href="">
+                    <a>
                         <span class="icon"><ion-icon name="receipt-outline"></ion-icon></span>
                         <span class="title">Order Management</span>
                     </a>
@@ -74,11 +74,8 @@
                 </div>
 
                 <!-- user Image -->
-                <div class="userDetails">
-                    <span class="userText1">Raslan</span>
-                    <br>
-                    <span class="userText2">Admin</span>
-                    <img class="userImg" src="images\employee_user_dp\user_dp1.png" alt="">
+                <div class="user">
+                    <img src="images\employee_user_dp\user_dp1.png" alt="">
                 </div>
             </div>
 
@@ -91,11 +88,11 @@
                         if($_REQUEST['status']=="pass"){
                            ?>
 
-                           <div class="alert alert-success pdtAddedAlert" role="alert">
-                                <h4 class="alert-heading">Product Added</h4>
-                                <p>The product has been successfully added.</p>
+                           <div class="alert alert-success pdtAddedAlert mb-3" role="alert">
+                                <h4 class="alert-heading">Product Deleted</h4>
+                                <p>Product has been successfully deleted from the database</p>
                                 <hr>
-                                <a href="addproduct.php" class="addPdtbtn">Add New Product</a>
+                                <a href="deleteproduct.php" class="addPdtbtn">Delete Another Product</a>
                                 <a href="nz_admin_dashboard.php" class="homePdtbtn">Back To Home</a>
                             </div>
 
@@ -105,16 +102,16 @@
                             ?>
 
                             <div class="alert alert-danger pdtAddedAlert" role="alert">
-                                <h4 class="alert-heading">Error Adding Product</h4>
-                                <p>An Error occurred While adding the Product, Please check and Try Again.</p>
+                                <h4 class="alert-heading">Error Deleting Product</h4>
+                                <p>An Error occurred While Deleting the Product, Please check and Try Again.</p>
                                 <hr>
-                                <a href="addproduct.php" class="addPdtbtn">Add Product Again</a>
+                                <a href="deleteproduct.php" class="addPdtbtn">Update Product Again</a>
                                 <a href="nz_admin_dashboard.php" class="homePdtbtn">Back To Home</a>
                             </div>
 
                             <?php
                         }
-
+                        
                     ?>
 
                 </div>

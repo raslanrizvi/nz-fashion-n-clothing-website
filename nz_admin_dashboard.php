@@ -28,31 +28,31 @@
         <div class="navigation">
             <ul>
                 <li>
-                    <a href="">
+                    <a>
                         <span class="icon"></span>
                         <span class="title">NZ F&C Dashboard</span>
                     </a>
                 </li>
                 <li class="activeNav">
-                    <a href="">
+                    <a>
                         <span class="icon"><ion-icon name="home-outline"></ion-icon></span>
                         <span class="title">Home</span>
                     </a>
                 </li>
                 <li>
-                    <a href="">
+                    <a>
                         <span class="icon"><ion-icon name="people-outline"></ion-icon></span>
                         <span class="title">Employee Management</span>
                     </a>
                 </li>
                 <li>
-                    <a href="">
+                    <a>
                         <span class="icon"><ion-icon name="basket-outline"></ion-icon></span>
                         <span class="title">Product Management</span>
                     </a>
                 </li>
                 <li>
-                    <a href="">
+                    <a>
                         <span class="icon"><ion-icon name="receipt-outline"></ion-icon></span>
                         <span class="title">Order Management</span>
                     </a>
@@ -73,10 +73,15 @@
                     <ion-icon name="menu-outline"></ion-icon>
                 </div>
 
-                <!-- user Image -->
-                <div class="user">
-                    <img src="images\employee_user_dp\user_dp1.png" alt="">
-                </div>
+                <!-- user-->
+                
+                    <div class="userDetails">
+                        <span class="userText1">Raslan</span>
+                        <br>
+                        <span class="userText2">Admin</span>
+                        <img class="userImg" src="images\employee_user_dp\user_dp1.png" alt="">
+                    </div>
+                
             </div>
 
 
@@ -84,87 +89,60 @@
                 <div class="mainCard">
                     <span class="mainCrdTitle">Manage Product</span>
                     <div class="subCardWrap">
-                        <div class="subCard">
-                            <a href="#">
+                            <a class="subCard" href="addproduct.php">
                                 <span class="crdIcon"><ion-icon name="bag-add-outline"></ion-icon></span>
                                 <span class="crdTitle">Add Product</span>
                             </a>
-                        </div>
-                        <div class="subCard">
-                            <a href="#">
+                            <a class="subCard" href="deleteproduct.php">
                                 <span class="crdIcon"><ion-icon name="close-circle-outline"></ion-icon></span>
                                 <span class="crdTitle">Delete Product</span>
                             </a>
-                        </div>
-                        <div class="subCard">
-                            <a href="#">
+                            <a class="subCard" href="editproduct.php">
                                 <span class="crdIcon"><ion-icon name="create-outline"></ion-icon></span>
                                 <span class="crdTitle">Update Product</span>
                             </a>
-                        </div>
-                        <div class="subCard">
-                            <a href="#">
+                            <a class="subCard" href="producttable.php">
                                 <span class="crdIcon"><ion-icon name="arrow-redo-outline"></ion-icon></span>
-                                <span class="crdTitle">Product Page</span>
+                                <span class="crdTitle">All Products</span>
                             </a>
                         </div>
                     </div>
                 </div>
 
-                <div class="mainCard">
+                <div class="mainCard" >
                     <span class="mainCrdTitle">Manage Employee</span>
-                    <div class="subCard">
-                        <a href="#">
+                        <a class="subCard" href="addemployee.php">
                             <span class="crdIcon"><ion-icon name="bag-add-outline"></ion-icon></span>
                             <span class="crdTitle">Add Employee</span>
                         </a>
-                    </div>
-                    <div class="subCard dltPtdCrd">
-                        <a href="#">
+                        <a class="subCard" href="deleteemployee.php">
                             <span class="crdIcon"><ion-icon name="close-circle-outline"></ion-icon></span>
                             <span class="crdTitle">Delete Employee</span>
                         </a>
-                    </div>
-                    <div class="subCard">
-                        <a href="#">
+                        <a class="subCard" href="editemployee.php">
                             <span class="crdIcon"><ion-icon name="create-outline"></ion-icon></span>
                             <span class="crdTitle">Update Employee</span>
                         </a>
-                    </div>
-                    <div class="subCard">
-                        <a href="#">
+                        <a class="subCard" href="employeetable.php">
                             <span class="crdIcon"><ion-icon name="arrow-redo-outline"></ion-icon></span>
                             <span class="crdTitle">Employee Page</span>
                         </a>
-                    </div>
                 </div>
 
-                <div class="mainCard">
+                <div class="mainCard" style="margin-top: 50px; overflow: hidden;">
                     <span class="mainCrdTitle">Manage Order</span>
-                    <div class="subCard">
-                        <a href="#">
+                        <a class="subCard" href="allorders.php">
                             <span class="crdIcon"><ion-icon name="bag-add-outline"></ion-icon></span>
-                            <span class="crdTitle">Add Order</span>
+                            <span class="crdTitle">View All Orders</span>
                         </a>
-                    </div>
-                    <div class="subCard dltPtdCrd">
-                        <a href="#">
+                        <a class="subCard dltPtdCrd" href="manageorder.php">
                             <span class="crdIcon"><ion-icon name="close-circle-outline"></ion-icon></span>
-                            <span class="crdTitle">Delete Order</span>
+                            <span class="crdTitle">Manage Order</span>
                         </a>
-                    </div>
-                    <div class="subCard">
-                        <a href="#">
+                        <a class="subCard" href="updateorderstatus.php">
                             <span class="crdIcon"><ion-icon name="create-outline"></ion-icon></span>
-                            <span class="crdTitle">Update Order</span>
+                            <span class="crdTitle">Update Order Status</span>
                         </a>
-                    </div>
-                    <div class="subCard">
-                        <a href="#">
-                            <span class="crdIcon"><ion-icon name="arrow-redo-outline"></ion-icon></span>
-                            <span class="crdTitle">Order Page</span>
-                        </a>
-                    </div>
                 </div>
 
 

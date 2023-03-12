@@ -198,28 +198,72 @@ body
     cursor: pointer; 
 }
 
-.user
+/* User Pic Starts here */
+
+
+
+.userDetails
+{
+    /* position: relative; */
+    top: 0;
+    left: 0;
+    margin-top: 10px;
+    margin-right: 10px;
+    display: inline-block;
+    background: #fff6e5;
+    /* width: 150px !important;
+    height: 80px; */
+    justify-content: center;
+    padding: 20px;
+    /* padding-left: 20px; */
+    border-radius: 40px;
+    color: var(--nzyellow);
+    box-shadow: inset 3px 3px 9px #c5c5c5,
+             inset -4px -4px 12px #fff6e5;
+    
+    /* visibility: hidden; */
+}
+
+.userText1
+ {
+    position: relative;
+    display: inline-block;
+    margin-right: 15px;
+    margin-top: 10px;
+ }
+
+
+ .userText2
+ {
+    position: relative;
+    display: inline-block;
+    margin-right: 15px;
+    /* margin-top: px !important; */
+    /* padding-top: 0px; */
+ }   
+
+ 
+    
+
+
+.userImg
 {
     position: relative;
     width: 60px;
     height: 60px;
-    border-radius: 50%;
     overflow: hidden;
+    margin-top: -30px;
     cursor: pointer;
-    margin-top: 10px;
-    margin-right: 10px;
-    box-shadow: 1px 2px 20px 1px rgba(128, 128, 128, 0.612);
+    border-radius: 50%;
+    object-fit: cover;
+    box-shadow: -4px 2px 6px #c5c5c5,
+             -6px -6px 12px #fff6e5;
+    /* box-shadow: 1px 2px 10px 1px rgba(121, 121, 121, 0.858); */
+    display: inline-block;
 }
 
-.user img
-{
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
+
+/* UserPic Ends Here */
 
 /* Home Page Content CSS Here */
 
@@ -253,7 +297,7 @@ body
     justify-content: center;
     text-align: center;
     text-decoration: none;
-
+    font-weight: bold;
 }
 
 .subCard
@@ -271,19 +315,23 @@ body
     transition: 0.3s;
     padding: 15px;
     text-decoration: none;
-
+    text-decoration: none;
+    color: var(--black);
 }
 
 .subCard:hover
 {
-    box-shadow: 1px 0px 3px 0px rgba(28, 29, 28, 0.774);
+    box-shadow: inset 4px 4px 8px #131818,
+             inset -4px -4px 8px #c08b07;
+    color: var(--black);
+    /* font-weight: bold; */
     transition: 0.3s;
+    
 }
 
-.subCard a
+.subCard 
 {
-    text-decoration: none;
-    color: var(--black);
+    
 }
 
 .crdIcon
@@ -611,8 +659,7 @@ body
 .pdtAddedAlert
 {
     border-radius: 30px !important;
-    padding: 10px !important;
-    margin: 10px !important;
+
 }
 
   /* Add Product 3 Page Code Starts here */

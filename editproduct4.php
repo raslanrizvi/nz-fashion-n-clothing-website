@@ -101,7 +101,7 @@
                         else{
                             ?>
 
-                            <div class="alert alert-danger rounded-pill" role="alert">
+                            <div class="alert alert-danger pdtAddedAlert" role="alert">
                                 <h4 class="alert-heading">Error Updating Product</h4>
                                 <p>An Error occurred While updating the Product, Please check and Try Again.</p>
                                 <hr>
@@ -111,7 +111,7 @@
 
                             <?php
                         }
-
+                        
                     ?>
 
                 </div>

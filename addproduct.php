@@ -74,8 +74,11 @@
                 </div>
 
                 <!-- user Image -->
-                <div class="user">
-                    <img src="images\employee_user_dp\user_dp1.png" alt="">
+                <div class="userDetails">
+                    <span class="userText1">Raslan</span>
+                    <br>
+                    <span class="userText2">Admin</span>
+                    <img class="userImg" src="images\employee_user_dp\user_dp1.png" alt="">
                 </div>
             </div>
 
