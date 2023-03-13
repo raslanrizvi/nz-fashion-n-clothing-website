@@ -27,6 +27,9 @@
     <!-- End Styles -->
 
     <title>Delete Product</title>
+    <!-- Favicon Icon -->
+        <link rel="icon"  type="image/png" href="images/favicon.png">
+    <!-- Favicon Icon -->
 
 
 </head>
@@ -66,7 +69,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="dashboard_login.php">
+                    <a href="dshbrd_login.php">
                         <span class="icon"><ion-icon name="log-out-outline"></ion-icon></span>
                         <span class="title">Log Out</span>
                     </a>

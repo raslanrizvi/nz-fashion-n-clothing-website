@@ -18,9 +18,9 @@
     <link rel="stylesheet" type="text/css" href="css/nz_admin_dashboard.css"/>
     <!-- End Styles -->
 
-    <title>Delete Product</title>
+    <title>NZ Admin Dashboard</title>
     <!-- Favicon Icon -->
-        <link rel="icon"  type="image/png" href="images/favicon.png">
+    <link rel="icon"  type="image/png" href="images/favicon.png">
     <!-- Favicon Icon -->
 
 
@@ -31,13 +31,13 @@
         <div class="navigation">
             <ul>
                 <li>
-                    <a href="">
+                    <a>
                         <span class="icon"></span>
                         <span class="title">NZ F&C Dashboard</span>
                     </a>
                 </li>
-                <li>
-                    <a href="nz_admin_dashboard.php">
+                <li class="activeNav">
+                    <a>
                         <span class="icon"><ion-icon name="home-outline"></ion-icon></span>
                         <span class="title">Home</span>
                     </a>
@@ -48,7 +48,7 @@
                         <span class="title">Employee Management</span>
                     </a>
                 </li>
-                <li class="activeNav">
+                <li>
                     <a>
                         <span class="icon"><ion-icon name="basket-outline"></ion-icon></span>
                         <span class="title">Product Management</span>
@@ -76,39 +76,51 @@
                     <ion-icon name="menu-outline"></ion-icon>
                 </div>
 
-                <!-- user Image -->
-                <div class="userDetails">
-                    <span class="userText1">Raslan</span>
-                    <br>
-                    <span class="userText2">Admin</span>
-                    <img class="userImg" src="images\employee_user_dp\user_dp1.png" alt="">
-                </div>
+                <!-- user-->
+                
+                    <div class="userDetails">
+                        <span class="userText1">Raslan</span>
+                        <br>
+                        <span class="userText2">Staff</span>
+                        <img class="userImg" src="images\employee_user_dp\user_dp1.png" alt="">
+                    </div>
+                
             </div>
 
-            
 
             <div class="content">
-                <div class="mainCardAddPdt">
-                    <div class="addPdtForm">
-                        <form action="deleteproduct2.php" method="post">
-                            
-                            <div class="form-group row">
-                                <label for="name" class="col-sm-2 col-form-label">Enter Product ID</label>
-                                <div class="col-sm-10">
-                                  <input type="text" class="form-control addPdtTB" name="ptd_id" id="ptd_id" placeholder="Enter The Product ID">
-                                </div>
-                            </div>
-                            <div class="frmbtn">
-                                    <input type="submit" class="addPdtbtn" name="submit" id="submit" value="Search Product">
-                                    <input type="reset" class="resetPdtbtn" name="reset"  id="reset" value="RESET">
-                                    <a class="homePdtbtn" href="nz_admin_dashboard.php">
-                                        Back to Home
-                                    </a>
-                                </div>
-                            </div>
-                        </form>
+                <div class="mainCard">
+                    <span class="mainCrdTitle">Manage Product</span>
+                    <div class="subCardWrap">
+                            <a class="subCard" href="addproduct.php">
+                                <span class="crdIcon"><ion-icon name="bag-add-outline"></ion-icon></span>
+                                <span class="crdTitle">Add Product</span>
+                            </a>
+                            <a class="subCard" href="editproduct.php">
+                                <span class="crdIcon"><ion-icon name="create-outline"></ion-icon></span>
+                                <span class="crdTitle">Update Product</span>
+                            </a>
+                            <a class="subCard" href="producttable.php">
+                                <span class="crdIcon"><ion-icon name="arrow-redo-outline"></ion-icon></span>
+                                <span class="crdTitle">All Products</span>
+                            </a>
+                        </div>
                     </div>
                 </div>
+
+                <div class="mainCard" style="margin-top: 50px; overflow: hidden;">
+                    <span class="mainCrdTitle">Manage Order</span>
+                        <a class="subCard" href="allorders.php">
+                            <span class="crdIcon"><ion-icon name="bag-add-outline"></ion-icon></span>
+                            <span class="crdTitle">View All Orders</span>
+                        </a>
+                        <a class="subCard" href="updateorderstatus.php">
+                            <span class="crdIcon"><ion-icon name="create-outline"></ion-icon></span>
+                            <span class="crdTitle">Update Order Status</span>
+                        </a>
+                </div>
+
+
             </div>
 
 
@@ -132,28 +144,6 @@
                 main.classList.toggle('active');
 
             }
-
-        // Enable Sale Text Box
-            document.getElementById('pdtSale').onchange = function() {
-            document.getElementById('pdtSaletb').disabled = !this.checked;
-            };
-
-        // QTY JS
-            function increaseValue() {
-            var value = parseInt(document.getElementById('number').value, 10);
-            value = isNaN(value) ? 0 : value;
-            value++;
-            document.getElementById('number').value = value;
-            }
-
-            function decreaseValue() {
-            var value = parseInt(document.getElementById('number').value, 10);
-            value = isNaN(value) ? 0 : value;
-            value < 1 ? value = 1 : '';
-            value--;
-            document.getElementById('number').value = value;
-            }
-
 
         //add hovered class in selected list item
         //  let list = document.querySelectorAll('.navigation li');

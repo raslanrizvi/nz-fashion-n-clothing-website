@@ -27,6 +27,9 @@
     <!-- End Styles -->
 
     <title>Edit Product</title>
+    <!-- Favicon Icon -->
+        <link rel="icon"  type="image/png" href="images/favicon.png">
+    <!-- Favicon Icon -->
 
 
 </head>
@@ -66,7 +69,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="dashboard_login.php">
+                    <a href="dshbrd_login.php">
                         <span class="icon"><ion-icon name="log-out-outline"></ion-icon></span>
                         <span class="title">Log Out</span>
                     </a>
@@ -82,8 +85,11 @@
                 </div>
 
                 <!-- user Image -->
-                <div class="user">
-                    <img src="images\employee_user_dp\user_dp1.png" alt="">
+                <div class="userDetails">
+                    <span class="userText1">Raslan</span>
+                    <br>
+                    <span class="userText2">Admin</span>
+                    <img class="userImg" src="images\employee_user_dp\user_dp1.png" alt="">
                 </div>
             </div>
 
