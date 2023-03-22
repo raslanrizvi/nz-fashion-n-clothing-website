@@ -4,6 +4,10 @@
 // connecting the Database
     require("db_connection.php");
 
+
+    // validating
+        require("validate_user.php");
+
 ?>
 
 <!DOCTYPE html>

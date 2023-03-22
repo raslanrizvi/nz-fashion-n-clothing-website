@@ -1,5 +1,8 @@
 <?php
 
+  // start session
+    session_start();
+
   // connecting the DB
     require("db_connection.php");
 
@@ -11,7 +14,6 @@
     // storing values to var
       $user_id     = $_REQUEST['user_id'];
       $access_code = $_REQUEST['access_code'];
-      $user_grp    = $_REQUEST['user_grp'];
 
     // creating dynamic SQL Command
       $sql = "select * from user_logs where user_id='$user_id'";
@@ -27,10 +29,14 @@
 
         $row = mysqli_fetch_assoc($rs);
 
+            $_SESSION['user_id'] = $user_id;
+            $_SESSION['user_grp'] = $row['user_grp'];
+
           if($row['access_code'] == crypt($access_code,$row['access_code'])){
             // echo "Username and password correct";
 
-            // redirecting user to dashboard
+
+            // redirecting to dashboard
 
             // Checking if Admin
             if ($row['user_grp'] == "Admin") {

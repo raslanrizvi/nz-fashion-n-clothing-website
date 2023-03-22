@@ -1,3 +1,10 @@
+<?php
+
+    // validating
+        require("validate_admin.php");
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>

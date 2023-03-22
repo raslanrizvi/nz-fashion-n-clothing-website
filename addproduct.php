@@ -1,3 +1,11 @@
+<?php
+
+    // validating
+        require("validate_user.php");
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
