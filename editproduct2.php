@@ -1,12 +1,14 @@
 
 <?php
 
+    // validating
+    require("validate_user.php");
+
 // connecting the Database
     require("db_connection.php");
 
 
-    // validating
-        require("validate_user.php");
+    
 
 ?>
 
@@ -132,6 +134,7 @@
                             <div class="custom-file imgUpload-grp">
                                 <label class="custom-file-label" for="name">Upload Product Image</label>
                                 <input type="file" class="custom-file-input imgUpload" name="picture1" id="picture1">
+                                <img src="images/products/thumbnail/<?php echo $row['picture1'];?>" alt="">
                             </div>
                             <div class="form-group row">
                                 <input type="hidden" name="ptd_id" value="<?php echo $row['ptd_id']; ?>">

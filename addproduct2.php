@@ -1,7 +1,13 @@
 <?php
 
+    // Validating User Session
+        require("validate_user.php");
+
     // linking the Database 
         require("db_connection.php");
+
+    // linking the code_lib.inc.php
+        require("code_lib.inc.php");
 
     // Get the data from the form and display
         echo "<pre>";
@@ -52,6 +58,38 @@
 
         if($x>0){
             // echo "record successfully added";
+
+            // Picture Image Uploads Starts Here
+
+                if ($_FILES['picture1']['error'] == 0 && $_FILES['picture1']['type'] == "image/jpeg") {
+
+                    $Last_id     = $mysqli->insert_id;
+                    $filename    = $_FILES['picture1']['tmp_name'];
+                    $destination = $Last_id . "_" . rand() . rand() . rand() .".jpg";
+
+
+                    $y = move_uploaded_file($filename, "images/products/large/".$destination);
+
+                    if($y>0){
+                        $sql2 = "update product set picture1 = '$destination' where ptd_id = " . $Last_id;
+                        // execute the SQL Command
+                        $z = $mysqli->query($sql2);
+
+
+
+                        // lets copy the image to the small folder
+
+                            copy("images/products/large/".$destination, "images/products/thumbnail/".$destination);
+
+                        // resize the image
+                            resizeThumbPicture("images/products/thumbnail/", $destination);
+                    }
+                    
+
+                }
+
+            // Picture Image Uploads Ends Here
+
             header("location:addproduct3.php?status=pass");
         }
         else{

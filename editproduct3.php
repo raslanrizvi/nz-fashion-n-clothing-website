@@ -1,5 +1,10 @@
 <?php
 
+    // Validating
+        require("validate_user.php");
+
+        require("code_lib.inc.php");
+
     // connecting to the Database
         require("db_connection.php");
 
@@ -50,6 +55,36 @@
 
         if($x > 0){
             // echo "successfully Updated";
+
+            // file upload code starts here
+                if ($_FILES['picture1']['error'] == 0 && $_FILES['Picture1']['type'] == "image/jpeg") {
+                   $old_picture_name = getProductPicture($ptd_id);
+
+                   $filename = $_FILES['picture1']['tmp_name'];
+                   $destination;
+
+                   if ($old_picture_name == "default.jpg") {
+                    //   generate new file name
+                        $destination = $ptd_id. rand().rand().rand().".jpg";
+                       
+                   }
+                   else {
+                          $destination = $old_picture_name;
+                   }
+
+                   move_uploaded_file($filename, "images/products/large/".$destination);
+                   copy("images/products/large/".$destination, "images/products/thumbnail/".$destination);
+
+                   resizeThumbPicture("images/products/thumbnail/", $destination);
+
+
+                //    Lets Update the picture field in the product table
+                        $sql2 = "update product set picture1='$destination' where ptd_id=$ptd_id";
+
+                        $mysqli->query($sql2);
+
+                }
+
             header("location:editproduct4.php?status=pass");
         }
         else{

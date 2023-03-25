@@ -2,6 +2,7 @@
 
     // validating
         require("validate_user.php");
+        
 
 ?>
 
