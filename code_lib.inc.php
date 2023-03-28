@@ -1,4 +1,6 @@
 <?php
+
+
 /* image resize function starts here */
 function resizeThumbPicture($path, $image_name)	{
   $uploadedfile = $path.$image_name;//actual path of the image
@@ -54,7 +56,7 @@ function resizeThumbPicture($path, $image_name)	{
 // get the picture name 
   function getProductPicture($ptd_id){
     global $mysqli;
-    $sql = "select picture from product where ptd_id=$ptd_id";
+    $sql = "select picture1 from product where ptd_id=$ptd_id";
     $rs  = $mysqli->query($sql);
     $row = mysqli_fetch_assoc($rs);
     return $row['picture1'];

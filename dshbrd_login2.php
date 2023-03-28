@@ -31,6 +31,8 @@
 
             $_SESSION['user_id'] = $user_id;
             $_SESSION['user_grp'] = $row['user_grp'];
+            $_SESSION['emp_name'] = $row['emp_name'];
+            $_SESSION['emp_picture'] = $row['emp_picture'];
 
           if($row['access_code'] == crypt($access_code,$row['access_code'])){
             // echo "Username and password correct";

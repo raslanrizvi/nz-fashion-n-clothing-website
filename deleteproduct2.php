@@ -40,7 +40,7 @@
 <body>
     
     <div class="containerDash">
-        <div class="navigation">
+        <div class="navigation active">
             <ul>
                 <li>
                     <a>
@@ -81,7 +81,7 @@
             </ul>
         </div>
 
-        <div class="main">
+        <div class="main active">
             <!-- tonBar Hamburger menu -->
             <div class="topbar">
                 <div class="toggle">
@@ -90,10 +90,10 @@
 
                 <!-- user Image -->
                 <div class="userDetails">
-                    <span class="userText1">Raslan</span>
+                    <span class="userText1"><?php echo $_SESSION['emp_name']; ?></span>
                     <br>
-                    <span class="userText2">Admin</span>
-                    <img class="userImg" src="images\employee_user_dp\user_dp1.png" alt="">
+                    <span class="userText2"><?php echo $_SESSION['user_grp']; ?></span>
+                    <img class="userImg" src="images\employee_user_dp\<?php echo $_SESSION['emp_picture']; ?>" alt="">
                 </div>
             </div>
 
@@ -132,6 +132,7 @@
                             <div class="custom-file imgUpload-grp">
                                 <label class="custom-file-label" for="name">Upload Product Image</label>
                                 <input type="file" class="custom-file-input imgUpload" name="picture1" id="picture1">
+                                <img src="images/products/thumbnail/<?php echo $row['picture1'];?>" alt="">
                             </div>
                             <div class="form-group row">
                                 <input type="hidden" name="ptd_id" value="<?php echo $row['ptd_id']; ?>">

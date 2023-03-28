@@ -36,7 +36,7 @@
 <body>
     
     <div class="containerDash">
-        <div class="navigation">
+        <div class="navigation active">
             <ul>
                 <li>
                     <a>
@@ -77,7 +77,7 @@
             </ul>
         </div>
 
-        <div class="main">
+        <div class="main active">
             <!-- tonBar Hamburger menu -->
             <div class="topbar">
                 <div class="toggle">
@@ -87,10 +87,10 @@
                 <!-- user-->
                 
                     <div class="userDetails">
-                        <span class="userText1">Raslan</span>
+                        <span class="userText1"><?php echo $_SESSION['emp_name']; ?></span>
                         <br>
-                        <span class="userText2">Admin</span>
-                        <img class="userImg" src="images\employee_user_dp\user_dp1.png" alt="">
+                        <span class="userText2"><?php echo $_SESSION['user_grp']; ?></span>
+                        <img class="userImg" src="images\employee_user_dp\<?php echo $_SESSION['emp_picture']; ?>" alt="">
                     </div>
                 
             </div>

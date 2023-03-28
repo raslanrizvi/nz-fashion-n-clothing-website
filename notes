@@ -164,6 +164,21 @@
 
 
 
+
+
+                                <!-- PHP Validation to disable a HyperLink with bootstrap -->
+                                  <?php echo ($_SESSION['user_grp'] != "Admin")? 'disabled':''; ?> <!-- This line of PHP COde must be placed within the class tag of the element that to be disabled -->
+
+
+                                <!-- PHP Validation to disable a button with bootstrap -->
+                                <?php echo ($_SESSION['user_grp'] != "Admin")? 'disabled':''; ?> <!-- This line of PHP COde must be placed out of the class tag of the element that to be disabled -->
+
+
+
+
+
+
+
                                 
 
 
