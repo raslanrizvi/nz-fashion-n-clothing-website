@@ -10,9 +10,9 @@
         require("code_lib.inc.php");
 
     // Get the data from the form and display
-        echo "<pre>";
-            print_r($_REQUEST);
-        echo "</pre>";
+        // echo "<pre>";
+        //     print_r($_REQUEST);
+        // echo "</pre>";
 
     // Store the form field values to variables
         $title        = $_REQUEST['title'];

@@ -16,7 +16,7 @@
     <!-- Styles -->
     <link rel="stylesheet" type="text/css" href="css/bootstrap.css"/>
     <link rel="stylesheet" type="text/css" href="css/animate.css"/>
-    <link rel="stylesheet" type="text/css" href="css/font-awesome.css"/>
+    <!-- <link rel="stylesheet" type="text/css" href="css/font-awesome.css"/> -->
     <link rel="stylesheet" type="text/css" href="css/strok_gap_icon.css"/>
     <link rel="stylesheet" type="text/css" href="css/settings.css"/>
     <link rel="stylesheet" type="text/css" href="css/owl.carousel.css"/>
@@ -24,6 +24,8 @@
     <link rel="stylesheet" type="text/css" href="css/style.css"/>
     <link rel="stylesheet" type="text/css" href="css/responsive.css"/>
     <link rel="stylesheet" type="text/css" href="css/nz_admin_dashboard.css"/>
+    <script src="https://kit.fontawesome.com/e8421819bd.js" crossorigin="anonymous"></script>
+    
     <!-- End Styles -->
 
     <title>NZ Admin Dashboard</title>
@@ -101,20 +103,20 @@
                     <span class="mainCrdTitle">Manage Product</span>
                     <div class="subCardWrap">
                             <a class="subCard" href="addproduct.php">
-                                <span class="crdIcon"><ion-icon name="bag-add-outline"></ion-icon></span>
+                            <img class="crdIcon" src="images/icons/addproduct.svg" alt="" style="width: 70px; margin: auto;">
                                 <span class="crdTitle">Add Product</span>
                             </a>
                             <a class="subCard" href="deleteproduct.php">
-                                <span class="crdIcon"><ion-icon name="close-circle-outline"></ion-icon></span>
+                                <img class="crdIcon" src="images/icons/deleteproduct.svg" alt="" style="width: 70px; margin: auto;">
                                 <span class="crdTitle">Delete Product</span>
                             </a>
                             <a class="subCard" href="editproduct.php">
-                                <span class="crdIcon"><ion-icon name="create-outline"></ion-icon></span>
+                            <img class="crdIcon" src="images/icons/editproduct.svg" alt="" style="width: 70px; margin: auto;">
                                 <span class="crdTitle">Update Product</span>
                             </a>
-                            <a class="subCard" href="producttable.php">
-                                <span class="crdIcon"><ion-icon name="arrow-redo-outline"></ion-icon></span>
-                                <span class="crdTitle">All Products</span>
+                            <a class="subCard" href="product_search.php">
+                                <img class="crdIcon" src="images/icons/searchproduct.svg" alt="" style="width: 70px; margin: auto;">
+                                <span class="crdTitle">Search Products</span>
                             </a>
                         </div>
                     </div>
@@ -122,36 +124,36 @@
 
                 <div class="mainCard" >
                     <span class="mainCrdTitle">Manage Employee</span>
-                        <a class="subCard" href="addemployee.php">
-                            <span class="crdIcon"><ion-icon name="bag-add-outline"></ion-icon></span>
+                        <a class="subCard" href="dshbrd_register.php">
+                        <img class="crdIcon" src="images/icons/add-user.svg" alt="" style="width: 70px; margin: auto;">
                             <span class="crdTitle">Add Employee</span>
                         </a>
-                        <a class="subCard" href="deleteemployee.php">
-                            <span class="crdIcon"><ion-icon name="close-circle-outline"></ion-icon></span>
+                        <a class="subCard" href="delete_employee.php">
+                        <img class="crdIcon" src="images/icons/delete-user.svg" alt="" style="width: 70px; margin: auto;">
                             <span class="crdTitle">Delete Employee</span>
                         </a>
-                        <a class="subCard" href="editemployee.php">
-                            <span class="crdIcon"><ion-icon name="create-outline"></ion-icon></span>
+                        <a class="subCard" href="edit_employee.php">
+                        <img class="crdIcon" src="images/icons/edit-user.svg" alt="" style="width: 70px; margin: auto;">
                             <span class="crdTitle">Update Employee</span>
                         </a>
-                        <a class="subCard" href="employeetable.php">
-                            <span class="crdIcon"><ion-icon name="arrow-redo-outline"></ion-icon></span>
-                            <span class="crdTitle">Employee Page</span>
+                        <a class="subCard" href="search_employee.php">
+                        <img class="crdIcon" src="images/icons/search-user.svg" alt="" style="width: 70px; margin: auto;">
+                            <span class="crdTitle">Search Employee</span>
                         </a>
                 </div>
 
-                <div class="mainCard" style="margin-top: 50px; overflow: hidden;">
+                <div class="mainCard" style="margin-bottom: 50px !important;">
                     <span class="mainCrdTitle">Manage Order</span>
                         <a class="subCard" href="allorders.php">
-                            <span class="crdIcon"><ion-icon name="bag-add-outline"></ion-icon></span>
+                        <img class="crdIcon" src="images\icons\all-orders.svg" alt="" style="width: 70px; margin: auto;">
                             <span class="crdTitle">View All Orders</span>
                         </a>
                         <a class="subCard dltPtdCrd" href="manageorder.php">
-                            <span class="crdIcon"><ion-icon name="close-circle-outline"></ion-icon></span>
+                        <img class="crdIcon" src="images\icons\manage-orders.svg" alt="" style="width: 70px; margin: auto;">
                             <span class="crdTitle">Manage Order</span>
                         </a>
                         <a class="subCard" href="updateorderstatus.php">
-                            <span class="crdIcon"><ion-icon name="create-outline"></ion-icon></span>
+                        <img class="crdIcon" src="images\icons\update-order-status.svg" alt="" style="width: 70px; margin: auto;">
                             <span class="crdTitle">Update Order Status</span>
                         </a>
                 </div>
@@ -167,6 +169,7 @@
 
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    
 
 
     <script>

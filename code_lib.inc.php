@@ -72,12 +72,12 @@ function resizeThumbPicture($path, $image_name)	{
   return $row['picture'];
 }
 
-function getUserPicture($user_id){
+function getEmpPicture($user_id){
   global $mysqli;
-  $sql = "select picture from login where user_id='$user_id'";
+  $sql = "select emp_picture from user_logs where user_id=" . "'$user_id'";
   $rs  = $mysqli->query($sql);
   $row = mysqli_fetch_assoc($rs);
-  return $row['picture'];
+  return $row['emp_picture'];
 }
  
 

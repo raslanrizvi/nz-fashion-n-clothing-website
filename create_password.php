@@ -2,7 +2,7 @@
 
   echo "<h1>";
 
-    $pwd = "user";
+    $pwd = "1234";
     
     echo $pwd;
 
