@@ -79,6 +79,8 @@ function getEmpPicture($user_id){
   $row = mysqli_fetch_assoc($rs);
   return $row['emp_picture'];
 }
+
+
  
 
  ?>

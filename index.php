@@ -1,3 +1,15 @@
+<?php
+    require("db_connection.php");
+    require("component.php");
+    
+    session_start();
+
+    if(isset($_POST['add'])){
+        
+    }
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -205,7 +217,7 @@
                                         <p>
                                             Welcome to NZ Fashion and Clothing, your go-to destination for authentic Japanese-inspired men's fashion. We are proud to offer a wide range of clothing, accessories, and footwear that reflect the timeless elegance and unique style of Japanese fashion. At NZ Fashion and Clothing, we believe that fashion is more than just clothing. It's an expression of individuality, a reflection of personality, and a celebration of culture. That's why we've curated a collection of men's clothing that combines classic Japanese design with modern style, to create a look that is both unique and stylish.
                                         </p>
-                                        <a href="shop.html" class="vol_btn">View Products<i class="flaticon-arrows-3"></i></a>
+                                        <a  href="shop.html" class="vol_btn">View Products<i class="flaticon-arrows-3"></i></a>
                                     </div>
                                 </div>
                             </div>
@@ -259,100 +271,16 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-lg-4 col-sm-6 wow fadeInUp" data-wow-duration="700ms" data-wow-delay="300ms">
-                        <div class="singleProduct01 style_two text-center">
-                            <div class="labelsPro poppins newPro">New</div>
-                            <div class="labelsPro poppins salePro">Sale</div>
-                            <div class="productThumb01">
-                                <img src="images/products/Product1.png" alt=""/>
-                                <div class="productHover01">
-                                    <a href="shop_single.html" class="vol_btn vol_btn_bg">Add to cart<i class="flaticon-arrows-3"></i></a>
-                                </div>
-                            </div>
-                            <div class="productDesc01">
-                                <h5><a href="shop_single.html" class="poppins">Dawson Backpack</a></h5>
-                                <p class="cats"><a href="shop_single.html">Accessories</a></p>
-                                <p class="prices"><del>$69.00</del> $65.00</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-sm-6 wow fadeInUp" data-wow-duration="700ms" data-wow-delay="350ms">
-                        <div class="singleProduct01 style_two text-center">
-                            <div class="productThumb01">
-                                <img src="images/products/Product1.png" alt=""/>
-                                <div class="productHover01">
-                                    <a href="shop_single.html" class="vol_btn vol_btn_bg">Add to cart<i class="flaticon-arrows-3"></i></a>
-                                </div>
-                            </div>
-                            <div class="productDesc01">
-                                <h5><a href="shop_single.html" class="poppins">Vila Printed Tie Neck Dress</a></h5>
-                                <p class="cats"><a href="shop_single.html">fashion</a></p>
-                                <p class="prices">$75.00</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-sm-6 wow fadeInUp" data-wow-duration="700ms" data-wow-delay="400ms">
-                        <div class="singleProduct01 style_two text-center">
-                            <div class="labelsPro poppins newPro">New</div>
-                            <div class="labelsPro poppins salePro">Sale</div>
-                            <div class="productThumb01">
-                                <img src="images/products/Product1.png" alt=""/>
-                                <div class="productHover01">
-                                    <a href="shop_single.html" class="vol_btn vol_btn_bg">Add to cart<i class="flaticon-arrows-3"></i></a>
-                                </div>
-                            </div>
-                            <div class="productDesc01">
-                                <h5><a href="shop_single.html" class="poppins">Fitch Woven Saddle Bag</a></h5>
-                                <p class="cats"><a href="shop_single.html">Accessories</a></p>
-                                <p class="prices"><del>$64.00</del> $63.00</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-sm-6 wow fadeInUp" data-wow-duration="700ms" data-wow-delay="450ms">
-                        <div class="singleProduct01 style_two text-center">
-                            <div class="productThumb01">
-                                <img src="images/products/Product1.png" alt=""/>
-                                <div class="productHover01">
-                                    <a href="shop_single.html" class="vol_btn vol_btn_bg">Add to cart<i class="flaticon-arrows-3"></i></a>
-                                </div>
-                            </div>
-                            <div class="productDesc01">
-                                <h5><a href="shop_single.html" class="poppins">Post Mid-Volume Backpack</a></h5>
-                                <p class="cats"><a href="shop_single.html">Accessories</a></p>
-                                <p class="prices">$95.00</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-sm-6 wow fadeInUp" data-wow-duration="700ms" data-wow-delay="500ms">
-                        <div class="singleProduct01 style_two outofstock text-center">
-                            <div class="productThumb01">
-                                <img src="images/products/Product1.png" alt=""/>
-                                <div class="outOfStockLabel poppins">OUT OF STOCK</div>
-                            </div>
-                            <div class="productDesc01">
-                                <h5><a href="shop_single.html" class="poppins">Swing Vest In Stripe</a></h5>
-                                <p class="cats"><a href="shop_single.html">casuals</a></p>
-                                <p class="prices">$105.00</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-sm-6 wow fadeInUp" data-wow-duration="700ms" data-wow-delay="550ms">
-                        <div class="singleProduct01 style_two text-center">
-                            <div class="labelsPro poppins newPro">New</div>
-                            <div class="labelsPro poppins salePro">Sale</div>
-                            <div class="productThumb01">
-                                <img src="images/products/Product1.png" alt=""/>
-                                <div class="productHover01">
-                                    <a href="shop_single.html" class="vol_btn vol_btn_bg">Add to cart<i class="flaticon-arrows-3"></i></a>
-                                </div>
-                            </div>
-                            <div class="productDesc01">
-                                <h5><a href="shop_single.html" class="poppins">Cat Eye Sunglasses</a></h5>
-                                <p class="cats"><a href="shop_single.html">Fashion</a></p>
-                                <p class="prices"><del>$75.00</del> $70.00</p>
-                            </div>
-                        </div>
-                    </div>
+                    <?php
+
+                        $rs = getData();
+
+                            while ($row = mysqli_fetch_assoc($rs)) {
+                                allProductsComponent($row['qty'], $row['new_arrivals'], $row['sale'], $row['picture1'], $row['title'], $row['ctgy'], $row['price'], $row['sale_price'], $row['ptd_id']);
+                            }
+                    
+
+                    ?>
                 </div>
                 <div class="row marginTop10px">
                     <div class="col-lg-12 text-center">
