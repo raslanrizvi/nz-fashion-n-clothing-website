@@ -1,7 +1,18 @@
+<?php
+
+// Start the session
+session_start();
+
+    require("db_connection.php");
+    require("component.php");
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>NZ Fashion & Clothing</title>
+        <title>NZ Fashion | Cart</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -48,20 +59,20 @@
                                 <span></span>
                             </div>
                             <ul>
-                                <li class="has-menu-items"><a href="index.html">Home</a></li>
-                                <li class="has-menu-items"><a href="shop.html">shop</a>
+                                <li class="has-menu-items"><a href="index.php">Home</a></li>
+                                <li class="has-menu-items"><a href="shop.php">shop</a>
                                     <ul class="sub-menu">
                                         <li class="subMentTitle">SHOPPAGES</li>
-                                        <li><a href="kimonoj.html">Kimono Jacket</a></li>
-                                        <li><a href="longwearj.html">Longwear Jackets</a></li>
-                                        <li><a href="streetwearp.html">Streetwear Pants</a></li>
-                                        <li><a href="sneakers.html">Sneakers</a></li>
-                                        <li><a href="accessories.html">Accessories</a></li>
-                                        <li><a href="cart.html">Cart page</a></li>
+                                        <li><a href="kimonoj.php">Kimono Jacket</a></li>
+                                        <li><a href="longwearj.php">Longwear Jackets</a></li>
+                                        <li><a href="streetwearp.php">Streetwear Pants</a></li>
+                                        <li><a href="sneakers.php">Sneakers</a></li>
+                                        <li><a href="accessories.php">Accessories</a></li>
+                                        <li><a href="cart.php">Cart page</a></li>
                                     </ul>
                                 </li>
-                                <li class="has-menu-items"><a href="about.html">About Us</a></li>
-                                <li class="has-menu-items"><a href="contact_us.html">Contact</a></li>
+                                <li class="has-menu-items"><a href="about.php">About Us</a></li>
+                                <li class="has-menu-items"><a href="contact_us.php">Contact</a></li>
                             </ul>
                         </nav>
                     </div>
@@ -96,101 +107,50 @@
                                         <th class="product-thumbnail">IMAGES</th>
                                         <th class="product-name">Product</th>
                                         <th class="product-price">Price</th>
-                                        <th class="product-quantity">Quantity</th>
+                                        <th class="product-size">Size</th>
+                                        <th class="product-qty">Quantity</th>
                                         <th class="product-subtotal">Total</th>
                                         <th class="product-remove">Remove</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr class="cart_item wow fadeInUp animated" data-wow-delay="300ms" data-wow-duration="700ms">
-                                        <td class="product-thumbnail">
-                                            <a href=""><img alt="" src="images/cart/1.jpg"></a>	
-                                        </td>
-                                        <td class="product-name">
-                                            <a class="itemtitle" href="#">Wrist Watch</a>
-                                        </td>
-                                        <td class="product-price" data-title="Price">
-                                            <span class="amount">$145.00</span>					
-                                        </td>
-                                        <td class="product-quantity" data-title="Quantity">
-                                            <div class="quantity">
-                                                <button class="qtyBtn btnMinus">-</button>
-                                                <input type="text" name="qty" value="1" title="Qty" class="input-text qty text carqty">
-                                                <button class="qtyBtn btnPlus">+</button>
-                                            </div>
-                                        </td>
-                                        <td class="product-subtotal" data-title="Total">
-                                            <span class="amount">$145.00</span>					
-                                        </td>
-                                        <td class="product-remove">
-                                            <a href="" class="remove" title="Remove this item" data-product_id="70">
-                                                <i class="fa fa-remove"></i>
-                                            </a>					
-                                        </td>
-                                    </tr>
-                                    <tr class="cart_item wow fadeInUp animated" data-wow-delay="300ms" data-wow-duration="700ms">
-                                        <td class="product-thumbnail">
-                                            <a href=""><img alt="" src="images/cart/2.jpg"></a>	
-                                        </td>
-                                        <td class="product-name">
-                                            <a class="itemtitle" href="#">Wrist Watch</a>
-                                        </td>
-                                        <td class="product-price" data-title="Price">
-                                            <span class="amount">$145.00</span>					
-                                        </td>
-                                        <td class="product-quantity" data-title="Quantity">
-                                            <div class="quantity">
-                                                <button class="qtyBtn btnMinus">-</button>
-                                                <input type="text" name="qty" value="1" title="Qty" class="input-text qty text carqty">
-                                                <button class="qtyBtn btnPlus">+</button>
-                                            </div>
-                                        </td>
-                                        <td class="product-subtotal" data-title="Total">
-                                            <span class="amount">$145.00</span>					
-                                        </td>
-                                        <td class="product-remove">
-                                            <a href="" class="remove" title="Remove this item" data-product_id="70">
-                                                <i class="fa fa-remove"></i>
-                                            </a>					
-                                        </td>
-                                    </tr>
-                                    <tr class="cart_item wow fadeInUp animated" data-wow-delay="300ms" data-wow-duration="700ms">
-                                        <td class="product-thumbnail">
-                                            <a href=""><img alt="" src="images/cart/3.jpg"></a>	
-                                        </td>
-                                        <td class="product-name">
-                                            <a class="itemtitle" href="#">Wrist Watch</a>
-                                        </td>
-                                        <td class="product-price" data-title="Price">
-                                            <span class="amount">$145.00</span>					
-                                        </td>
-                                        <td class="product-quantity" data-title="Quantity">
-                                            <div class="quantity">
-                                                <button class="qtyBtn btnMinus">-</button>
-                                                <input type="text" name="qty" value="1" title="Qty" class="input-text qty text carqty">
-                                                <button class="qtyBtn btnPlus">+</button>
-                                            </div>
-                                        </td>
-                                        <td class="product-subtotal" data-title="Total">
-                                            <span class="amount">$145.00</span>					
-                                        </td>
-                                        <td class="product-remove">
-                                            <a href="" class="remove" title="Remove this item" data-product_id="70">
-                                                <i class="fa fa-remove"></i>
-                                            </a>					
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="actions" colspan="6">
-                                            <button type="submit" class="button update_cart vol_btn vol_btn_bg">UPDATE CART<i class="flaticon-arrows-3"></i></button>
-                                            <button type="submit" class="button cont_shop vol_btn">CONTINUE SHOPPING<i class="flaticon-arrows-3"></i></button>
-                                            <div class="coupon pull-right">
-                                                <label for="coupon_code">COUPON CODE</label>
-                                                <input id="coupon_code" type="text" placeholder="Enter Your Coupon Code" value="" name="coupon_code"> 
-                                                <input type="submit" value="Apply Coupon" name="apply_coupon" class="button vol_btn vol_btn_bg">
-                                            </div>
-                                        </td>
-                                    </tr>
+                                    <?php
+
+
+                                            $subTotal = 0;
+                                        if (isset($_SESSION['cart'])) {
+                                            $cartItems = $_SESSION['cart'];
+
+                                           
+                                                $rs = getData();
+                                                    while ($row = mysqli_fetch_assoc($rs)) {
+                                                        foreach ($cartItems as $cartItem) {
+                                                            if ($row['ptd_id'] == $cartItem['ptd_id']) {
+                                                                $cartPrice = $row['sale'] == "on" ? $row['sale_price'] : $row['price'];
+                                                                $totalPrice = $cartPrice * $cartItem['crt_qty'];
+                                                                $subTotal += (int)$totalPrice;
+                                                                
+                                                                cartElement($row['picture1'], $row['title'], $cartPrice, $totalPrice, $cartItem['crt_qty'], $cartItem['crt_size'], $cartItem['ptd_id'], $subTotal);
+                                                                
+                                                            }
+                                                        }
+                                                    }
+                                                
+                                                ?>
+                                                    <tr>
+                                                        <td class="actions" colspan="6">
+                                                            <button id="clear-cart-btn" class="button update_cart vol_btn vol_btn_bg" style="background-color: #E04641;">Clear Cart</button>
+                                                            <a href="shop.php" class="button cont_shop vol_btn">CONTINUE SHOPPING<i class="flaticon-arrows-3"></i></a>
+                                                        </td>
+                                                    </tr>
+                                                <?php
+                                        }
+                                        else {
+                                            echo "<h5>Cart is Empty</h5>";
+                                        }
+
+
+                                    ?>
                                 </tbody>
                             </table>
                         </form>
@@ -203,33 +163,31 @@
                             <table class="shop_table shop_table_responsive">
                                 <tbody><tr class="cart-subtotal">
                                         <th>Subtotal</th>
-                                        <td data-title="Subtotal"><span class="amount">$285.00</span></td>
+                                        <td data-title="Subtotal"><span class="amount">Rs.<?php echo $subTotal?></span></td>
                                     </tr>
                                     <tr class="shipping">
                                         <th>Shipping</th>
                                         <td data-title="Shipping">
                                             <ul id="shipping_method">
                                                 <li>
-                                                    <input type="radio" name="shipping_method[0]" data-index="0" id="shipping_method_0_free_shipping" value="free_shipping" class="shipping_method" checked="checked">
+                                                    <input type="radio" name="shipping_method[free]" data-index="0" id="shipping_method_0_free_shipping" value="free_shipping" class="shipping_method" checked="checked">
                                                     <label for="shipping_method_0_free_shipping">Free Shipping</label>					
                                                 </li>
                                                 <li>
-                                                    <input type="radio" name="shipping_method[0]" data-index="0" id="shipping_method_0_local_delivery" value="local_delivery" class="shipping_method">
-                                                    <label for="shipping_method_0_local_delivery">Local Delivery</label>					
-                                                </li>
-                                                <li>
-                                                    <input type="radio" name="shipping_method[0]" data-index="0" id="shipping_method_0_local_pickup" value="local_pickup" class="shipping_method">
-                                                    <label for="shipping_method_0_local_pickup">Local Pickup</label>					
+                                                    <input type="radio" name="shipping_method[pickup]"  data-index="0" id="shipping_method_0_local_pickup" value="local_pickup" class="shipping_method">
+                                                    <label for="shipping_method_0_local_pickup">Store Pickup</label>					
                                                 </li>
                                             </ul>
                                         </td>
                                     </tr>
                                     <tr class="order-total">
                                         <th>Total</th>
-                                        <td data-title="Total"><strong><span class="amount">$150.00</span></strong> </td>
+                                        <td data-title="Total"><strong><span class="amount">Rs.<?php echo $subTotal?></span></strong> </td>
                                     </tr>
                                 </tbody>
                             </table>
+                            <a href="<?php echo (isset($_SESSION['cart'])) ? 'checkout.php' : '#'; ?>" class="button cont_shop vol_btn" style="border-radius: 20px 20px 0 20px;">CheckOut<i class="flaticon-arrows-3"></i></a>
+                            
                         </div>
                     </div>
                 </div>
@@ -308,6 +266,18 @@
                 </div>
             </div>
         </section>
+
+        <script>
+            document.getElementById("clear-cart-btn").addEventListener("click", function() {
+                // Remove all items from the cart session variable
+                <?php 
+                unset($_SESSION['cart']); 
+                ?>
+
+                // Reload the cart page
+                window.location.href = "cart.php";
+            });
+        </script>
 
         <!-- Include All JS -->
         <script type="text/javascript" src="js/jquery.js"></script>

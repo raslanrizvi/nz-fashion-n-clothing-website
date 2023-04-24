@@ -1,7 +1,65 @@
+<?php
+    require("db_connection.php");
+    require("component.php");
+
+    $ptd_id = $_REQUEST['ptd_id'];
+
+    $sql3 = "select * from product where ptd_id = $ptd_id";
+    $rs3 = $mysqli->query($sql3);
+    $row3 = mysqli_fetch_assoc($rs3);
+    $title = $row3['title'];
+
+    // echo $title;
+
+    session_start();
+
+// Check if the form was submitted
+if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['ptd_id']) && isset($_POST['crt_size'])) {
+
+    // Get the product ID and size from the form
+    $ptd_id = $_POST['ptd_id'];
+    $crt_size = isset($_POST['crt_size']) ? $_POST['crt_size'] : '';
+    $crt_qty = $_POST['crt_qty'];
+
+            
+
+
+    // Initialize the cart if it does not exist
+    if (!isset($_SESSION['cart'])) {
+        $_SESSION['cart'] = array();
+    }
+
+    // Check if the product already exists in the cart
+    foreach ($_SESSION['cart'] as $item) {
+        if ($item['ptd_id'] == $ptd_id && $item['crt_size'] == $crt_size) {
+            // Product already exists in cart, do not add it again
+            echo "<script>alert('Product is already added in the cart..!')</script>";
+            echo "<script>window.location = 'shop_single.php?ptd_id=$ptd_id'</script>";
+            
+            exit();
+        }
+    }
+
+    // Add the product to the cart
+    $_SESSION['cart'][] = array(
+        'ptd_id' => $ptd_id,
+        'crt_size' => $crt_size,
+        'crt_qty' => $crt_qty
+        // add more product information as needed\
+    );
+    // print_r($_SESSION['cart']);
+
+    // Redirect to the product page
+    header('Location: shop_single.php?ptd_id=' . $ptd_id);
+    exit();
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>Volta : Minimal Shopping HTML5 Template</title>
+        <title>NZ Fashion | <?php echo $title ?></title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -54,14 +112,7 @@
                     </div>
                     <div class="col-lg-4 col-sm-2">
                         <div class="logo text-center">
-                            <a href="index.html"><img src="images/nzlogosm.png" alt="NZ LOGO"/></a>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-sm-5">
-                        <div class="topLanguangeSearch clearfix">
-                            <form method="post">
-                                <input type="text" name="s" id="s" placeholder="Search"/>
-                            </form>
+                            <a href="index.php"><img src="images/nzlogosm.png" alt="NZ LOGO"/></a>
                         </div>
                     </div>
                 </div>
@@ -81,130 +132,173 @@
                                 <span></span>
                             </div>
                             <ul>
-                                <li class="has-menu-items active"><a href="#">Home</a></li>
-                                <li class="has-menu-items"><a href="shop.html">shop</a>
+                                <li class="has-menu-items"><a href="index.php">Home</a></li>
+                                <li class="has-menu-items"><a href="shop.php">shop</a>
                                     <ul class="sub-menu">
                                         <li class="subMentTitle">SHOPPAGES</li>
-                                        <li><a href="kimonoj.html">Kimono Jacket</a></li>
-                                        <li><a href="longwearj.html">Longwear Jackets</a></li>
-                                        <li><a href="streetwearp.html">Streetwear Pants</a></li>
-                                        <li><a href="sneakers.html">Sneakers</a></li>
-                                        <li><a href="accessories.html">Accessories</a></li>
-                                        <li><a href="cart.html">Cart page</a></li>
+                                        <li><a href="kimonoj.php">Kimono Jacket</a></li>
+                                        <li><a href="longwearj.php">Longwear Jackets</a></li>
+                                        <li><a href="streetwearp.php">Streetwear Pants</a></li>
+                                        <li><a href="sneakers.php">Sneakers</a></li>
+                                        <li><a href="accessories.php">Accessories</a></li>
+                                        <li><a href="cart.php">Cart page</a></li>
                                     </ul>
                                 </li>
-                                <li><a href="about.html">About Us</a></li>
-                                <li><a href="contact_us.html">Contact</a></li>
+                                <li><a href="about.php">About Us</a></li>
+                                <li><a href="contact_us.php">Contact</a></li>
                             </ul>
                         </nav>
                     </div>
                 </div>
             </div>
         </header>
-        <section class="pageTitleSection">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="pageTitleContent">
-                            <h2>Blog</h2>
-                            <div class="breadcrumbs">
-                                <a href="index.html">HOME</a> &nbsp;/ &nbsp;<a href="#">Blog</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
         <section class="comonSection noPaddingBottom">
             <div class="container">
                 <div class="row">
+                
+                <?php
+
+                    // Searching for the record
+                    $ptd_id = $_REQUEST['ptd_id'];
+                        // print_r($_REQUEST);
+
+                    // building dynamic SQL Code
+                        $sql = "select * from product where ptd_id=$ptd_id";
+
+                    // execute the SQL code
+                        $rs = $mysqli->query($sql);
+
+                        $record_count = mysqli_num_rows($rs);
+
+                        if(mysqli_num_rows($rs) > 0){
+
+                            $row = mysqli_fetch_assoc($rs);
+
+                                
+                                $ctgy = $row['ctgy'];
+
+                            if ($row['sale'] == "on") {
+                                $ptd_price = $row['sale_price'];
+                            }
+                            else {
+                                $ptd_price = $row['price'];
+                            }
+
+                ?>
+                    
                     <div class="col-lg-6">
-                        <div id="shopCaro" class="carousel slide" data-ride="carousel">
-                            <!-- Indicators -->
-                            <ol class="carousel-indicators singShopTabnav">
-                                <li data-target="#shopCaro" data-slide-to="0">
-                                    <img src="images/shop_single/t1.jpg" alt="">
-                                </li>
-                                <li data-target="#shopCaro" data-slide-to="1" class="active">
-                                    <img src="images/shop_single/t2.jpg" alt="">
-                                </li>
-                                <li data-target="#shopCaro" data-slide-to="2">
-                                    <img src="images/shop_single/t3.jpg" alt="">
-                                </li>
-                                <li data-target="#shopCaro" data-slide-to="3">
-                                    <img src="images/shop_single/t4.jpg" alt="">
-                                </li>
-                            </ol>
-                            <!-- Wrapper for slides -->
-                            <div class="carousel-inner" role="listbox">
-                                <div class="item shopBimg active">
-                                    <img src="images/shop_single/1.jpg" alt="">
-                                </div>
-                                <div class="item shopBimg">
-                                    <img src="images/shop_single/1.jpg" alt="">
-                                </div>
-                                <div class="item shopBimg">
-                                    <img src="images/shop_single/1.jpg" alt="">
-                                </div>
-                                <div class="item shopBimg">
-                                    <img src="images/shop_single/1.jpg" alt="">
-                                </div>
-                                <div class="item shopBimg">
-                                    <img src="images/shop_single/1.jpg" alt="">
-                                </div>
+                    <form action="shop_single.php?ptd_id=<?php echo $row['ptd_id']; ?>" method="post">
+                    <div id="shopCaro" class="carousel slide" data-ride="carousel">
+                        <!-- Indicators -->
+                        <ol class="carousel-indicators singShopTabnav">
+                            <li data-target="#shopCaro" data-slide-to="1" class="active">
+                                <img src="images/products/thumbnail/<?php echo $row['picture1']; ?>" alt="">
+                        </ol>
+                        <!-- Wrapper for slides -->
+                        <div class="carousel-inner" role="listbox">
+                            <div class="item shopBimg active">
+                                <img src="images/products/large/<?php echo $row['picture1']; ?>" alt="">
                             </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-6 noPaddingLeft">
-                        <div class="singleProInfo">
-                            <div class="productinfoTop">
-                                <h2 class="productSiTitle">Post Mid-Volume Backpack</h2>
-                                <div class="singShopRatting">
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star-half-full"></i>
-                                    <span>(4.7/5 Ratings)</span>
-                                </div>
-                                <p class="prices2">&nbsp;$89.00</p>
-                            </div>
-                        </div>
-                        <div class="sinShopCont">
-                            <p>
-                                The Love Boat soon will be making another run the love boat promises something for 
-                                everyone one two three four five six seven eight Sclemeel schlemazel hasenfeffer 
-                                incorporated the weather started getting rough the tiny ship was tossed if not for
-                                the courage of the fearless crew the minnow would be lost the minnow would be lost.
-                            </p>
-                        </div>
-                        <h3 class="stokPrduct">Available: 15 items Left in Stock</h3>
-                        <div class="ctyandColor">
-                            <div class="quantityW">
-                                <h4>QTY:</h4>
-                                <div class="quantity">
-                                    <button class="qtyBtn btnMinus">-</button>
-                                    <input type="text" name="qty" value="1" title="Qty" class="input-text qty text carqty">
-                                    <button class="qtyBtn btnPlus">+</button>
-                                </div>
-                            </div>
-                            <div class="colorW">
-                                <h4>SELECT COLOR:</h4>
-                                <div class="productColor">
-                                    <a class="SandyBrown" href="#"></a>
-                                    <a class="Flamingo" href="#"></a>
-                                    <a class="DarkGreen" href="#"></a>
-                                    <a class="Wattle" href="#"></a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="cartButtons">
-                            <a href="#" class="vol_btn vol_btn_bg">ADD TO CART<i class="flaticon-arrows-3"></i></a>
-                            <a href="#" class="vol_btn vol_border"><i class="fa fa-heart-o"></i></a>
-                            <a href="#" class="vol_btn vol_border"><i class="exchange"></i></a>
                         </div>
                     </div>
                 </div>
+                <div class="col-lg-6 noPaddingLeft">
+                    <div class="singleProInfo">
+                        <div class="productinfoTop">
+                            <h2 name="crt_title" class="productSiTitle"><?php echo $row['title']; ?></h2>
+                            <p name="crt_price" class="prices2">Rs.<?php echo $ptd_price ?></p>
+                        </div>
+                    </div>
+                    <div class="sinShopCont">
+                        <p>
+                            <?php echo $row['description']; ?>
+                        </p>
+                    </div>
+                    <h3 class="stokPrduct">Available: <?php echo $row['qty'] ?> items Left in Stock</h3>
+                    <div class="ctyandColor">
+                        <div class="quantityW">
+                            <h4>QTY:</h4>
+                            <div class="quantity">
+                                <button class="qtyBtn btnMinus">-</button>
+                                <input type="text" name="crt_qty" value="1" title="Qty" class="input-text qty text carqty">
+                                <button class="qtyBtn btnPlus">+</button>
+                            </div>
+                        </div>
+                        <div class="colorW">
+                            <h4>SELECT Size</h4>
+                            <div class="productColor form-check form-check-inline">
+                                <?php
+                                
+                                if ($row['size_xs'] == "on") {
+                                    echo '<input class="form-check-input" type="radio" name="crt_size" value="XS" required>';
+                                    echo '<label class="form-check-label" for="XS">XS</label>';
+                                  }
+                                  else {
+                                    echo '<input class="form-check-input" disabled style="cursor: default;" type="radio" name="crt_size" value="XS" required>';
+                                    echo '<label class="custom-control-label" for="XS">XS</label>';
+                                  }
+                                  
+                                  if ($row['size_s'] == "on") {
+                                    echo '<input class="form-check-input" type="radio" name="crt_size" value="S">';
+                                    echo '<label class="form-check-label" for="S">S</label>';
+                                  }
+                                  else {
+                                    echo '<input class="form-check-input" disabled style="cursor: default;" type="radio" name="crt_size" value="S">';
+                                    echo '<label class="form-check-label" for="S">S</label>';
+                                  }
+
+                                  if ($row['size_m'] == "on") {
+                                    echo '<input class="form-check-input" type="radio" name="crt_size" value="M">';
+                                    echo '<label class="form-check-label" for="M">M</label>';
+                                  }
+                                  else {
+                                    echo '<input class="form-check-input" disabled style="cursor: default;" type="radio" name="crt_size" value="M">';
+                                    echo '<label class="form-check-label" for="M">M</label>';
+                                  }
+
+                                  if ($row['size_l'] == "on") {
+                                    echo '<input type="radio" name="crt_size" value="L">';
+                                    echo '<label class="form-check-label" for="L">L</label>';
+                                  }
+                                  else {
+                                    echo '<input class="form-check-input" disabled style="cursor: default;" type="radio" name="crt_size" value="L">';
+                                    echo '<label class="form-check-label" for="L">L</label>';
+                                  }
+
+                                  if ($row['size_xl'] == "on") {
+                                    echo '<input class="form-check-input" type="radio" name="crt_size" value="XL">';
+                                    echo '<label class="form-check-label" for="XL">XL</label>';
+                                  }
+                                  else {
+                                    echo '<input class="form-check-input" disabled style="cursor: default;" type="radio" name="crt_size" value="XL">';
+                                    echo '<label class="form-check-label" for="XL">XL</label>';
+                                  }
+
+                                  if ($row['size_xxl'] == "on") {
+                                    echo '<input class="form-check-input" type="radio" name="crt_size" value="XXL">';
+                                    echo '<label class="form-check-label" for="XXL">XXL</label>';
+                                  }
+                                  else {
+                                    echo '<input class="form-check-input" disabled style="cursor: default;" type="radio" name="crt_size" value="XXL">';
+                                    echo '<label class="form-check-label" for="XXL">XXL</label>';
+                                  }
+
+                                ?>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cartButtons">
+                        <button type="submit" name="add" class="vol_btn vol_btn_bg">ADD TO CART<i class="flaticon-arrows-3"></i></buyyon>
+                        <input type="hidden" name="ptd_id" value='<?php echo $ptd_id?>'>
+                        <input type="hidden" name="title" value='<?php echo $row['title'] ?>'>
+                        
+                    </div>
+                </div>
+                </form>
+                <?php
+                    }
+                ?>
+            </div>
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="seperator"></div>
@@ -223,55 +317,27 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-lg-4 col-sm-6  wow fadeInUp" data-wow-duration="700ms" data-wow-delay="300ms">
-                        <div class="singleProduct01 text-center">
-                            <div class="labelsPro poppins newPro">New</div>
-                            <div class="labelsPro poppins salePro">Sale</div>
-                            <div class="productThumb01">
-                                <img alt="" src="images/home2/s1.png">
-                                <div class="productHover01">
-                                    <a class="vol_btn vol_btn_bg" href="#">Add to cart<i class="flaticon-arrows-3"></i></a>
-                                </div>
-                            </div>
-                            <div class="productDesc01">
-                                <h5><a class="poppins" href="#">Dawson Backpack</a></h5>
-                                <p class="cats"><a href="#">Accessories</a></p>
-                                <p class="prices"><del>$69.00</del> $65.00</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-sm-6  wow fadeInUp" data-wow-duration="700ms" data-wow-delay="350ms">
-                        <div class="singleProduct01 text-center">
-                            <div class="productThumb01">
-                                <img alt="" src="images/home2/s2.png">
-                                <div class="productHover01">
-                                    <a class="vol_btn vol_btn_bg" href="#">Add to cart<i class="flaticon-arrows-3"></i></a>
-                                </div>
-                            </div>
-                            <div class="productDesc01">
-                                <h5><a class="poppins" href="#">Vila Printed Tie Neck Dress</a></h5>
-                                <p class="cats"><a href="#">fashion</a></p>
-                                <p class="prices">$75.00</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-sm-6  wow fadeInUp" data-wow-duration="700ms" data-wow-delay="400ms">
-                        <div class="singleProduct01 text-center">
-                            <div class="labelsPro poppins newPro">New</div>
-                            <div class="labelsPro poppins salePro">Sale</div>
-                            <div class="productThumb01">
-                                <img alt="" src="images/home2/s3.png">
-                                <div class="productHover01">
-                                    <a class="vol_btn vol_btn_bg" href="#">Add to cart<i class="flaticon-arrows-3"></i></a>
-                                </div>
-                            </div>
-                            <div class="productDesc01">
-                                <h5><a class="poppins" href="#">Fitch Woven Saddle Bag</a></h5>
-                                <p class="cats"><a href="#">Accessories</a></p>
-                                <p class="prices"><del>$64.00</del> $63.00</p>
-                            </div>
-                        </div>
-                    </div>
+                    <?php
+
+                    
+
+                    $sql2 = "select * from product where ctgy = '$ctgy' and ptd_id != '$ptd_id' limit 3";
+
+                    // execute the SQL code
+                    $rs2 = $mysqli->query($sql2);
+
+                    
+
+                    if(mysqli_num_rows($rs2) > 0){
+
+                        while ($row2 = mysqli_fetch_assoc($rs2)) {
+                            allProductsComponent($row2['qty'], $row2['new_arrivals'], $row2['sale'], $row2['picture1'], $row2['title'], $row2['ctgy'], $row2['price'], $row2['sale_price'], $row2['ptd_id']);
+                        }
+                    }
+                    else{
+                        echo "No Products Found";
+                    }
+                    ?>
                 </div>
             </div>
         </section>

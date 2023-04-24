@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>NZ Fashion & Clothing</title>
+        <title>NZ Fashion | SHOP</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -48,20 +48,20 @@
                                 <span></span>
                             </div>
                             <ul>
-                                <li class="has-menu-items active"><a href="index.html">Home</a></li>
-                                <li class="has-menu-items active"><a href="shop.html">shop</a>
+                                <li class="has-menu-items active"><a href="index.php">Home</a></li>
+                                <li class="has-menu-items active"><a href="shop.php">shop</a>
                                     <ul class="sub-menu">
                                         <li class="subMentTitle">SHOPPAGES</li>
-                                        <li><a href="kimonoj.html">Kimono Jacket</a></li>
-                                        <li><a href="longwearj.html">Longwear Jackets</a></li>
-                                        <li><a href="streetwearp.html">Streetwear Pants</a></li>
-                                        <li><a href="sneakers.html">Sneakers</a></li>
-                                        <li><a href="accessories.html">Accessories</a></li>
-                                        <li><a href="cart.html">Cart page</a></li>
+                                        <li><a href="kimonoj.php">Kimono Jacket</a></li>
+                                        <li><a href="longwearj.php">Longwear Jackets</a></li>
+                                        <li><a href="streetwearp.php">Streetwear Pants</a></li>
+                                        <li><a href="sneakers.php">Sneakers</a></li>
+                                        <li><a href="accessories.php">Accessories</a></li>
+                                        <li><a href="cart.php">Cart page</a></li>
                                     </ul>
                                 </li>
-                                <li><a href="about.html">About Us</a></li>
-                                <li><a href="contact_us.html">Contact</a></li>
+                                <li><a href="about.php">About Us</a></li>
+                                <li><a href="contact_us.php">Contact</a></li>
                             </ul>
                         </nav>
                     </div>
@@ -145,59 +145,12 @@
                         </div>
                     </div>
                     <div class="col-lg-3 col-sm-4 shopsidebar">
-                        <!-- <aside class="widget widget_product_categories  wow fadeInUp" data-wow-duration="700ms" data-wow-delay="300ms">
-                            <h3 class="widgetTitle">Brands</h3>
-                            <div class="widgetBody">
-                                <ul>
-                                    <li><a href="#">Black & White</a><span>(03)</span></li>
-                                    <li><a href="#">Caterpillar</a><span>(05)</span></li>
-                                    <li><a href="#">Dozil</a><span>(10)</span></li>
-                                    <li><a href="#">Eleep Biz</a><span>(20)</span></li>
-                                    <li><a href="#">Kelvin Clin</a><span>(06)</span></li>
-                                </ul>
-                            </div>
-                        </aside>
-                        <aside class="widget widget_price_filter  wow fadeInUp" data-wow-duration="700ms" data-wow-delay="350ms">
-                            <h3 class="widgetTitle">Filter by price</h3>
-                            <div class="widgetBody">
-                                <form action="#" method="get">
-                                    <div id="slider-range"></div>
-                                    <input type="hidden" id="amount" />
-                                    <div id="amount2"></div>
-                                </form>
-                            </div>
-                        </aside>
-                        <aside class="widget widget_product_categories  wow fadeInUp" data-wow-duration="700ms" data-wow-delay="400ms">
-                            <h3 class="widgetTitle">Colors</h3>
-                            <div class="widgetBody">
-                                <ul>
-                                    <li><a href="#">White</a><span>(10)</span></li>
-                                    <li><a href="#">Black</a><span>(08)</span></li>
-                                    <li><a href="#">blue</a><span>(02)</span></li>
-                                    <li><a href="#">yellow</a><span>(03)</span></li>
-                                    <li><a href="#">Red</a><span>(08)</span></li>
-                                </ul>
-                            </div>
-                        </aside> -->
                         <aside class="widget wow fadeInUp" data-wow-duration="700ms" data-wow-delay="450ms">
                             <h3 class="widgetTitle">Sale Products</h3>
                             <div class="widgetBody">
                                 <div class="topRatedProducts">
-                                    <div class="singleProductsa">
-                                        <img src="images/shop1/w1.png" alt=""/>
-                                        <h3><a href="shop_single.html">FASHION LADIES BAG</a></h3>
-                                        <p class="pricess">$90.00 &nbsp;<del>$100.00</del></p>
-                                    </div>
-                                    <div class="singleProductsa">
-                                        <img src="images/shop1/w2.png" alt=""/>
-                                        <h3><a href="shop_single.html">Trendy women T-Shirt</a></h3>
-                                        <p class="pricess">$96.00 &nbsp;<del>$125.00</del></p>
-                                    </div>
-                                    <div class="singleProductsa">
-                                        <img src="images/shop1/w3.png" alt=""/>
-                                        <h3><a href="shop_single.html">FASHION Mens Hats</a></h3>
-                                        <p class="pricess">$60.00 &nbsp;<del>$70.00</del></p>
-                                    </div>
+                                    
+                                    
                                 </div>
                             </div>
                         </aside>

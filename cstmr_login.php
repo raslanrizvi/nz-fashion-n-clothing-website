@@ -3,9 +3,9 @@
 // start session
   session_start();
 
-            $_SESSION['user_id'] = '';
-            $_SESSION['cstmr_name'] = '';
-            $_SESSION['cstmr_picture'] = '';
+            unset($_SESSION['user_id']);
+            unset($_SESSION['cstmr_name']);
+            unset($_SESSION['cstmr_picture']);
 
 ?>
 

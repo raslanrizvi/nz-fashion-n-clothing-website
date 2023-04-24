@@ -4443,6 +4443,13 @@ blockquote p{
     border-radius: 50%;
     margin-right: 5px;
 }
+
+.productColor .size-label{
+    margin: 5px !important; 
+    padding-left: 5px !important;
+    
+}
+
 .productColor a.SandyBrown{
     background: #f09763;
 }
@@ -4608,8 +4615,26 @@ blockquote p{
 .cart_table tbody tr td.product-name{
     width: 24.6666%;
 }
+
+.cart_table tbody tr td.product-size a.itemtitle{
+    font-size: 14px;
+    color: #777777;
+    line-height: 26px;
+}
+.cart_table tbody tr td.product-size a.itemtitle:hover{
+    color: #333;
+}
+
+.cart_table tbody tr td.product-size{
+    width: 8%;
+}
+
 .cart_table tbody tr td.product-price{
     width: 16.8%;
+}
+
+.cart_table tbody tr td.product-qty{
+    width: 8%;
 }
 .cart_table tbody tr td.product-price .amount{
     font-size: 15px;
@@ -4792,11 +4817,113 @@ blockquote p{
     letter-spacing: 0.225px;
 }
 
+
+
+/* Check Out Successful prompt code starts here */
+
+.order-message-container{
+    position: fixed;
+    top:0; left:0;
+    height: 100vh;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    padding:2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1100;
+    background-color: #a8acb0;
+    width: 100%;
+ }
+ 
+ .order-message-container::-webkit-scrollbar{
+    width: 1rem;
+ }
+ 
+ .order-message-container::-webkit-scrollbar-track{
+    background-color: #a8acb0;
+ }
+ 
+ .order-message-container::-webkit-scrollbar-thumb{
+    background-color:  #2980b9;
+ }
+ 
+ .order-message-container .message-container{
+    width: 50rem;
+    /* height: ; */
+    background-color: #f2f2f2;
+    border-radius: .5rem;
+    padding: 2rem;
+    text-align: center;
+ }
+ 
+ .order-message-container .message-container h3{
+    font-size: 2rem;
+    color: #000000;
+ }
+ 
+ .order-message-container .message-container .order-detail{
+    background-color: #eee;
+    border-radius: .5rem;
+    padding:1rem;
+    margin:1rem 0;
+ }
+ 
+ .order-message-container .message-container .order-detail span{
+    background-color: #f2f2f2;
+    border-radius: .5rem;
+    color:#000;
+    font-size: 15px;
+    display: inline-block;
+    padding:5px 10px;
+    margin:5px;
+ }
+ 
+ .order-message-container .message-container .order-detail span.total{
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    background: tomato;
+    color:#f2f2f2;
+    width: fit-content;
+ }
+ 
+ .order-message-container .message-container .customer-details{
+    margin:1.5rem 0;
+ }
+ 
+ .order-message-container .message-container .customer-details p{
+    padding:5px 0;
+    font-size: 15px;
+    color:#000;
+ }
+ 
+ .order-message-container .message-container .customer-details p span{
+    color:#2980b9;
+    padding:0 .5rem;
+    text-transform: none;
+ }
+
+ .order-message-container .message-container .btn-shpig{
+    background-color: #000;
+    color:#fff;
+    border-radius: 30px;
+    padding: 15px;
+    transition: all 0.3s ease 0s;
+ }
+
+ .order-message-container .message-container .btn-shpig:hover{
+    box-shadow: 2px 8px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease 0s;
+ }
+
+/* checkout successful prompt code ends here */
+
 /* Customer Dashobord CodeStarts Here */
 
 .cstmr_dshbrd-card {
-  width: 190px;
-  height: 190px;
+  width: fit-content;
+  height: fit-content;
   border-radius: 44px;
   background: lightgrey;
   background: linear-gradient(145deg, #ff6b6b, #d43636);
@@ -4804,11 +4931,16 @@ blockquote p{
              2px 3px 3px #ff4949;
           box-shadow: 2px 3px 3px #ba2f2f,
              2px 3px 3px #ff4949;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    padding-bottom: 20px;
   }
   
   .cstmr_dshbrd-avatar {
-  width: 45px;
-  height: 45px;
+  /* width: 85px;
+  height: 85px; */
   display: inline-block;
   background-color: rgba(255,255,255,0.9);
   margin: 30px 15px 20px 25px;
@@ -4819,37 +4951,68 @@ blockquote p{
     display: inline-block;
     vertical-align: top;
     margin-top: 33px;
-    width: 85px;
+    width: fit-content;
+    text-align: left;
+    padding: 10px;
   }
   
   .cstmr_dshbrd-info-1, .cstmr_dshbrd-info-2 {
-    display: inline-block;
-    height: 20px;
-    width: 100%;
-    border-radius: 6px;
+    display: block;
+    /* height: 20px; */
+    /* width: 100%; */
+    border-radius: 10px;
     background: rgba(255,255,255,0.9);
+    margin-bottom: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    box-shadow: 3px 3px 6px #9d3838;
   }
   
   .cstmr_dshbrd-info-2 {
-    height: 11px;
-    width: 50%;
-    border-radius: 3px;
+    /* height: 11px;
+    width: 50%; */
+    border-radius: 10px;
   }
   
   .cstmr_dshbrd-content-1 {
-    width: 80%;
+    width: fit-content;
     border-radius: 12px;
     background: rgba(255,255,255,0.9);
-    height: 40px;
+    /* height: 40px; */
     margin: auto;
+    padding-left: 17px;
+    padding-right: 17px;
+    box-shadow: 3px 3px 6px #9d3838;
   }
   
   .cstmr_dshbrd-content-2 {
-    width: 60%;
-    border-radius: 6px;
+    width: fit-content;
+    border-radius: 10px;
     background: rgba(255,255,255,0.9);
-    height: 18px;
-    margin: 10px 0 0 20px;
+    /* height: 18px; */
+    margin: 10px auto 0px auto;
+    padding-left: 15px;
+    padding-right: 15px;
+    box-shadow: 3px 3px 6px #9d3838;
+  }
+
+ 
+  .cstmr_dshbrd-content-2-btn{
+    border-radius: 10px;
+    margin-top: 30px;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    /* justify-items: first basel; */
+    border-color: #f6eddb;
+    box-shadow: 6px 6px 12px #9d3838;
+    transition: all 0.3s ease 0s;
+  }
+
+  .cstmr_dshbrd-content-2-btn:hover{
+    box-shadow: 3px 3px 6px #9d3838;
+    color: #000;
+    border-color: #000;
+    transition: all 0.3s ease 0s;
   }
 
   /* Customer Dashobord Code ends Here */

@@ -1,7 +1,110 @@
+<?php
+
+    session_start();
+ require("db_connection.php");
+ require("component.php");
+
+
+ if (isset($_POST['order_btn'])) {
+    $country = $_POST['country'];
+    $first_name = $_POST['first_name'];
+    $last_name = $_POST['last_name'];
+    $address_name = $_POST['address_name'];
+    $address1 = $_POST['address1'];
+    $address2 = $_POST['address2'];
+    $city = $_POST['city'];
+    $state = $_POST['state'];
+    $zip_code = $_POST['zipcode'];
+    $email = $_POST['email'];
+    $phone = $_POST['phone_no'];
+    $order_notes = $_POST['notes'];
+    $total_amount = $_POST['total_amount'];
+    $payment_method = $_POST['payment_method'];
+
+    $subTotal = 0;
+
+    if (isset($_SESSION['cart'])) {
+        $cartItems = $_SESSION['cart'];
+        
+
+       
+            $rs = getData();
+                while ($row = mysqli_fetch_assoc($rs)) {
+                    foreach ($cartItems as $cartItem) {
+                        if ($row['ptd_id'] == $cartItem['ptd_id']) {
+                            $cartPrice = $row['sale'] == "on" ? $row['sale_price'] : $row['price'];
+                            $totalPrice = $cartPrice * $cartItem['crt_qty'];
+                            $subTotal += (int)$totalPrice;
+
+                            $product_name[] = $row['title'] .'( ptd_id - '. $cartItem['ptd_id'] .', size - '. $cartItem['crt_size'] .', qty - '. $cartItem['crt_qty'] .' Price - '. $cartPrice .')';  
+
+                            
+                            
+                            // echo $product_name;
+                            
+                            // 
+                            
+                        }
+                    }
+                }
+    }    
+        $total_product = implode(" | ",$product_name);
+        $sql2 = "insert into `order` (country,first_name,last_name,address_name,address1,address2,city,state,zipcode,email,phone_no,notes,total_products,total_amount,payment_method) values(";
+        $sql2 .= "'$country',";
+        $sql2 .= "'$first_name',";
+        $sql2 .= "'$last_name',";
+        $sql2 .= "'$address_name',";
+        $sql2 .= "'$address1',";
+        $sql2 .= "'$address2',";
+        $sql2 .= "'$city',";
+        $sql2 .= "'$state',";
+        $sql2 .= "'$zip_code',";
+        $sql2 .= "'$email',";
+        $sql2 .= "'$phone',";
+        $sql2 .= "'$order_notes',";
+        $sql2 .= "'$total_product',";
+        $sql2 .= "$total_amount,";
+        $sql2 .= "'$payment_method')";
+
+        $z = $mysqli->query($sql2);
+
+        if($z>0){
+            echo "
+                <div class='order-message-container'>
+                <div class='message-container'>
+                    <h3>Thank You For Shopping!</h3>
+                    <div class='order-detail'>
+                        <span>".$total_product."</span>
+                        <span class='total'> total : Rs.".$total_amount."/-  </span>
+                    </div>
+                    <div class='customer-details'>
+                        <p> Your Name : <span>".$first_name."</span> </p>
+                        <p> Your Number : <span>".$phone."</span> </p>
+                        <p> Your Email : <span>".$email."</span> </p>
+                        <p> Your Address : <span>".$address1.", ".$address2.", ".$city.", ".$state.", ".$country." - ".$zip_code."</span> </p>
+                        <p> Your Payment Method : <span>".$payment_method."</span> </p>
+                        <p>(*Please Bank Transfer and Let the Team Know*)</p>
+                    </div>
+                        <a href='shop.php' class='btn btn-shpig'>continue shopping</a>
+                </div>
+                </div>
+            ";
+
+            unset($_SESSION['cart']);
+        }
+
+
+     
+ }
+
+    // print_r($_POST);
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>Volta : Minimal Shopping HTML5 Template</title>
+        <title>NZ Fashion | Check Out</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -48,20 +151,20 @@
                                 <span></span>
                             </div>
                             <ul>
-                                <li class="has-menu-items active"><a href="index.html">Home</a></li>
-                                <li class="has-menu-items"><a href="shop.html">shop</a>
+                                <li class="has-menu-items active"><a href="index.php">Home</a></li>
+                                <li class="has-menu-items"><a href="shop.php">shop</a>
                                     <ul class="sub-menu">
                                         <li class="subMentTitle">SHOPPAGES</li>
-                                        <li><a href="kimonoj.html">Kimono Jacket</a></li>
-                                        <li><a href="longwearj.html">Longwear Jackets</a></li>
-                                        <li><a href="streetwearp.html">Streetwear Pants</a></li>
-                                        <li><a href="sneakers.html">Sneakers</a></li>
-                                        <li><a href="accessories.html">Accessories</a></li>
-                                        <li><a href="cart.html">Cart page</a></li>
+                                        <li><a href="kimonoj.php">Kimono Jacket</a></li>
+                                        <li><a href="longwearj.php">Longwear Jackets</a></li>
+                                        <li><a href="streetwearp.php">Streetwear Pants</a></li>
+                                        <li><a href="sneakers.php">Sneakers</a></li>
+                                        <li><a href="accessories.php">Accessories</a></li>
+                                        <li><a href="cart.php">Cart page</a></li>
                                     </ul>
                                 </li>
-                                <li class="has-menu-items active"><a href="about.html">About Us</a></li>
-                                <li class="has-menu-items"><a href="contact_us.html">Contact</a></li>
+                                <li class="has-menu-items active"><a href="about.php">About Us</a></li>
+                                <li class="has-menu-items"><a href="contact_us.php">Contact</a></li>
                             </ul>
                         </nav>
                     </div>
@@ -75,7 +178,7 @@
                         <div class="pageTitleContent">
                             <h2>Checkout</h2>
                             <div class="breadcrumbs">
-                                <a href="index.html">HOME</a> &nbsp;/ &nbsp;<a href="#">Checkout</a>
+                                <a href="index.php">HOME</a> &nbsp;/ &nbsp;<a href="#">Checkout</a>
                             </div>
                         </div>
                     </div>
@@ -85,59 +188,59 @@
         <section class="comonSection">
             <div class="container">
                 <div class="row">
+                    <form action="checkout.php" method="post">
                     <div class="col-sm-6 checkoutForms">
                         <h4 class="comonHeading">Billing Address</h4>
                         <div class="col-lg-12 noPadding">
                             <label class="chek_label">Country *</label>
-                            <select class="country_to_state country_select " id="billing_country" name="billing_country"><option value="">State / Country *</option><option value="AX">Åland Islands</option><option value="AF">Afghanistan</option><option value="AL">Albania</option><option value="DZ">Algeria</option><option value="AD">Andorra</option><option value="AO">Angola</option><option value="AI">Anguilla</option><option value="AQ">Antarctica</option><option value="AG">Antigua and Barbuda</option><option value="AR">Argentina</option><option value="AM">Armenia</option><option value="AW">Aruba</option><option value="AU">Australia</option><option value="AT">Austria</option><option value="AZ">Azerbaijan</option><option value="BS">Bahamas</option><option value="BH">Bahrain</option><option value="BD">Bangladesh</option><option value="BB">Barbados</option><option value="BY">Belarus</option><option value="PW">Belau</option><option value="BE">Belgium</option><option value="BZ">Belize</option><option value="BJ">Benin</option><option value="BM">Bermuda</option><option value="BT">Bhutan</option><option value="BO">Bolivia</option><option value="BQ">Bonaire, Saint Eustatius and Saba</option><option value="BA">Bosnia and Herzegovina</option><option value="BW">Botswana</option><option value="BV">Bouvet Island</option><option value="BR">Brazil</option><option value="IO">British Indian Ocean Territory</option><option value="VG">British Virgin Islands</option><option value="BN">Brunei</option><option value="BG">Bulgaria</option><option value="BF">Burkina Faso</option><option value="BI">Burundi</option><option value="KH">Cambodia</option><option value="CM">Cameroon</option><option value="CA">Canada</option><option value="CV">Cape Verde</option><option value="KY">Cayman Islands</option><option value="CF">Central African Republic</option><option value="TD">Chad</option><option value="CL">Chile</option><option value="CN">China</option><option value="CX">Christmas Island</option><option value="CC">Cocos (Keeling) Islands</option><option value="CO">Colombia</option><option value="KM">Comoros</option><option value="CG">Congo (Brazzaville)</option><option value="CD">Congo (Kinshasa)</option><option value="CK">Cook Islands</option><option value="CR">Costa Rica</option><option value="HR">Croatia</option><option value="CU">Cuba</option><option value="CW">CuraÇao</option><option value="CY">Cyprus</option><option value="CZ">Czech Republic</option><option value="DK">Denmark</option><option value="DJ">Djibouti</option><option value="DM">Dominica</option><option value="DO">Dominican Republic</option><option value="EC">Ecuador</option><option value="EG">Egypt</option><option value="SV">El Salvador</option><option value="GQ">Equatorial Guinea</option><option value="ER">Eritrea</option><option value="EE">Estonia</option><option value="ET">Ethiopia</option><option value="FK">Falkland Islands</option><option value="FO">Faroe Islands</option><option value="FJ">Fiji</option><option value="FI">Finland</option><option value="FR">France</option><option value="GF">French Guiana</option><option value="PF">French Polynesia</option><option value="TF">French Southern Territories</option><option value="GA">Gabon</option><option value="GM">Gambia</option><option value="GE">Georgia</option><option value="DE">Germany</option><option value="GH">Ghana</option><option value="GI">Gibraltar</option><option value="GR">Greece</option><option value="GL">Greenland</option><option value="GD">Grenada</option><option value="GP">Guadeloupe</option><option value="GT">Guatemala</option><option value="GG">Guernsey</option><option value="GN">Guinea</option><option value="GW">Guinea-Bissau</option><option value="GY">Guyana</option><option value="HT">Haiti</option><option value="HM">Heard Island and McDonald Islands</option><option value="HN">Honduras</option><option value="HK">Hong Kong</option><option value="HU">Hungary</option><option value="IS">Iceland</option><option value="IN">India</option><option value="ID">Indonesia</option><option value="IR">Iran</option><option value="IQ">Iraq</option><option value="IM">Isle of Man</option><option value="IL">Israel</option><option value="IT">Italy</option><option value="CI">Ivory Coast</option><option value="JM">Jamaica</option><option value="JP">Japan</option><option value="JE">Jersey</option><option value="JO">Jordan</option><option value="KZ">Kazakhstan</option><option value="KE">Kenya</option><option value="KI">Kiribati</option><option value="KW">Kuwait</option><option value="KG">Kyrgyzstan</option><option value="LA">Laos</option><option value="LV">Latvia</option><option value="LB">Lebanon</option><option value="LS">Lesotho</option><option value="LR">Liberia</option><option value="LY">Libya</option><option value="LI">Liechtenstein</option><option value="LT">Lithuania</option><option value="LU">Luxembourg</option><option value="MO">Macao S.A.R., China</option><option value="MK">Macedonia</option><option value="MG">Madagascar</option><option value="MW">Malawi</option><option value="MY">Malaysia</option><option value="MV">Maldives</option><option value="ML">Mali</option><option value="MT">Malta</option><option value="MH">Marshall Islands</option><option value="MQ">Martinique</option><option value="MR">Mauritania</option><option value="MU">Mauritius</option><option value="YT">Mayotte</option><option value="MX">Mexico</option><option value="FM">Micronesia</option><option value="MD">Moldova</option><option value="MC">Monaco</option><option value="MN">Mongolia</option><option value="ME">Montenegro</option><option value="MS">Montserrat</option><option value="MA">Morocco</option><option value="MZ">Mozambique</option><option value="MM">Myanmar</option><option value="NA">Namibia</option><option value="NR">Nauru</option><option value="NP">Nepal</option><option value="NL">Netherlands</option><option value="AN">Netherlands Antilles</option><option value="NC">New Caledonia</option><option value="NZ">New Zealand</option><option value="NI">Nicaragua</option><option value="NE">Niger</option><option value="NG">Nigeria</option><option value="NU">Niue</option><option value="NF">Norfolk Island</option><option value="KP">North Korea</option><option value="NO">Norway</option><option value="OM">Oman</option><option value="PK">Pakistan</option><option value="PS">Palestinian Territory</option><option value="PA">Panama</option><option value="PG">Papua New Guinea</option><option value="PY">Paraguay</option><option value="PE">Peru</option><option value="PH">Philippines</option><option value="PN">Pitcairn</option><option value="PL">Poland</option><option value="PT">Portugal</option><option value="QA">Qatar</option><option value="IE">Republic of Ireland</option><option value="RE">Reunion</option><option value="RO">Romania</option><option value="RU">Russia</option><option value="RW">Rwanda</option><option value="ST">São Tomé and Príncipe</option><option value="BL">Saint Barthélemy</option><option value="SH">Saint Helena</option><option value="KN">Saint Kitts and Nevis</option><option value="LC">Saint Lucia</option><option value="SX">Saint Martin (Dutch part)</option><option value="MF">Saint Martin (French part)</option><option value="PM">Saint Pierre and Miquelon</option><option value="VC">Saint Vincent and the Grenadines</option><option value="SM">San Marino</option><option value="SA">Saudi Arabia</option><option value="SN">Senegal</option><option value="RS">Serbia</option><option value="SC">Seychelles</option><option value="SL">Sierra Leone</option><option value="SG">Singapore</option><option value="SK">Slovakia</option><option value="SI">Slovenia</option><option value="SB">Solomon Islands</option><option value="SO">Somalia</option><option value="ZA">South Africa</option><option value="GS">South Georgia/Sandwich Islands</option><option value="KR">South Korea</option><option value="SS">South Sudan</option><option value="ES">Spain</option><option value="LK">Sri Lanka</option><option value="SD">Sudan</option><option value="SR">Suriname</option><option value="SJ">Svalbard and Jan Mayen</option><option value="SZ">Swaziland</option><option value="SE">Sweden</option><option value="CH">Switzerland</option><option value="SY">Syria</option><option value="TW">Taiwan</option><option value="TJ">Tajikistan</option><option value="TZ">Tanzania</option><option value="TH">Thailand</option><option value="TL">Timor-Leste</option><option value="TG">Togo</option><option value="TK">Tokelau</option><option value="TO">Tonga</option><option value="TT">Trinidad and Tobago</option><option value="TN">Tunisia</option><option value="TR">Turkey</option><option value="TM">Turkmenistan</option><option value="TC">Turks and Caicos Islands</option><option value="TV">Tuvalu</option><option value="UG">Uganda</option><option value="UA">Ukraine</option><option value="AE">United Arab Emirates</option><option value="GB">United Kingdom (UK)</option><option selected="selected" value="US">United States (US)</option><option value="UY">Uruguay</option><option value="UZ">Uzbekistan</option><option value="VU">Vanuatu</option><option value="VA">Vatican</option><option value="VE">Venezuela</option><option value="VN">Vietnam</option><option value="WF">Wallis and Futuna</option><option value="EH">Western Sahara</option><option value="WS">Western Samoa</option><option value="YE">Yemen</option><option value="ZM">Zambia</option><option value="ZW">Zimbabwe</option></select>
+                            <select class="country_to_state country_select " disabled id="billing_country" name="country">
+                                <option value="Sri Lanka" selected>Sri Lanka</option>
+                                <input type="hidden" name="country" value="Sri Lanka">
+                            </select>
                         </div>
                         <div class="col-lg-6 noPaddingLeft">
                             <label class="chek_label">First Name *</label>
-                            <input type="text" name="check_f_name"/>
+                            <input type="text" name="first_name"/ required>
                         </div>
                         <div class="col-lg-6 noPaddingRight">
                             <label class="chek_label">Last Name *</label>
-                            <input type="text" name="check_l_name"/>
+                            <input type="text" name="last_name"/ required>
                         </div>
                         <div class="col-lg-12 noPadding">
                             <label class="chek_label">Office / Home / Others</label>
-                            <input type="text" name="check_tel"/>
+                            <input type="text" name="address_name"/>
                         </div>
                         <div class="col-lg-12 noPadding">
                             <label class="chek_label">Address 1 *</label>
-                            <input type="text" name="check_addr1" placeholder="Street Addreess"/>
+                            <input type="text" name="address1" placeholder="Street Addreess"/ required>
                         </div>
                         <div class="col-lg-12 noPadding">
                             <label class="chek_label">Address 2 (Optional)</label>
-                            <input type="text" name="check_addr2" placeholder="Apartment, suite, unit, etc..."/>
+                            <input type="text" name="address2" placeholder="Apartment, suite, unit, etc..."/>
                         </div>
                         <div class="col-lg-12 noPadding">
                             <label class="chek_label">City / Town *</label>
-                            <input type="text" name="check_city"/>
+                            <input type="text" name="city"/ required>
                         </div>
                         <div class="col-lg-6 noPaddingLeft">
-                            <label class="chek_label">Street / Country *</label>
-                            <input type="text" name="check_f_coun"/>
+                            <label class="chek_label">State *</label>
+                            <input type="text" name="state"/ required>
                         </div>
                         <div class="col-lg-6 noPaddingRight">
                             <label class="chek_label">Pincode / zip *</label>
-                            <input type="text" name="check_l_zip"/>
+                            <input type="text" name="zipcode"/ required>
                         </div>
                         <div class="col-lg-12 noPadding">
                             <label class="chek_label">Email Address *</label>
-                            <input type="text" name="check_email"/>
+                            <input type="text" name="email"/ required>
                         </div>
                         <div class="col-lg-12 noPadding">
                             <label class="chek_label">Phone Number *</label>
-                            <input type="text" name="check_phone"/>
-                        </div>
-                        <div class="col-lg-12 noPadding loginss">
-                            <input type="checkbox" name="logins" value="1"/><span>Create Account ? or Sign in with &nbsp;<a href="#" class="facs"><i class="fa fa-facebook-square"></i></a> <a href="#" class="goos"><i class="fa fa-google-plus-square"></i></a></span>
+                            <input type="text" name="phone_no"/ required>
                         </div>
                         <div class="clearfix"></div>
-                        <h4 class="comonHeading">Ship to Alternative Address ?<input type="checkbox" name="check_altr"/></h4>
                         <div class="col-lg-12 noPadding">
-                            <textarea name="check_exnote" placeholder="OTHER NOTES..."></textarea>
+                            <textarea name="notes" placeholder="OTHER NOTES..."></textarea>
                         </div>
                     </div>
                     <div class="col-sm-6">
@@ -151,33 +254,38 @@
                                             <th class="product-total">Total</th>
                                         </tr>
                                     </thead>
-                                    <tbody>
-                                        <tr class="cart_item">
-                                            <td class="product-name">
-                                                Wrist Watch - <strong class="product-quantity">1</strong>													</td>
-                                            <td class="product-total">
-                                                <span class="amount">$80.00</span>
-                                            </td>
-                                        </tr>
-                                        <tr class="cart_item">
-                                            <td class="product-name">
-                                                Men’s Shoe - <strong class="product-quantity">1</strong>													</td>
-                                            <td class="product-total">
-                                                <span class="amount">$85.00</span>
-                                            </td>
-                                        </tr>
-                                        <tr class="cart_item">
-                                            <td class="product-name">
-                                                Hand Bag - <strong class="product-quantity">1</strong>													</td>
-                                            <td class="product-total">
-                                                <span class="amount">$40.00</span>
-                                            </td>
-                                        </tr>
-                                    </tbody>
+
+                                        <?php
+                                            $subTotal = 0;
+                                            
+                                            if (isset($_SESSION['cart'])) {
+                                                $cartItems = $_SESSION['cart'];
+                                                
+    
+                                               
+                                                    $rs = getData();
+                                                        while ($row = mysqli_fetch_assoc($rs)) {
+                                                            foreach ($cartItems as $cartItem) {
+                                                                if ($row['ptd_id'] == $cartItem['ptd_id']) {
+                                                                    $cartPrice = $row['sale'] == "on" ? $row['sale_price'] : $row['price'];
+                                                                    $totalPrice = $cartPrice * $cartItem['crt_qty'];
+                                                                    $subTotal += (int)$totalPrice;
+
+                                                                    
+                                                                    
+                                                                    checkOutPtdData($row['title'], $cartItem['crt_size'], $cartItem['crt_qty'], $totalPrice);
+                                                                    
+                                                                }
+                                                            }
+                                                        }
+                                            }    
+
+                                        ?>
+                                    
                                     <tfoot>
                                         <tr class="cart-subtotal">
                                             <th>Subtotal</th>
-                                            <td><span class="amount">$205.00</span></td>
+                                            <td><span class="amount">Rs.<?php echo $subTotal ?></span></td>
                                         </tr>
                                         <tr class="cart-subtotal">
                                             <th>Shipping</th>
@@ -185,7 +293,8 @@
                                         </tr>
                                         <tr class="order-total">
                                             <th>Total Order</th>
-                                            <td><span class="amount">$205.00</span> </td>
+                                            <td><span class="amount">Rs.<?php echo $subTotal ?></span> </td>
+                                            <input type="hidden" name="total_amount" value="<?php echo $subTotal ?>">
                                         </tr>
                                     </tfoot>
                                 </table>
@@ -196,18 +305,8 @@
                                         <li class="wc_payment_method payment_method_bacs">
                                             <input type="radio" id="payment_method_bacs" class="input-radio" name="payment_method" value="bacs" checked="checked">
                                             <label for="payment_method_bacs">Direct Bank Transfer</label>
+                                            <input type="hidden" name="payment_method" value="Bank Transfer">
                                             <div  class="payment_box payment_method_bacs visibales">
-                                                <p>
-                                                    Make your payment directly into our bank account. Please use your 
-                                                    Order ID as the payment reference. Your order wont be shipped 
-                                                    until the funds have cleared in our account.
-                                                </p>
-                                            </div>
-                                        </li>
-                                        <li class="wc_payment_method payment_method_paypal">
-                                            <input type="radio" id="payment_method_paypal" class="input-radio" name="payment_method" value="paypal">
-                                            <label for="payment_method_paypal"> PayPal <img src="images/payment.jpg" alt="PayPal"></label>
-                                            <div class="payment_box payment_method_paypal" style="display: none;">
                                                 <p>
                                                     Make your payment directly into our bank account. Please use your 
                                                     Order ID as the payment reference. Your order wont be shipped 
@@ -219,10 +318,11 @@
                                 </div>
                             </div>
                             <div class="text-center">
-                                <a class="vol_btn vol_btn_bg" href="#">PLACE YOUR ORDER<i class="flaticon-arrows-3"></i></a>
+                                <button type="submit" class="vol_btn vol_btn_bg" name="order_btn">PLACE YOUR ORDER<i class="flaticon-arrows-3"></i></button>
                             </div>
                         </div>
                     </div>
+                    </form>
                 </div>
             </div>
         </section>

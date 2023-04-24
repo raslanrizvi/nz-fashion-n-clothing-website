@@ -9,6 +9,15 @@ function getData(){
     }
 }
 
+function getDataPerCtgy($ctgy){
+  global $mysqli;
+  $sql = "select * from product where ctgy= '$ctgy'";
+  $rs  = $mysqli->query($sql);
+    if (mysqli_num_rows($rs) > 0) {
+      return $rs;
+    }
+}
+
 
 // Function To Display All Products starts here 
 function allProductsComponent($qty, $new_arrivals, $sale, $picture1, $title, $ctgy, $price, $sale_price, $ptd_id){
@@ -34,7 +43,7 @@ function allProductsComponent($qty, $new_arrivals, $sale, $picture1, $title, $ct
     $element= "
     
       <div class=\"col-lg-4 col-sm-6 wow fadeInUp\" data-wow-duration=\"700ms\" data-wow-delay=\"300ms\">
-        <form action=\"index.php\" method=\"post\">
+        <form action=\"single_shop.php\" method=\"post\">
           <div class=\"singleProduct01 style_two text-center\">
           ";
 
@@ -53,13 +62,15 @@ function allProductsComponent($qty, $new_arrivals, $sale, $picture1, $title, $ct
             <div class=\"productThumb01\">
                 <img src=\"images/products/large/$picture1\" alt=\"\"/>
                 <div class=\"productHover01\">
-                    <a type=\"submit\" class=\"vol_btn vol_btn_bg\" name=\"add\">Add to cart<i class=\"flaticon-arrows-3\"></i></a>
-                    input type=\"hidden\" name=\"ptd_id\" value=\"$ptd_id\">
+                <button type=\"submit\" class=\"vol_btn vol_btn_bg\">Buy Now<i class=\"flaticon-arrows-3\"></i></button>
+                    <input type=\"hidden\" name=\"ptd_id\" value=\"$ptd_id\">
                 </div>
             </div>
             <div class=\"productDesc01\">
-                <h5><a href=\"shop_single.html\" class=\"poppins\">$title</a></h5>
-                <p class=\"cats\"><a href=\"$ctgy_url\">$ctgy</a></p>
+              <h5><a type=\"submit\" style=\"cursor: pointer;\" class=\"poppins\">$title</a></h5>
+              <input type=\"hidden\" name=\"title\" value=\"$title\">
+              <p class=\"cats\"><a href=\"$ctgy_url\">$ctgy</a></p>
+              <input type=\"hidden\" name=\"ctgy\" value=\"$ctgy\">
                 ";
                 if ($sale == "on") {
                   $element .= "<p class=\"prices\"><del>RS. $price</del> Rs. $sale_price</p>";
@@ -82,11 +93,11 @@ function allProductsComponent($qty, $new_arrivals, $sale, $picture1, $title, $ct
       <div class=\"col-lg-4 col-sm-6 wow fadeInUp\" data-wow-duration=\"700ms\" data-wow-delay=\"500ms\">
         <div class=\"singleProduct01 style_two outofstock text-center\">
           <div class=\"productThumb01\">
-              <img src=\"images/products/$picture1\" alt=\"\"/>
+              <img src=\"images/products/large/$picture1\" alt=\"\"/>
               <div class=\"outOfStockLabel poppins\">OUT OF STOCK</div>
           </div>
           <div class=\"productDesc01\">
-              <h5><a href=\"shop_single.html\" class=\"poppins\">$title</a></h5>
+              <h5><a class=\"poppins disabled\">$title</a></h5>
               <p class=\"cats\"><a href=\"$ctgy_url\">$ctgy</a></p>
               <p class=\"prices\">Rs. $price</p>
           </div>
@@ -101,6 +112,8 @@ function allProductsComponent($qty, $new_arrivals, $sale, $picture1, $title, $ct
 
 // Function To Display only New Arrival Products starts here   
 function newArrivalsProductsComponent($qty, $new_arrivals, $sale, $picture1, $title, $ctgy, $price, $sale_price, $ptd_id){
+
+  
 
   if ($new_arrivals == "on") {
     
@@ -125,7 +138,7 @@ function newArrivalsProductsComponent($qty, $new_arrivals, $sale, $picture1, $ti
       $element= "
       
         <div class=\"col-lg-4 col-sm-6 wow fadeInUp\" data-wow-duration=\"700ms\" data-wow-delay=\"300ms\">
-          <form action=\"index.php\" method=\"post\">
+          <form action=\"shop_single.php\" method=\"post\">
             <div class=\"singleProduct01 style_two text-center\">
             ";
 
@@ -144,13 +157,15 @@ function newArrivalsProductsComponent($qty, $new_arrivals, $sale, $picture1, $ti
               <div class=\"productThumb01\">
                   <img src=\"images/products/large/$picture1\" alt=\"\"/>
                   <div class=\"productHover01\">
-                  <a type=\"submit\" class=\"vol_btn vol_btn_bg\" name=\"add\">Add to cart<i class=\"flaticon-arrows-3\"></i></a>
-                  input type=\"hidden\" name=\"ptd_id\" value=\"$ptd_id\">
+                  <button type=\"submit\" class=\"vol_btn vol_btn_bg\">Buy Now<i class=\"flaticon-arrows-3\"></i></button>
+                  <input type=\"hidden\" name=\"ptd_id\" value=\"$ptd_id\">
                   </div>
               </div>
               <div class=\"productDesc01\">
-                  <h5><a href=\"shop_single.html\" class=\"poppins\">$title</a></h5>
+                  <h5><a type=\"submit\" class=\"poppins\">$title</a></h5>
+                  <input type=\"hidden\" name=\"title\" value=\"$title\">
                   <p class=\"cats\"><a href=\"$ctgy_url\">$ctgy</a></p>
+                  <input type=\"hidden\" name=\"ctgy\" value=\"$ctgy\">
                   ";
                   if ($sale == "on") {
                     $element .= "<p class=\"prices\"><del>RS. $price</del> Rs. $sale_price</p>";
@@ -173,11 +188,11 @@ function newArrivalsProductsComponent($qty, $new_arrivals, $sale, $picture1, $ti
         <div class=\"col-lg-4 col-sm-6 wow fadeInUp\" data-wow-duration=\"700ms\" data-wow-delay=\"500ms\">
           <div class=\"singleProduct01 style_two outofstock text-center\">
             <div class=\"productThumb01\">
-                <img src=\"images/products/$picture1\" alt=\"\"/>
+                <img src=\"images/products/large/$picture1\" alt=\"\"/>
                 <div class=\"outOfStockLabel poppins\">OUT OF STOCK</div>
             </div>
             <div class=\"productDesc01\">
-                <h5><a href=\"shop_single.html\" class=\"poppins\">$title</a></h5>
+                <h5><a class=\"poppins disabled\">$title</a></h5>
                 <p class=\"cats\"><a href=\"$ctgy_url\">$ctgy</a></p>
                 <p class=\"prices\">Rs. $price</p>
             </div>
@@ -186,19 +201,20 @@ function newArrivalsProductsComponent($qty, $new_arrivals, $sale, $picture1, $ti
       ";
     }
     
-
+    echo $element;
   }
-  else {
-    $element = "
-      <div class=\"deals poppins\">
-        <h2>Opps! Nothing New Yet</h2>
-        <h4>Sorry,</h4>
-        <p>Currently we don't have any New Arrivals to Display</p>
-      </div>
-    ";
-  }
+  
+  // else {
+  //   $element = "
+  //     <div class=\"deals poppins\">
+  //       <h2>Opps! Nothing New Yet</h2>
+  //       <h4>Sorry,</h4>
+  //       <p>Currently we don't have any New Arrivals to Display</p>
+  //     </div>
+  //   ";
+  // }
 
-  echo $element;
+  
   
 }
 // Function To Display only New Arrival Products Ends here
@@ -229,7 +245,7 @@ function saleProductsComponent($qty, $new_arrivals, $sale, $picture1, $title, $c
       $element= "
       
         <div class=\"col-lg-4 col-sm-6 wow fadeInUp\" data-wow-duration=\"700ms\" data-wow-delay=\"300ms\">
-          <form action=\"index.php\" method=\"post\">
+          <form action=\"shop_single.php\" method=\"post\">
             <div class=\"singleProduct01 style_two text-center\">
             ";
 
@@ -248,13 +264,15 @@ function saleProductsComponent($qty, $new_arrivals, $sale, $picture1, $title, $c
               <div class=\"productThumb01\">
                   <img src=\"images/products/large/$picture1\" alt=\"\"/>
                   <div class=\"productHover01\">
-                    <a type=\"submit\" class=\"vol_btn vol_btn_bg\" name=\"add\">Add to cart<i class=\"flaticon-arrows-3\"></i></a>
-                    input type=\"hidden\" name=\"ptd_id\" value=\"$ptd_id\">
+                  <button type=\"submit\" class=\"vol_btn vol_btn_bg\" >Buy Now<i class=\"flaticon-arrows-3\"></i></button>
+                  <input type=\"hidden\" name=\"ptd_id\" value=\"$ptd_id\">
                   </div>
               </div>
               <div class=\"productDesc01\">
-                  <h5><a href=\"shop_single.html\" class=\"poppins\">$title</a></h5>
+                  <h5><a type=\"submit\" class=\"poppins\">$title</a></h5>
+                  <input type=\"hidden\" name=\"title\" value=\"$title\">
                   <p class=\"cats\"><a href=\"$ctgy_url\">$ctgy</a></p>
+                  <input type=\"hidden\" name=\"ctgy\" value=\"$ctgy\">
                   ";
                   if ($sale == "on") {
                     $element .= "<p class=\"prices\"><del>RS. $price</del> Rs. $sale_price</p>";
@@ -277,11 +295,11 @@ function saleProductsComponent($qty, $new_arrivals, $sale, $picture1, $title, $c
         <div class=\"col-lg-4 col-sm-6 wow fadeInUp\" data-wow-duration=\"700ms\" data-wow-delay=\"500ms\">
           <div class=\"singleProduct01 style_two outofstock text-center\">
             <div class=\"productThumb01\">
-                <img src=\"images/products/$picture1\" alt=\"\"/>
+                <img src=\"images/products/large/$picture1\" alt=\"\"/>
                 <div class=\"outOfStockLabel poppins\">OUT OF STOCK</div>
             </div>
             <div class=\"productDesc01\">
-                <h5><a href=\"shop_single.html\" class=\"poppins\">$title</a></h5>
+                <h5><a class=\"poppins disabled\">$title</a></h5>
                 <p class=\"cats\"><a href=\"$ctgy_url\">$ctgy</a></p>
                 <p class=\"prices\">Rs. $price</p>
             </div>
@@ -307,458 +325,101 @@ function saleProductsComponent($qty, $new_arrivals, $sale, $picture1, $title, $c
 }
 // Function To Display only Sale Products Ends here
 
-// Function To Display only KimonoJ Products starts here   
-function kimonoJProductsComponent($qty, $new_arrivals, $sale, $picture1, $title, $ctgy, $price, $sale_price, $ptd_id){
 
-  if ($ctgy == "KIMONO JACKET") {
+
+
+
+
+
+
+
+// Function to display product details in the cart page starts here
+
+function cartElement($picture1, $title, $cartPrice, $totalPrice, $crtQty, $crt_size, $ptd_id, $subTotal){
+
     
-    $ctgy_url = "kimonoj.php";
-
-    if ($qty > 0) {
-    
-      $element= "
-      
-        <div class=\"col-lg-4 col-sm-6 wow fadeInUp\" data-wow-duration=\"700ms\" data-wow-delay=\"300ms\">
-          <form action=\"index.php\" method=\"post\">
-            <div class=\"singleProduct01 style_two text-center\">
-            ";
-
-            if ($new_arrivals == "on") {
-              $element .= "<div class=\"labelsPro poppins newPro\">New</div>";
-            }
+  $element = "
+  <form action=\"checkout.php\" method=\"post\">
+  <tr class=\"cart_item wow fadeInUp animated\" data-wow-delay=\"300ms\" data-wow-duration=\"700ms\">
+    <td class=\"product-thumbnail\">
+        <a href=\"\"><img alt=\"\" src=\"images/products/thumbnail/$picture1\"></a>	
+    </td>
+    <td class=\"product-name\">
+        <a class=\"itemtitle\" href=\"shop_single.php?ptd_id=$ptd_id\">$title</a>
+        <input type=\"hidden\" name=\"ptd_id\" value=\"$ptd_id\">
+    </td>
+    <td class=\"product-price\" data-title=\"Price\">
+        <span class=\"amount\">Rs.$cartPrice</span>					
+    </td>
+    <td class=\"product-size\">
+        <span class=\"itemtitle col-1\" href=\"#\">$crt_size</span>
+        <input type=\"hidden\" name=\"crt_size\" value=\"$crt_size\">
+    </td>
+    <td class=\"product-qty\" data-title=\"Quantity\">
             
-            $element .= "
-              ";
-              if ($sale == "on") {
-                $element .= "<div class=\"labelsPro poppins salePro\">Sale</div>";
-              }
-              
-              $element .= "
-              
-              <div class=\"productThumb01\">
-                  <img src=\"images/products/large/$picture1\" alt=\"\"/>
-                  <div class=\"productHover01\">
-                      <a href=\"shop_single.html\" class=\"vol_btn vol_btn_bg\">Add to cart<i class=\"flaticon-arrows-3\"></i></a>
-                      input type=\"hidden\" name=\"ptd_id\" value=\"$ptd_id\">
-                  </div>
-              </div>
-              <div class=\"productDesc01\">
-                  <h5><a href=\"shop_single.html\" class=\"poppins\">$title</a></h5>
-                  <p class=\"cats\"><a href=\"$ctgy_url\">$ctgy</a></p>
-                  ";
-                  if ($sale == "on") {
-                    $element .= "<p class=\"prices\"><del>RS. $price</del> Rs. $sale_price</p>";
-                  }
-                  else{
-                    $element .= "<p class=\"prices\">Rs. $price</p>";
-                  }
-                  
-                  $element .= "
-                  
-              </div>
-            </div>
-          </form>
-        </div>
-        ";
-    } 
-    else {
-
-      $element ="
-        <div class=\"col-lg-4 col-sm-6 wow fadeInUp\" data-wow-duration=\"700ms\" data-wow-delay=\"500ms\">
-          <div class=\"singleProduct01 style_two outofstock text-center\">
-            <div class=\"productThumb01\">
-                <img src=\"images/products/$picture1\" alt=\"\"/>
-                <div class=\"outOfStockLabel poppins\">OUT OF STOCK</div>
-            </div>
-            <div class=\"productDesc01\">
-                <h5><a href=\"shop_single.html\" class=\"poppins\">$title</a></h5>
-                <p class=\"cats\"><a href=\"$ctgy_url\">$ctgy</a></p>
-                <p class=\"prices\">Rs. $price</p>
-            </div>
-          </div>
-        </div>
-      ";
-    }
-    
-
-  }
-  else {
-    $element = "
-      <div class=\"deals poppins\">
-        <h2>Opps! Kimono Jackets Are Out of Stock</h2>
-        <h4>Sorry,</h4>
-        <p>Currently we don't have any Kimono Jackets to Display</p>
-      </div>
-    ";
-  }
-
-  echo $element;
-  
-}
-// Function To Display only KimonoJ Products Ends here
-
-
-// Function To Display only LongwearJ Products starts here   
-function longwearJProductsComponent($qty, $new_arrivals, $sale, $picture1, $title, $ctgy, $price, $sale_price, $ptd_id){
-
-  if ($ctgy == "LONGWEAR JACKET") {
-    
-    $ctgy_url = "longwearj.php";
-
-    if ($qty > 0) {
-    
-      $element= "
-      
-        <div class=\"col-lg-4 col-sm-6 wow fadeInUp\" data-wow-duration=\"700ms\" data-wow-delay=\"300ms\">
-          <form action=\"index.php\" method=\"post\">
-            <div class=\"singleProduct01 style_two text-center\">
-            ";
-
-            if ($new_arrivals == "on") {
-              $element .= "<div class=\"labelsPro poppins newPro\">New</div>";
-            }
+            <span class=\"input-text amount text col-1\">$crtQty</span>
+            <input type=\"hidden\" name=\"crtQty\" value=\"$crtQty\">
             
-            $element .= "
-              ";
-              if ($sale == "on") {
-                $element .= "<div class=\"labelsPro poppins salePro\">Sale</div>";
-              }
-              
-              $element .= "
-              
-              <div class=\"productThumb01\">
-                  <img src=\"images/products/large/$picture1\" alt=\"\"/>
-                  <div class=\"productHover01\">
-                    <a type=\"submit\" class=\"vol_btn vol_btn_bg\" name=\"add\">Add to cart<i class=\"flaticon-arrows-3\"></i></a>
-                    input type=\"hidden\" name=\"ptd_id\" value=\"$ptd_id\">
-                  </div>
-              </div>
-              <div class=\"productDesc01\">
-                  <h5><a href=\"shop_single.html\" class=\"poppins\">$title</a></h5>
-                  <p class=\"cats\"><a href=\"$ctgy_url\">$ctgy</a></p>
-                  ";
-                  if ($sale == "on") {
-                    $element .= "<p class=\"prices\"><del>RS. $price</del> Rs. $sale_price</p>";
-                  }
-                  else{
-                    $element .= "<p class=\"prices\">Rs. $price</p>";
-                  }
-                  
-                  $element .= "
-                  
-              </div>
-            </div>
-          </form>
-        </div>
-        ";
-    } 
-    else {
-
-      $element ="
-        <div class=\"col-lg-4 col-sm-6 wow fadeInUp\" data-wow-duration=\"700ms\" data-wow-delay=\"500ms\">
-          <div class=\"singleProduct01 style_two outofstock text-center\">
-            <div class=\"productThumb01\">
-                <img src=\"images/products/$picture1\" alt=\"\"/>
-                <div class=\"outOfStockLabel poppins\">OUT OF STOCK</div>
-            </div>
-            <div class=\"productDesc01\">
-                <h5><a href=\"shop_single.html\" class=\"poppins\">$title</a></h5>
-                <p class=\"cats\"><a href=\"$ctgy_url\">$ctgy</a></p>
-                <p class=\"prices\">Rs. $price</p>
-            </div>
-          </div>
-        </div>
-      ";
-    }
-    
-
-  }
-  else {
-    $element = "
-      <div class=\"deals poppins\">
-        <h2>Opps! Longwear Jackets are Out Of Stock</h2>
-        <h4>Sorry,</h4>
-        <p>Currently we don't have any Longware Jackets to Display</p>
-      </div>
-    ";
-  }
-
+    </td>
+    <td class=\"product-subtotal\" data-title=\"Total\">
+        <span class=\"amount total_price\" id=\"total_price\">Rs.$totalPrice</span>
+        <input type=\"hidden\" name=\"totalPrice\" value=\"$totalPrice\">		
+        <input type=\"hidden\" name=\"subTotal\" value=\"$subTotal\">			
+    </td>
+    <td class=\"product-remove\">
+        <a type=\"submit\" name=\"remove\" href=\"\" class=\"remove\" title=\"Remove this item\" data-product_id=\"70\">
+            <i class=\"fa fa-remove\"></i>
+        </a>					
+    </td>
+  </tr>                                
+</form>
+  ";
   echo $element;
-  
 }
-// Function To Display only LongwearJ Products Ends here
 
-// Function To Display only streetwearP Products starts here   
-function streetwearPProductsComponent($qty, $new_arrivals, $sale, $picture1, $title, $ctgy, $price, $sale_price, $ptd_id){
+// Function to display product details in the cart page ends here
+                 
 
-  if ($ctgy == "KIMONO JACKET") {
-    
-    $ctgy_url = "streetwearp.php";
 
-    if ($qty > 0) {
-    
-      $element= "
-      
-        <div class=\"col-lg-4 col-sm-6 wow fadeInUp\" data-wow-duration=\"700ms\" data-wow-delay=\"300ms\">
-          <form action=\"index.php\" method=\"post\">
-            <div class=\"singleProduct01 style_two text-center\">
-            ";
+// Function to display product details in the checkout page starts here
 
-            if ($new_arrivals == "on") {
-              $element .= "<div class=\"labelsPro poppins newPro\">New</div>";
-            }
-            
-            $element .= "
-              ";
-              if ($sale == "on") {
-                $element .= "<div class=\"labelsPro poppins salePro\">Sale</div>";
-              }
-              
-              $element .= "
-              
-              <div class=\"productThumb01\">
-                  <img src=\"images/products/large/$picture1\" alt=\"\"/>
-                  <div class=\"productHover01\">
-                    <a type=\"submit\" class=\"vol_btn vol_btn_bg\" name=\"add\">Add to cart<i class=\"flaticon-arrows-3\"></i></a>
-                    input type=\"hidden\" name=\"ptd_id\" value=\"$ptd_id\">
-                  </div>
-              </div>
-              <div class=\"productDesc01\">
-                  <h5><a href=\"shop_single.html\" class=\"poppins\">$title</a></h5>
-                  <p class=\"cats\"><a href=\"$ctgy_url\">$ctgy</a></p>
-                  ";
-                  if ($sale == "on") {
-                    $element .= "<p class=\"prices\"><del>RS. $price</del> Rs. $sale_price</p>";
-                  }
-                  else{
-                    $element .= "<p class=\"prices\">Rs. $price</p>";
-                  }
-                  
-                  $element .= "
-                  
-              </div>
-            </div>
-          </form>
-        </div>
-        ";
-    } 
-    else {
+function checkOutPtdData($title, $crt_size, $crtQty, $totalPrice){
 
-      $element ="
-        <div class=\"col-lg-4 col-sm-6 wow fadeInUp\" data-wow-duration=\"700ms\" data-wow-delay=\"500ms\">
-          <div class=\"singleProduct01 style_two outofstock text-center\">
-            <div class=\"productThumb01\">
-                <img src=\"images/products/$picture1\" alt=\"\"/>
-                <div class=\"outOfStockLabel poppins\">OUT OF STOCK</div>
-            </div>
-            <div class=\"productDesc01\">
-                <h5><a href=\"shop_single.html\" class=\"poppins\">$title</a></h5>
-                <p class=\"cats\"><a href=\"$ctgy_url\">$ctgy</a></p>
-                <p class=\"prices\">Rs. $price</p>
-            </div>
-          </div>
-        </div>
-      ";
-    }
-    
+  $element = "
+  
+    <tbody>
+      <tr class=\"cart_item\">
+          <td class=\"product-name\" name=\"title\">
+              $title - 
+              <strong class=\"product-quantity\" name=\"crt_size\">$crt_size</strong> - 
+              <strong class=\"product-quantity\" name=\"crtQty\">$crtQty</strong>													
+          </td>
+          <td class=\"product-total\">
+              <span class=\"amount\">Rs.$totalPrice</span>
+          </td>
+      </tr>
+    </tbody>
 
-  }
-  else {
-    $element = "
-      <div class=\"deals poppins\">
-        <h2>Opps! Streetwear Pants are Out Of Stock</h2>
-        <h4>Sorry,</h4>
-        <p>Currently we don't have any Streetwear Pants to Display</p>
-      </div>
-    ";
-  }
-
+  ";
   echo $element;
-  
 }
-// Function To Display only streetwearP Products Ends here
 
-// Function To Display only SNEAKER Products starts here   
-function sneakerProductsComponent($qty, $new_arrivals, $sale, $picture1, $title, $ctgy, $price, $sale_price, $ptd_id){
-
-  if ($ctgy == "SNEAKER") {
-    
-    $ctgy_url = "sneaker.php";
-
-    if ($qty > 0) {
-    
-      $element= "
-      
-        <div class=\"col-lg-4 col-sm-6 wow fadeInUp\" data-wow-duration=\"700ms\" data-wow-delay=\"300ms\">
-          <form action=\"index.php\" method=\"post\">
-            <div class=\"singleProduct01 style_two text-center\">
-            ";
-
-            if ($new_arrivals == "on") {
-              $element .= "<div class=\"labelsPro poppins newPro\">New</div>";
-            }
-            
-            $element .= "
-              ";
-              if ($sale == "on") {
-                $element .= "<div class=\"labelsPro poppins salePro\">Sale</div>";
-              }
-              
-              $element .= "
-              
-              <div class=\"productThumb01\">
-                  <img src=\"images/products/large/$picture1\" alt=\"\"/>
-                  <div class=\"productHover01\">
-                    <a type=\"submit\" class=\"vol_btn vol_btn_bg\" name=\"add\">Add to cart<i class=\"flaticon-arrows-3\"></i></a>
-                    input type=\"hidden\" name=\"ptd_id\" value=\"$ptd_id\">
-                  </div>
-              </div>
-              <div class=\"productDesc01\">
-                  <h5><a href=\"shop_single.html\" class=\"poppins\">$title</a></h5>
-                  <p class=\"cats\"><a href=\"$ctgy_url\">$ctgy</a></p>
-                  ";
-                  if ($sale == "on") {
-                    $element .= "<p class=\"prices\"><del>RS. $price</del> Rs. $sale_price</p>";
-                  }
-                  else{
-                    $element .= "<p class=\"prices\">Rs. $price</p>";
-                  }
-                  
-                  $element .= "
-                  
-              </div>
-            </div>
-          </form>
-        </div>
-        ";
-    } 
-    else {
-
-      $element ="
-        <div class=\"col-lg-4 col-sm-6 wow fadeInUp\" data-wow-duration=\"700ms\" data-wow-delay=\"500ms\">
-          <div class=\"singleProduct01 style_two outofstock text-center\">
-            <div class=\"productThumb01\">
-                <img src=\"images/products/$picture1\" alt=\"\"/>
-                <div class=\"outOfStockLabel poppins\">OUT OF STOCK</div>
-            </div>
-            <div class=\"productDesc01\">
-                <h5><a href=\"shop_single.html\" class=\"poppins\">$title</a></h5>
-                <p class=\"cats\"><a href=\"$ctgy_url\">$ctgy</a></p>
-                <p class=\"prices\">Rs. $price</p>
-            </div>
-          </div>
-        </div>
-      ";
-    }
-    
-
-  }
-  else {
-    $element = "
-      <div class=\"deals poppins\">
-        <h2>Opps! Sneakers Are Out Of Stock</h2>
-        <h4>Sorry,</h4>
-        <p>Currently we don't have any Sneakers to Display</p>
-      </div>
-    ";
-  }
-
-  echo $element;
-  
-}
-// Function To Display only SNEAKER Products Ends here
-
-
-// Function To Display only ACCESSORIES Products starts here   
-function accessoriesProductsComponent($qty, $new_arrivals, $sale, $picture1, $title, $ctgy, $price, $sale_price, $ptd_id){
-
-  if ($ctgy == "ACCESSORIES") {
-    
-    $ctgy_url = "accessories.php";
-
-    if ($qty > 0) {
-    
-      $element= "
-      
-        <div class=\"col-lg-4 col-sm-6 wow fadeInUp\" data-wow-duration=\"700ms\" data-wow-delay=\"300ms\">
-          <form action=\"index.php\" method=\"post\">
-            <div class=\"singleProduct01 style_two text-center\">
-            ";
-
-            if ($new_arrivals == "on") {
-              $element .= "<div class=\"labelsPro poppins newPro\">New</div>";
-            }
-            
-            $element .= "
-              ";
-              if ($sale == "on") {
-                $element .= "<div class=\"labelsPro poppins salePro\">Sale</div>";
-              }
-              
-              $element .= "
-              
-              <div class=\"productThumb01\">
-                  <img src=\"images/products/large/$picture1\" alt=\"\"/>
-                  <div class=\"productHover01\">
-                    <a type=\"submit\" class=\"vol_btn vol_btn_bg\" name=\"add\">Add to cart<i class=\"flaticon-arrows-3\"></i></a>
-                    input type=\"hidden\" name=\"ptd_id\" value=\"$ptd_id\">
-                  </div>
-              </div>
-              <div class=\"productDesc01\">
-                  <h5><a href=\"shop_single.html\" class=\"poppins\">$title</a></h5>
-                  <p class=\"cats\"><a href=\"$ctgy_url\">$ctgy</a></p>
-                  ";
-                  if ($sale == "on") {
-                    $element .= "<p class=\"prices\"><del>RS. $price</del> Rs. $sale_price</p>";
-                  }
-                  else{
-                    $element .= "<p class=\"prices\">Rs. $price</p>";
-                  }
-                  
-                  $element .= "
-                  
-              </div>
-            </div>
-          </form>
-        </div>
-        ";
-    } 
-    else {
-
-      $element ="
-        <div class=\"col-lg-4 col-sm-6 wow fadeInUp\" data-wow-duration=\"700ms\" data-wow-delay=\"500ms\">
-          <div class=\"singleProduct01 style_two outofstock text-center\">
-            <div class=\"productThumb01\">
-                <img src=\"images/products/$picture1\" alt=\"\"/>
-                <div class=\"outOfStockLabel poppins\">OUT OF STOCK</div>
-            </div>
-            <div class=\"productDesc01\">
-                <h5><a href=\"shop_single.html\" class=\"poppins\">$title</a></h5>
-                <p class=\"cats\"><a href=\"$ctgy_url\">$ctgy</a></p>
-                <p class=\"prices\">Rs. $price</p>
-            </div>
-          </div>
-        </div>
-      ";
-    }
-    
-
-  }
-  else {
-    $element = "
-      <div class=\"deals poppins\">
-        <h2>Opps! Accessories are Out Of Stock</h2>
-        <h4>Sorry,</h4>
-        <p>Currently we don't have any Accessories to Display</p>
-      </div>
-    ";
-  }
-
-  echo $element;
-  
-}
-// Function To Display only ACCESSORIES Products Ends here
+// Function to display product details in the checkout page ends here
 
 ?>
+
+
+
+                                    <!-- <div class="singleProductsa">
+                                        <img src="images/shop1/w1.png" alt=""/>
+                                        <h3><a href="shop_single.html">FASHION LADIES BAG</a></h3>
+                                        <p class="pricess">$90.00 &nbsp;<del>$100.00</del></p>
+                                    </div> -->
+                                    
+
+
+
+
+
 
                   

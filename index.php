@@ -1,19 +1,17 @@
 <?php
     require("db_connection.php");
     require("component.php");
-    
+
     session_start();
 
-    if(isset($_POST['add'])){
-        
-    }
+    
 
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>NZ Fashion & Clothing</title>
+        <title>NZ Fashion | Home</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -52,15 +50,52 @@
                     <div class="col-lg-4 col-sm-5">
                         <div class="topMenusHolder">
                             <ul class="topMenus clearfix poppins">
-                                <li><a href="#"><i class="frontIcon icon-Exit"></i>Register</a></li>
-                                <li><a href="#"  data-toggle="collapse" data-target="#accountTogg">My Account <i class="fa fa-angle-down"></i></a>
+                                <li><a href="cstmr_login.php"><i class="frontIcon icon-Exit"></i>
+                                <?php
+                                    if (isset($_SESSION['user_id'])) {
+                                        echo "Sign Out";
+                                    }
+                                    else {
+                                        echo "Sign In";
+                                    }
+                                ?>
+                                </a></li>
+                                <li><a data-toggle="collapse" data-target="#accountTogg">
+                                <?php
+                                    if (isset($_SESSION['cstmr_name'])) {
+                                        echo $_SESSION['cstmr_name'];
+                                    }
+                                    else {
+                                        echo "My Account";
+                                    }
+                                ?>  
+                                <i class="fa fa-angle-down"></i></a>
                                     <ul class="sub-menu collapse" id="accountTogg">
-                                        <li><a href="#">My wishlis</a></li>
-                                        <li><a href="#">My cart</a></li>
-                                        <li><a href="#">sing in</a></li>
+                                        <li><a href="cstmr_dshbrd.php">Account Details</a></li>
+                                        <li><a href="cart.php">My cart</a></li>
+                                        <li><a href="cstmr_login.php">
+                                        <?php
+                                            if (isset($_SESSION['user_id'])) {
+                                                echo "Sign Out";
+                                            }
+                                            else {
+                                                echo "Sign In";
+                                            }
+                                        ?>  
+                                        </a></li>
                                     </ul>
                                 </li>
-                                <li><a href="#"><i class="frontIcon icon-ShoppingCart"></i>5 Items</a></li>
+                                <li><a href="cart.php"><i class="frontIcon icon-ShoppingCart"></i>
+                                    <?php
+                                        if (isset($_SESSION['cart'])) {
+                                            $count = count($_SESSION['cart']);
+                                            echo $count;
+                                        }
+                                        else {
+                                            echo "0";
+                                        }
+                                    ?>
+                                 Items</a></li>
                             </ul>
                         </div>
                     </div>
@@ -276,7 +311,7 @@
                         $rs = getData();
 
                             while ($row = mysqli_fetch_assoc($rs)) {
-                                allProductsComponent($row['qty'], $row['new_arrivals'], $row['sale'], $row['picture1'], $row['title'], $row['ctgy'], $row['price'], $row['sale_price'], $row['ptd_id']);
+                                newArrivalsProductsComponent($row['qty'], $row['new_arrivals'], $row['sale'], $row['picture1'], $row['title'], $row['ctgy'], $row['price'], $row['sale_price'], $row['ptd_id']);
                             }
                     
 
@@ -284,7 +319,7 @@
                 </div>
                 <div class="row marginTop10px">
                     <div class="col-lg-12 text-center">
-                        <a href="#" class="vol_btn">View all products<i class="flaticon-arrows-3"></i></a>
+                        <a href="shop.php" class="vol_btn">View all products<i class="flaticon-arrows-3"></i></a>
                     </div>
                 </div>
             </div>
