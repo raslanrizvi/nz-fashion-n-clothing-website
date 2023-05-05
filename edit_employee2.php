@@ -110,7 +110,7 @@
                                 <?php if ($row['user_grp'] == "Admin") {
                                     echo "Checked";
                                 }?>
-                                >
+                                required>
                                 <span>Admin</span>
                             </label>
                             <label class=" radio-btn-rgst-staff" ">

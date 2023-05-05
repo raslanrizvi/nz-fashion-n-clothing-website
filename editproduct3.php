@@ -72,7 +72,11 @@
                           $destination = $old_picture_name;
                    }
 
-                   move_uploaded_file($filename, "images/products/large/".$destination);
+                   $y = move_uploaded_file($filename, "images/products/large/".$destination);
+                    if ($y > 0 && $old_picture_name != "default.jpg") {
+                        unlink("images/cstmr_dp/" . $old_picture_name);
+                    }
+
                    copy("images/products/large/".$destination, "images/products/thumbnail/".$destination);
 
                    resizeThumbPicture("images/products/thumbnail/", $destination);

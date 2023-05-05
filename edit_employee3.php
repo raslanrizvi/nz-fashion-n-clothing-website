@@ -78,7 +78,7 @@
                             
                                 $y = move_uploaded_file($filename, "images/employee_user_dp/".$destination);
 
-                                    if ($y > 0) {
+                                    if ($y > 0 && $old_picture_name != "emp_default.jpg") {
                                         unlink("images/employee_user_dp/" . $old_picture_name);
                                     }
     

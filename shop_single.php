@@ -95,18 +95,55 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['ptd_id']) && isset($_P
         <section class="header_top">
             <div class="container">
                 <div class="row">
-                    <div class="col-lg-4 col-sm-5">
+                <div class="col-lg-4 col-sm-5">
                         <div class="topMenusHolder">
                             <ul class="topMenus clearfix poppins">
-                                <li><a href="#"><i class="frontIcon icon-Exit"></i>Register</a></li>
-                                <li><a href="#"  data-toggle="collapse" data-target="#accountTogg">My Account <i class="fa fa-angle-down"></i></a>
+                                <li><a href="cstmr_login.php"><i class="frontIcon icon-Exit"></i>
+                                <?php
+                                    if (isset($_SESSION['user_id'])) {
+                                        echo "Sign Out";
+                                    }
+                                    else {
+                                        echo "Sign In";
+                                    }
+                                ?>
+                                </a></li>
+                                <li><a data-toggle="collapse" data-target="#accountTogg">
+                                <?php
+                                    if (isset($_SESSION['cstmr_name'])) {
+                                        echo $_SESSION['cstmr_name'];
+                                    }
+                                    else {
+                                        echo "My Account";
+                                    }
+                                ?>  
+                                <i class="fa fa-angle-down"></i></a>
                                     <ul class="sub-menu collapse" id="accountTogg">
-                                        <li><a href="#">My wishlis</a></li>
-                                        <li><a href="#">My cart</a></li>
-                                        <li><a href="#">sing in</a></li>
+                                        <li><a href="cstmr_dshbrd.php">Account Details</a></li>
+                                        <li><a href="cart.php">My cart</a></li>
+                                        <li><a href="cstmr_login.php">
+                                        <?php
+                                            if (isset($_SESSION['user_id'])) {
+                                                echo "Sign Out";
+                                            }
+                                            else {
+                                                echo "Sign In";
+                                            }
+                                        ?>  
+                                        </a></li>
                                     </ul>
                                 </li>
-                                <li><a href="#"><i class="frontIcon icon-ShoppingCart"></i>5 Items</a></li>
+                                <li><a href="cart.php"><i class="frontIcon icon-ShoppingCart"></i>
+                                    <?php
+                                        if (isset($_SESSION['cart'])) {
+                                            $count = count($_SESSION['cart']);
+                                            echo $count;
+                                        }
+                                        else {
+                                            echo "0";
+                                        }
+                                    ?>
+                                 Items</a></li>
                             </ul>
                         </div>
                     </div>
@@ -163,7 +200,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['ptd_id']) && isset($_P
                         // print_r($_REQUEST);
 
                     // building dynamic SQL Code
-                        $sql = "select * from product where ptd_id=$ptd_id";
+                        $sql = "SELECT * FROM product WHERE ptd_id=$ptd_id";
 
                     // execute the SQL code
                         $rs = $mysqli->query($sql);
@@ -321,7 +358,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['ptd_id']) && isset($_P
 
                     
 
-                    $sql2 = "select * from product where ctgy = '$ctgy' and ptd_id != '$ptd_id' limit 3";
+                    $sql2 = "select * from product where ctgy = '$ctgy' and ptd_id != '$ptd_id' order by rand() limit 3";
 
                     // execute the SQL code
                     $rs2 = $mysqli->query($sql2);

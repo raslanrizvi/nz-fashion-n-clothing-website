@@ -43,7 +43,7 @@ function allProductsComponent($qty, $new_arrivals, $sale, $picture1, $title, $ct
     $element= "
     
       <div class=\"col-lg-4 col-sm-6 wow fadeInUp\" data-wow-duration=\"700ms\" data-wow-delay=\"300ms\">
-        <form action=\"single_shop.php\" method=\"post\">
+        <form action=\"shop_single.php\" method=\"post\">
           <div class=\"singleProduct01 style_two text-center\">
           ";
 
@@ -67,7 +67,7 @@ function allProductsComponent($qty, $new_arrivals, $sale, $picture1, $title, $ct
                 </div>
             </div>
             <div class=\"productDesc01\">
-              <h5><a type=\"submit\" style=\"cursor: pointer;\" class=\"poppins\">$title</a></h5>
+              <h5><a href=\"shop_single.php?ptd_id=$ptd_id\" style=\"cursor: pointer;\" class=\"poppins\">$title</a></h5>
               <input type=\"hidden\" name=\"title\" value=\"$title\">
               <p class=\"cats\"><a href=\"$ctgy_url\">$ctgy</a></p>
               <input type=\"hidden\" name=\"ctgy\" value=\"$ctgy\">
@@ -406,15 +406,31 @@ function checkOutPtdData($title, $crt_size, $crtQty, $totalPrice){
 
 // Function to display product details in the checkout page ends here
 
+// Function to display sale products in shop page starts here
+
+function miniSaleElement($picture1, $title, $salePrice, $price){
+
+  $element = "
+
+      <div class=\"singleProductsa\">
+        <img style=\"width: 30%;\" src=\"images/products/thumbnail/$picture1\" alt=\"\"/>
+        <h3><a href=\"shop_single.php\">$title</a></h3>
+        <p class=\"pricess\">Rs.$salePrice <del>Rs.$price</del></p>
+      </div>
+  
+  ";
+
+  echo $element;
+
+}
+
+// Function to display sale products in shop page ends here
+
 ?>
 
 
 
-                                    <!-- <div class="singleProductsa">
-                                        <img src="images/shop1/w1.png" alt=""/>
-                                        <h3><a href="shop_single.html">FASHION LADIES BAG</a></h3>
-                                        <p class="pricess">$90.00 &nbsp;<del>$100.00</del></p>
-                                    </div> -->
+                                    
                                     
 
 

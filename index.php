@@ -11,7 +11,7 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>NZ Fashion | Home</title>
+        <title>NZ F&C | Home</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -106,8 +106,9 @@
                     </div>
                     <div class="col-lg-4 col-sm-5">
                         <div class="topLanguangeSearch clearfix">
-                            <form method="post">
-                                <input type="text" name="s" id="s" placeholder="Search"/>
+                            <form action="cstmr_srch_prdts.php" method="post">
+                                <option type="hidden" name="sortBy" value="none"></option>
+                                <input type="text" name="cstmr_srch_prdts" id="cstmr_srch_prdts" placeholder="Search"/>
                             </form>
                         </div>
                     </div>
@@ -308,11 +309,22 @@
                 <div class="row">
                     <?php
 
-                        $rs = getData();
+                                $sql = "SELECT * FROM product WHERE new_arrivals = 'on' ORDER BY RAND() LIMIT 6";
 
-                            while ($row = mysqli_fetch_assoc($rs)) {
-                                newArrivalsProductsComponent($row['qty'], $row['new_arrivals'], $row['sale'], $row['picture1'], $row['title'], $row['ctgy'], $row['price'], $row['sale_price'], $row['ptd_id']);
-                            }
+                                // execute the SQL code
+                                $rs = $mysqli->query($sql);
+
+
+
+                                if(mysqli_num_rows($rs) > 0){
+
+                                    while ($row = mysqli_fetch_assoc($rs)) {
+                                        allProductsComponent($row['qty'], $row['new_arrivals'], $row['sale'], $row['picture1'], $row['title'], $row['ctgy'], $row['price'], $row['sale_price'], $row['ptd_id']);
+                                    }
+                                }
+                                else{
+                                    echo "No New Products Found";
+                                }
                     
 
                     ?>
@@ -347,166 +359,6 @@
                 </div>
             </div>
         </section>
-        <!-- <section class="comonSection greys">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="sectionTitle text-center">
-                            <h2>Latest News</h2>
-                            <div class="titleBars"></div>
-                            <p>
-                                The Love Boat soon will be making another run the love boat promises something for everyone one two three four five
-                                six seven eight Sclemeel schlemazel hasenfeffer incorporated.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-sm-6 wow fadeInUp" data-wow-duration="700ms" data-wow-delay="300ms">
-                        <div class="singleBlogs">
-                            <div class="blogThumbs">
-                                <img src="images/home2/b1.jpg" alt=""/>
-                                <div class="dates poppins">
-                                    <span>11</span>
-                                    <span>Jan</span>
-                                </div>
-                            </div>
-                            <div class="blogDetails">
-                                <div class="blogDetailsInner">
-                                    <h4 class="poppins"><a href="single_blog.html">Sunday Monday Happy Days</a></h4>
-                                    <p>
-                                        Here everyone one two three four five six seven eight Sclemeel schlemazel 
-                                        hasenfeffer incorporated  the others comfortable nest started from this 
-                                        tropic port.
-                                    </p>
-                                    <a href="single_blog.html" class="poppins blogreadmore">Read More<i class="flaticon-arrows-3"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-6 wow fadeInUp" data-wow-duration="700ms" data-wow-delay="350ms">
-                        <div class="singleBlogs">
-                            <div class="blogThumbs">
-                                <img src="images/home2/b2.jpg" alt=""/>
-                                <div class="dates poppins">
-                                    <span>15</span>
-                                    <span>feb</span>
-                                </div>
-                            </div>
-                            <div class="blogDetails">
-                                <div class="blogDetailsInner">
-                                    <h4 class="poppins"><a href="single_blog.html">Herbert Hoover again</a></h4>
-                                    <p>
-                                        Here everyone one two three four five six seven eight Sclemeel schlemazel 
-                                        hasenfeffer incorporated  the others comfortable nest started from this 
-                                        tropic port.
-                                    </p>
-                                    <a href="single_blog.html" class="poppins blogreadmore">Read More<i class="flaticon-arrows-3"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <section class="comonSection clientSection">
-            <div class="container">
-                <div class="row">
-                    <div class="clientSlider">
-                        <div class="col-lg-2 clienta">
-                            <div class="insgleClients">
-                                <a href="#"><img src="images/home2/c1.png" alt=""/></a>
-                            </div>
-                        </div>
-                        <div class="col-lg-2 clienta">
-                            <div class="insgleClients">
-                                <a href="#"><img src="images/home2/c2.png" alt=""/></a>
-                            </div>
-                        </div>
-                        <div class="col-lg-2 clienta">
-                            <div class="insgleClients">
-                                <a href="#"><img src="images/home2/c3.png" alt=""/></a>
-                            </div>
-                        </div>
-                        <div class="col-lg-2 clienta">
-                            <div class="insgleClients">
-                                <a href="#"><img src="images/home2/c4.png" alt=""/></a>
-                            </div>
-                        </div>
-                        <div class="col-lg-2 clienta">
-                            <div class="insgleClients">
-                                <a href="#"><img src="images/home2/c5.png" alt=""/></a>
-                            </div>
-                        </div>
-                        <div class="col-lg-2 clienta">
-                            <div class="insgleClients">
-                                <a href="#"><img src="images/home2/c6.png" alt=""/></a>
-                            </div>
-                        </div>
-                        <div class="col-lg-2 clienta">
-                            <div class="insgleClients">
-                                <a href="#"><img src="images/home2/c1.png" alt=""/></a>
-                            </div>
-                        </div>
-                        <div class="col-lg-2 clienta">
-                            <div class="insgleClients">
-                                <a href="#"><img src="images/home2/c2.png" alt=""/></a>
-                            </div>
-                        </div>
-                        <div class="col-lg-2 clienta">
-                            <div class="insgleClients">
-                                <a href="#"><img src="images/home2/c3.png" alt=""/></a>
-                            </div>
-                        </div>
-                        <div class="col-lg-2 clienta">
-                            <div class="insgleClients">
-                                <a href="#"><img src="images/home2/c4.png" alt=""/></a>
-                            </div>
-                        </div>
-                        <div class="col-lg-2 clienta">
-                            <div class="insgleClients">
-                                <a href="#"><img src="images/home2/c5.png" alt=""/></a>
-                            </div>
-                        </div>
-                        <div class="col-lg-2 clienta">
-                            <div class="insgleClients">
-                                <a href="#"><img src="images/home2/c6.png" alt=""/></a>
-                            </div>
-                        </div>
-                        <div class="col-lg-2 clienta">
-                            <div class="insgleClients">
-                                <a href="#"><img src="images/home2/c1.png" alt=""/></a>
-                            </div>
-                        </div>
-                        <div class="col-lg-2 clienta">
-                            <div class="insgleClients">
-                                <a href="#"><img src="images/home2/c2.png" alt=""/></a>
-                            </div>
-                        </div>
-                        <div class="col-lg-2 clienta">
-                            <div class="insgleClients">
-                                <a href="#"><img src="images/home2/c3.png" alt=""/></a>
-                            </div>
-                        </div>
-                        <div class="col-lg-2 clienta">
-                            <div class="insgleClients">
-                                <a href="#"><img src="images/home2/c4.png" alt=""/></a>
-                            </div>
-                        </div>
-                        <div class="col-lg-2 clienta">
-                            <div class="insgleClients">
-                                <a href="#"><img src="images/home2/c5.png" alt=""/></a>
-                            </div>
-                        </div>
-                        <div class="col-lg-2 clienta">
-                            <div class="insgleClients">
-                                <a href="#"><img src="images/home2/c6.png" alt=""/></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section> -->
         <section class="comonSection noPaddingTop">
             <div class="container">
                 <div class="row">

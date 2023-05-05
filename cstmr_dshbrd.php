@@ -1,9 +1,28 @@
+<?php
+    require("db_connection.php");
 
+    session_start();
+
+    
+        
+
+        if (isset($_SESSION['user_id'])) {
+            $user_id = $_SESSION['user_id'];
+
+            $sql = "select * from cstmr_logs where user_id = " . "'$user_id'";
+
+            $rs = $mysqli->query($sql);
+
+            $row = mysqli_fetch_assoc($rs);
+
+        }
+    
+?>
 
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>NZ Fashion & Clothing</title>
+        <title>NZ F&C | Customer Dashboard</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -42,16 +61,52 @@
                     <div class="col-lg-4 col-sm-5">
                         <div class="topMenusHolder">
                             <ul class="topMenus clearfix poppins">
-                                <li><a href="#"><i class="frontIcon icon-Exit"></i>Register</a></li>
-                                <li><a href="#" class=""   data-toggle="collapse" data-target="#accountTogg">My Account<i class="fa fa-angle-down"></i></a>
+                                <li><a href="cstmr_login.php"><i class="frontIcon icon-Exit"></i>
+                                <?php
+                                    if (isset($_SESSION['user_id'])) {
+                                        echo "Sign Out";
+                                    }
+                                    else {
+                                        echo "Sign In";
+                                    }
+                                ?>
+                                </a></li>
+                                <li><a data-toggle="collapse" data-target="#accountTogg">
+                                <?php
+                                    if (isset($_SESSION['cstmr_name'])) {
+                                        echo $_SESSION['cstmr_name'];
+                                    }
+                                    else {
+                                        echo "My Account";
+                                    }
+                                ?>  
+                                <i class="fa fa-angle-down"></i></a>
                                     <ul class="sub-menu collapse" id="accountTogg">
-                                        <li><a href="cstmr_dshbrd.php">My account</a></li>
-                                        <li><a href="#">My wishlis</a></li>
-                                        <li><a href="#">My cart</a></li>
-                                        <li><a href="#">Sign In</a></li>
+                                        <li><a href="cstmr_dshbrd.php">Account Details</a></li>
+                                        <li><a href="cart.php">My cart</a></li>
+                                        <li><a href="cstmr_login.php">
+                                        <?php
+                                            if (isset($_SESSION['user_id'])) {
+                                                echo "Sign Out";
+                                            }
+                                            else {
+                                                echo "Sign In";
+                                            }
+                                        ?>  
+                                        </a></li>
                                     </ul>
                                 </li>
-                                <li><a href="#"><i class="frontIcon icon-ShoppingCart"></i>5 Items</a></li>
+                                <li><a href="cart.php"><i class="frontIcon icon-ShoppingCart"></i>
+                                    <?php
+                                        if (isset($_SESSION['cart'])) {
+                                            $count = count($_SESSION['cart']);
+                                            echo $count;
+                                        }
+                                        else {
+                                            echo "0";
+                                        }
+                                    ?>
+                                 Items</a></li>
                             </ul>
                         </div>
                     </div>
@@ -60,13 +115,6 @@
                             <a href="index.html"><img src="images/nzlogosm.png" alt="NZ LOGO"/></a>
                         </div>
                     </div>
-                    <!-- <div class="col-lg-4 col-sm-5">
-                        <div class="topLanguangeSearch clearfix">
-                            <form method="post">
-                                <input type="text" name="s" id="s" placeholder="Search"/>
-                            </form>
-                        </div>
-                    </div> -->
                 </div>
             </div>
         </section>
@@ -84,7 +132,7 @@
                                 <span></span>
                             </div>
                             <ul>
-                                <li class="has-menu-items"><a href="#">Home</a></li>
+                                <li class="has-menu-items"><a href="index.php">Home</a></li>
                                 <li class="has-menu-items"><a href="shop.php">shop</a>
                                     <ul class="sub-menu">
                                         <li class="subMentTitle">SHOPPAGES</li>
@@ -107,16 +155,37 @@
         
 
         <div class="cstmr_dshbrd-card">
-            <img class="cstmr_dshbrd-avatar" src="images/cstmr_dp/cstmr_default.png" alt="" style="width: 100px; height: 100px; border-radius: 50%; object-fit: cover; box-shadow: -4px 2px 6px #811f1f, 6px 6px 12px #9d3838;">
+            <form action="cstmr_dshbrd_edit.php" method="post">
+            <img class="cstmr_dshbrd-avatar" src="images/cstmr_dp/<?php echo $row['cstmr_picture']; ?>" alt="" style="width: 100px; height: 100px; border-radius: 50%; object-fit: cover; box-shadow: -4px 2px 6px #811f1f, 6px 6px 12px #9d3838;">
             <label class="cstmr_dshbrd-info">
                 <span class="cstmr_dshbrd-info-1">Welcome Back</span>
-                <span class="cstmr_dshbrd-info-2">Name</span>
+                <span class="cstmr_dshbrd-info-2">
+                        <?php
+                            if (isset($_SESSION['user_id'])) {
+                                echo $row['cstmr_name'];
+                            }
+                            else {
+                                echo "No Content Found";
+                            }
+                        ?>
+                </span>
             </label>
-            <div class="cstmr_dshbrd-content-1">User Name</div>
-            <div class="cstmr_dshbrd-content-2">Password</div>
+            <div class="cstmr_dshbrd-content-1">
+                <?php
+                    if (isset($_SESSION['user_id'])) {
+                        echo $_SESSION['user_id'];
+                    }
+                    else {
+                        echo "No Content Found";
+                    }
+                ?>
+            </div>
+            <div class="cstmr_dshbrd-content-2">*******</div>
             <div class="cstmr_dshbrd-content-2-btn-grp text-center">
+                <input type="hidden" name="user_id" value="<?php echo $_SESSION['user_id']; ?>">
                 <input class="cstmr_dshbrd-content-2-btn" type="submit" value="Edit Details">
             </div>
+            </form>
         </div>
 
 

@@ -267,17 +267,17 @@ session_start();
             </div>
         </section>
 
-        <script>
+        <!-- <script>
             document.getElementById("clear-cart-btn").addEventListener("click", function() {
                 // Remove all items from the cart session variable
-                <?php 
-                unset($_SESSION['cart']); 
-                ?>
+                
+                // unset($_SESSION['cart']); 
+                
 
                 // Reload the cart page
                 window.location.href = "cart.php";
             });
-        </script>
+        </script> -->
 
         <!-- Include All JS -->
         <script type="text/javascript" src="js/jquery.js"></script>

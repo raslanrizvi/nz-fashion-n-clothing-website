@@ -4,14 +4,17 @@
 
     require("component.php");
 
-    session_start();
+
+    // $sortBy = $_REQUEST['sortBy'];
+    $cstmr_srch_prdts = $_REQUEST['cstmr_srch_prdts'];
+
 
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>NZ Fashion | SHOP</title>
+        <title>NZ F&C | SHOP</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -107,8 +110,7 @@
                     <div class="col-lg-4 col-sm-5">
                         <div class="topLanguangeSearch clearfix">
                             <form action="cstmr_srch_prdts.php" method="post">
-                                <option type="hidden" name="sortBy" value="none"></option>
-                                <input type="text" name="cstmr_srch_prdts" id="cstmr_srch_prdts" placeholder="Search"/>
+                                <input type="text" name="cstmr_srch_prdts" id="cstmr_srch_prdts" placeholder="<?php echo $cstmr_srch_prdts; ?>"/>
                             </form>
                         </div>
                     </div>
@@ -179,15 +181,18 @@
                                 <div class="shopAccessLefts">
                                     <!-- <a href="#" class="active"><i class="fa fa-th-large"></i>Grid</a>
                                     <a href="#"><i class="fa fa-th-list"></i>list</a> -->
-                                    <span>Showing Results of all Products available</span>
+                                    
+                                    <span>Showing Results for <?php echo $cstmr_srch_prdts ?></span>
                                 </div>
                             </div>
+
+
                         </div>
                         <div class="row">
                             
                             <?php
 
-                                $sql = "SELECT * FROM product ORDER BY RAND() LIMIT 12";
+                                $sql = "SELECT * FROM product WHERE title LIKE '%$cstmr_srch_prdts%' OR description LIKE '%$cstmr_srch_prdts%' OR ctgy LIKE '%$cstmr_srch_prdts%'";
                                 
                                     $rs = $mysqli->query($sql);
 
@@ -217,7 +222,6 @@
                             <div class="col-lg-12">
                                 <div class="sop_navigation text-center">
                                     <a href="#" class="current">1</a>
-                                    <a href="shop.php" class="next"><i class="flaticon-arrows-3"></i></a>
                                 </div>
                             </div>
                         </div>

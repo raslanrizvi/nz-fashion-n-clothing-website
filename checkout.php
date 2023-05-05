@@ -99,6 +99,8 @@
 
     // print_r($_POST);
 
+    
+
 ?>
 
 <!DOCTYPE html>
@@ -143,7 +145,7 @@
                     <div class="col-lg-12">
                         <nav class="mainMenu poppins">
                             <div class="logofixedHeader text-center">
-                                <a href="index.html"><img alt="NZ Fashion Logo" src="images/nzlogosm.png"></a>
+                                <a href="index.php"><img alt="NZ Fashion Logo" src="images/nzlogosm.png"></a>
                             </div>
                             <div class="mobileMenu">
                                 <span></span>

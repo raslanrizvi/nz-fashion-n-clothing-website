@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>NZ Fashion & Clothing</title>
+        <title>NZ F&C | Contact US</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -40,7 +40,7 @@
                     <div class="col-lg-12">
                         <nav class="mainMenu poppins">
                             <div class="logofixedHeader text-center">
-                                <a href="index.html"><img alt="NZ Fashion Logo" src="images/nzlogosm.png"></a>
+                                <a href="index.php"><img alt="NZ Fashion Logo" src="images/nzlogosm.png"></a>
                             </div>
                             <div class="mobileMenu">
                                 <span></span>
@@ -48,20 +48,20 @@
                                 <span></span>
                             </div>
                             <ul>
-                                <li class="has-menu-items"><a href="index.html">Home</a></li>
-                                <li class="has-menu-items"><a href="shop.html">shop</a>
+                                <li class="has-menu-items"><a href="index.php">Home</a></li>
+                                <li class="has-menu-items"><a href="shop.php">shop</a>
                                     <ul class="sub-menu">
                                         <li class="subMentTitle">SHOPPAGES</li>
-                                        <li><a href="kimonoj.html">Kimono Jacket</a></li>
-                                        <li><a href="longwearj.html">Longwear Jackets</a></li>
-                                        <li><a href="streetwearp.html">Streetwear Pants</a></li>
-                                        <li><a href="sneakers.html">Sneakers</a></li>
-                                        <li><a href="accessories.html">Accessories</a></li>
-                                        <li><a href="cart.html">Cart page</a></li>
+                                        <li><a href="kimonoj.php">Kimono Jacket</a></li>
+                                        <li><a href="longwearj.php">Longwear Jackets</a></li>
+                                        <li><a href="streetwearp.php">Streetwear Pants</a></li>
+                                        <li><a href="sneakers.php">Sneakers</a></li>
+                                        <li><a href="accessories.php">Accessories</a></li>
+                                        <li><a href="cart.php">Cart page</a></li>
                                     </ul>
                                 </li>
-                                <li class="has-menu-items"><a href="about.html">About Us</a></li>
-                                <li class="has-menu-items active"><a href="contact_us.html">Contact</a></li>
+                                <li class="has-menu-items"><a href="about.php">About Us</a></li>
+                                <li class="has-menu-items active"><a href="contact_us.php">Contact</a></li>
                             </ul>
                         </nav>
                     </div>
@@ -75,7 +75,7 @@
                         <div class="pageTitleContent">
                             <h2>Contact</h2>
                             <div class="breadcrumbs">
-                                <a href="index.html">HOME</a> &nbsp;/ &nbsp;<a href="#">Contact</a>
+                                <a href="index.php">HOME</a> &nbsp;/ &nbsp;<a href="#">Contact</a>
                             </div>
                         </div>
                     </div>
@@ -161,8 +161,8 @@
                         <aside class="widget">
                             <h3 class="widgetTitle">Quick Links</h3>
                             <ul>
-                                <li><a href="about.html">About us</a></li>
-                                <li><a href="contact_us.html">Contact us</a></li>
+                                <li><a href="about.php">About us</a></li>
+                                <li><a href="contact_us.php">Contact us</a></li>
                                 <li><a href="#">Order History</a></li>
                                 <li><a href="#">Site Map</a></li>
                             </ul>

@@ -11,7 +11,7 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>NZ Fashion | SHOP</title>
+        <title>NZ F&C | Accessories</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -101,7 +101,7 @@
                     </div>
                     <div class="col-lg-4 col-sm-2">
                         <div class="logo text-center">
-                            <a href="index.html"><img src="images/nzlogosm.png" alt="NZ LOGO"/></a>
+                            <a href="index.php"><img src="images/nzlogosm.png" alt="NZ LOGO"/></a>
                         </div>
                     </div>
                     <div class="col-lg-4 col-sm-5">
@@ -121,7 +121,7 @@
                     <div class="col-lg-12">
                         <nav class="mainMenu poppins">
                             <div class="logofixedHeader text-center">
-                                <a href="index.html"><img alt="NZFashion" src="images/nzlogosm.png"></a>
+                                <a href="index.php"><img alt="NZFashion" src="images/nzlogosm.png"></a>
                             </div>
                             <div class="mobileMenu">
                                 <span></span>
@@ -129,7 +129,7 @@
                                 <span></span>
                             </div>
                             <ul>
-                                <li class="has-menu-items active"><a href="index.php">Home</a></li>
+                                <li class="has-menu-items "><a href="index.php">Home</a></li>
                                 <li class="has-menu-items active"><a href="shop.php">shop</a>
                                     <ul class="sub-menu">
                                         <li class="subMentTitle">SHOPPAGES</li>
@@ -137,7 +137,7 @@
                                         <li><a href="longwearj.php">Longwear Jackets</a></li>
                                         <li><a href="streetwearp.php">Streetwear Pants</a></li>
                                         <li><a href="sneakers.php">Sneakers</a></li>
-                                        <li><a href="accessories.php">Accessories</a></li>
+                                        <li><a class="active" href="accessories.php">Accessories</a></li>
                                         <li><a href="cart.php">Cart page</a></li>
                                     </ul>
                                 </li>
@@ -156,7 +156,7 @@
                         <div class="pageTitleContent">
                             <h2>Shop</h2>
                             <div class="breadcrumbs">
-                                <a href="index.html">HOME</a> &nbsp;/ &nbsp;<a href="#">shop</a>
+                                <a href="index.php">HOME</a> &nbsp;/ &nbsp;<a href="#">Accessories</a>
                             </div>
                         </div>
                     </div>
@@ -187,7 +187,7 @@
                             
                             <?php
 
-                                $sql = "SELECT * FROM product ORDER BY RAND() LIMIT 12";
+                                $sql = "SELECT * FROM product WHERE ctgy = 'ACCESSORIES' ORDER BY RAND() LIMIT 12";
                                 
                                     $rs = $mysqli->query($sql);
 
@@ -217,7 +217,7 @@
                             <div class="col-lg-12">
                                 <div class="sop_navigation text-center">
                                     <a href="#" class="current">1</a>
-                                    <a href="shop.php" class="next"><i class="flaticon-arrows-3"></i></a>
+                                    <a href="accessories.php" class="next"><i class="flaticon-arrows-3"></i></a>
                                 </div>
                             </div>
                         </div>
@@ -231,7 +231,7 @@
                                     
                                 <?php
 
-                                        $sql2 = "SELECT * FROM product WHERE sale = 'on' ORDER BY RAND() LIMIT 3";
+                                        $sql2 = "SELECT * FROM product WHERE ctgy = 'ACCESSORIES' AND  sale = 'on' ORDER BY RAND() LIMIT 3";
 
                                             $rs2 = $mysqli->query($sql2);
 
@@ -286,8 +286,8 @@
                         <aside class="widget">
                             <h3 class="widgetTitle">Informations</h3>
                             <ul>
-                                <li><a href="#">My Account</a></li>
-                                <li><a href="#">Customer Service</a></li>
+                                <li><a href="cstmr_dshbrd.php">My Account</a></li>
+                                <li><a href="s">Customer Service</a></li>
                                 <li><a href="#">My Vouchers</a></li>
                                 <li><a href="#">Terms & Conditions</a></li>
                                 <li><a href="#">Privacy Policy</a></li>
@@ -299,8 +299,8 @@
                         <aside class="widget">
                             <h3 class="widgetTitle">Quick Links</h3>
                             <ul>
-                                <li><a href="about.html">About us</a></li>
-                                <li><a href="contact_us.html">Contact us</a></li>
+                                <li><a href="about.php">About us</a></li>
+                                <li><a href="contact_us.php">Contact us</a></li>
                                 <li><a href="#">Order History</a></li>
                                 <li><a href="#">Site Map</a></li>
                             </ul>

@@ -80,6 +80,14 @@ function getEmpPicture($user_id){
   return $row['emp_picture'];
 }
 
+function getCstmrPicture($user_id){
+  global $mysqli;
+  $sql = "select cstmr_picture from cstmr_logs where user_id=" . "'$user_id'";
+  $rs  = $mysqli->query($sql);
+  $row = mysqli_fetch_assoc($rs);
+  return $row['cstmr_picture'];
+}
+
 
  
 

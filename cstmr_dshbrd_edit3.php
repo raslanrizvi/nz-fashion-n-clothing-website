@@ -1,17 +1,29 @@
-<?php 
-
+<?php
     require("db_connection.php");
-
-    require("component.php");
 
     session_start();
 
+    
+        
+
+
+        if (isset($_SESSION['user_id'])) {
+            $user_id = $_SESSION['user_id'];
+
+            $sql = "select * from cstmr_logs where user_id = " . "'$user_id'";
+
+            $rs = $mysqli->query($sql);
+
+            $row = mysqli_fetch_assoc($rs);
+
+        }
+    
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>NZ Fashion | SHOP</title>
+        <title>NZ F&C | Customer Dashboard</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -62,8 +74,8 @@
                                 </a></li>
                                 <li><a data-toggle="collapse" data-target="#accountTogg">
                                 <?php
-                                    if (isset($_SESSION['cstmr_name'])) {
-                                        echo $_SESSION['cstmr_name'];
+                                    if (isset($_SESSION['user_id'])) {
+                                        echo $row['cstmr_name'];
                                     }
                                     else {
                                         echo "My Account";
@@ -104,14 +116,6 @@
                             <a href="index.html"><img src="images/nzlogosm.png" alt="NZ LOGO"/></a>
                         </div>
                     </div>
-                    <div class="col-lg-4 col-sm-5">
-                        <div class="topLanguangeSearch clearfix">
-                            <form action="cstmr_srch_prdts.php" method="post">
-                                <option type="hidden" name="sortBy" value="none"></option>
-                                <input type="text" name="cstmr_srch_prdts" id="cstmr_srch_prdts" placeholder="Search"/>
-                            </form>
-                        </div>
-                    </div>
                 </div>
             </div>
         </section>
@@ -121,7 +125,7 @@
                     <div class="col-lg-12">
                         <nav class="mainMenu poppins">
                             <div class="logofixedHeader text-center">
-                                <a href="index.html"><img alt="NZFashion" src="images/nzlogosm.png"></a>
+                                <a href="index.html"><img alt="Volta" src="images/nzlogosm.png"></a>
                             </div>
                             <div class="mobileMenu">
                                 <span></span>
@@ -129,8 +133,8 @@
                                 <span></span>
                             </div>
                             <ul>
-                                <li class="has-menu-items active"><a href="index.php">Home</a></li>
-                                <li class="has-menu-items active"><a href="shop.php">shop</a>
+                                <li class="has-menu-items"><a href="index.php">Home</a></li>
+                                <li class="has-menu-items"><a href="shop.php">shop</a>
                                     <ul class="sub-menu">
                                         <li class="subMentTitle">SHOPPAGES</li>
                                         <li><a href="kimonoj.php">Kimono Jacket</a></li>
@@ -149,120 +153,154 @@
                 </div>
             </div>
         </header>
-        <section class="pageTitleSection pageTitleSection-shop">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="pageTitleContent">
-                            <h2>Shop</h2>
-                            <div class="breadcrumbs">
-                                <a href="index.html">HOME</a> &nbsp;/ &nbsp;<a href="#">shop</a>
-                            </div>
-                        </div>
-                    </div>
+        
+
+
+
+        <?php
+
+            if($_REQUEST['status']=="pass"){
+                ?>
+
+                           
+            <div class="cstmr_dshbrd-card">
+                <div class="alert alert-success pdtAddedAlert rounded-50 mb-3" role="alert">
+                    <h4 class="alert-heading">Employee Details Updated</h4>
                 </div>
-            </div>
-        </section>
-        <section class="comonSection">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-9 col-sm-8">
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <div class="shop_heading">
-                                    <h2>Product List</h2>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row shopAccessRow">
-                            <div class="col-lg-8">
-                                <div class="shopAccessLefts">
-                                    <!-- <a href="#" class="active"><i class="fa fa-th-large"></i>Grid</a>
-                                    <a href="#"><i class="fa fa-th-list"></i>list</a> -->
-                                    <span>Showing Results of all Products available</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            
-                            <?php
-
-                                $sql = "SELECT * FROM product ORDER BY RAND() LIMIT 12";
-                                
-                                    $rs = $mysqli->query($sql);
-
-                                        if (mysqli_num_rows($rs)>0) {
-                                                    // Can Display the records
-                                                    
-
-                                                    
-
-                                            while ($row = mysqli_fetch_assoc($rs)) {
-
-                                                allProductsComponent($row['qty'], $row['new_arrivals'], $row['sale'], $row['picture1'], $row['title'], $row['ctgy'], $row['price'], $row['sale_price'], $row['ptd_id']);
-
-                                            }
+                    <img class="cstmr_dshbrd-avatar" src="images/cstmr_dp/<?php echo $row['cstmr_picture']; ?>" alt="" style="width: 100px; height: 100px; border-radius: 50%; object-fit: cover; box-shadow: -4px 2px 6px #811f1f, 6px 6px 12px #9d3838;">
+                        <label class="cstmr_dshbrd-info">
+                            <span class="cstmr_dshbrd-info-1">Welcome Back</span>
+                            <span class="cstmr_dshbrd-info-2">
+                                    <?php
+                                        if (isset($_SESSION['user_id'])) {
+                                            echo $row['cstmr_name'];
                                         }
                                         else {
-                                            echo "No Products Found";
+                                            echo "No Content Found";
                                         }
-
+                                    ?>
+                            </span>
+                        </label>
+                        <div class="cstmr_dshbrd-content-1">
+                            <?php
+                                if (isset($_SESSION['user_id'])) {
+                                    echo $_SESSION['user_id'];
+                                }
+                                else {
+                                    echo "No Content Found";
+                                }
                             ?>
-
-
-
-
                         </div>
-                        <div class="row mtop32">
-                            <div class="col-lg-12">
-                                <div class="sop_navigation text-center">
-                                    <a href="#" class="current">1</a>
-                                    <a href="shop.php" class="next"><i class="flaticon-arrows-3"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-sm-4 shopsidebar">
-                        <aside class="widget wow fadeInUp" data-wow-duration="700ms" data-wow-delay="450ms">
-                            <h3 class="widgetTitle">Sale Products</h3>
-                            <div class="widgetBody">
-                                <div class="topRatedProducts">
-                                    <!-- <img src="" style="" alt=""> -->
-                                    
-                                <?php
-
-                                        $sql2 = "SELECT * FROM product WHERE sale = 'on' ORDER BY RAND() LIMIT 3";
-
-                                            $rs2 = $mysqli->query($sql2);
-
-                                                if (mysqli_num_rows($rs2)>0) {
-                                                            // Can Display the records
-                                                    while ($row2 = mysqli_fetch_assoc($rs2)) {
-
-                                                        miniSaleElement($row2['picture1'], $row2['title'], $row2['sale_price'], $row2['price']);
-
-                                                    }
-                                                }
-                                                else {
-                                                    echo "No Products Found";
-                                                }
-
-                                ?> 
-                                    
-                                </div>
-                            </div>
-                        </aside>
-                        <!-- <aside class="widget tw_imgs  wow fadeInUp" data-wow-duration="700ms" data-wow-delay="500ms">
-                            <div class="widgetBody">
-                                <div class="img_widgets">
-                                    <img src="images/shop1/promo.png" alt=""/>
-                                </div>
-                            </div>
-                        </aside> -->
-                    </div>
-                </div>
+                        <div class="cstmr_dshbrd-content-2">*******</div>
+                        
             </div>
-        </section>
+
+                <?php
+            }
+            else if($_REQUEST['status']=="fail"){
+                ?>
+
+                            
+            <div class="cstmr_dshbrd-card">
+                <div class="alert alert-danger pdtAddedAlert" role="alert">
+                    <h4 class="alert-heading">Error Updating Employee Details</h4>
+                </div>
+                    <img class="cstmr_dshbrd-avatar" src="images/cstmr_dp/cstmr_default.png" alt="" style="width: 100px; height: 100px; border-radius: 50%; object-fit: cover; box-shadow: -4px 2px 6px #811f1f, 6px 6px 12px #9d3838;">
+                        <label class="cstmr_dshbrd-info">
+                            <span class="cstmr_dshbrd-info-1">Welcome Back</span>
+                            <span class="cstmr_dshbrd-info-2">
+                                    could not update name
+                            </span>
+                        </label>
+                        <div class="cstmr_dshbrd-content-1">
+                            User ID Unavailable
+                        </div>
+                        <div class="cstmr_dshbrd-content-2">*******</div>
+                        
+            </div>
+                
+
+                <?php
+            }
+            else if($_REQUEST['status']=="cPassFail"){
+                ?>
+
+                            
+            <div class="cstmr_dshbrd-card">
+                <div class="alert alert-danger pdtAddedAlert" role="alert">
+                    <h4 class="alert-heading">InCorrect Current Password</h4>
+                </div>
+                    <img class="cstmr_dshbrd-avatar" src="images/cstmr_dp/<?php echo $row['cstmr_picture'] ?>" alt="" style="width: 100px; height: 100px; border-radius: 50%; object-fit: cover; box-shadow: -4px 2px 6px #811f1f, 6px 6px 12px #9d3838;">
+                        <label class="cstmr_dshbrd-info">
+                            <span class="cstmr_dshbrd-info-1">Did You forget Your Password?</span>
+                            <span class="cstmr_dshbrd-info-2">
+                                    <?php
+                                        if (isset($_SESSION['user_id'])) {
+                                            echo $row['cstmr_name'];
+                                        }
+                                        else {
+                                            echo "No Content Found";
+                                        }
+                                    ?>
+                            </span>
+                        </label>
+                        <div class="cstmr_dshbrd-content-1">
+                            <?php
+                                if (isset($_SESSION['user_id'])) {
+                                    echo $_SESSION['user_id'];
+                                }
+                                else {
+                                    echo "No Content Found";
+                                }
+                            ?>
+                        </div>
+                        <div class="cstmr_dshbrd-content-2">*******</div>
+                        
+            </div>
+
+                <?php
+            }
+                        else if($_REQUEST['status']=="uNameFail"){
+                ?>
+
+                            
+            <div class="cstmr_dshbrd-card">
+                <div class="alert alert-danger pdtAddedAlert" role="alert">
+                    <h4 class="alert-heading">Employee Not Found</h4>
+                </div>
+                    <img class="cstmr_dshbrd-avatar" src="images/cstmr_dp/<?php echo $row['cstmr_picture'] ?>" alt="" style="width: 100px; height: 100px; border-radius: 50%; object-fit: cover; box-shadow: -4px 2px 6px #811f1f, 6px 6px 12px #9d3838;">
+                        <label class="cstmr_dshbrd-info">
+                            <span class="cstmr_dshbrd-info-1">Could Find Your ID,</span>
+                            <span class="cstmr_dshbrd-info-2">
+                                    <?php
+                                        if (isset($_SESSION['user_id'])) {
+                                            echo $row['cstmr_name'];
+                                        }
+                                        else {
+                                            echo "No Content Found";
+                                        }
+                                    ?>
+                            </span>
+                        </label>
+                        <div class="cstmr_dshbrd-content-1">
+                            <?php
+                                if (isset($_SESSION['user_id'])) {
+                                    echo $_SESSION['user_id'];
+                                }
+                                else {
+                                    echo "No Content Found";
+                                }
+                            ?>
+                        </div>
+                        <div class="cstmr_dshbrd-content-2">*******</div>
+                        
+            </div>
+                <?php
+            }
+                        
+    ?>
+
+
 
         <footer class="footer2">
             <div class="container">
@@ -272,7 +310,7 @@
                             <div class="textwidget">
                                 <img class="footer2Logo" src="images/nzlogo.png" style="width: 70%;" alt=""/>
                                 <div class="footerDesc">
-                                    NZ Fashion and Clothing, your go-to destination for authentic Japanese-inspired men's fashion
+                                    NZ Fashion and Clothing, your go-to destination for authentic Japanese-inspired men's fashion.
                                 </div>
                                 <div class="footerSocials2">
                                     <a href="#"><i class="fa fa-facebook"></i></a><a href="#"><i class="fa fa-twitter"></i>
@@ -340,7 +378,6 @@
 
         <!-- Include All JS -->
         <script type="text/javascript" src="js/jquery.js"></script>
-        <script type="text/javascript" src="js/jquery-ui-1.10.3.custom.min.js"></script>
         <script type="text/javascript" src="js/bootstrap.min.js"></script>
         <script type="text/javascript" src="js/mixer.js"></script>
         <script type="text/javascript" src="js/wow.min.js"></script>
