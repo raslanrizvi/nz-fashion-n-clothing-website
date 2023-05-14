@@ -120,10 +120,6 @@
                             <span class="crdIcon"><ion-icon name="bag-add-outline"></ion-icon></span>
                             <span class="crdTitle">View All Orders</span>
                         </a>
-                        <a class="subCard" href="updateorderstatus.php">
-                            <span class="crdIcon"><ion-icon name="create-outline"></ion-icon></span>
-                            <span class="crdTitle">Update Order Status</span>
-                        </a>
                 </div>
 
 

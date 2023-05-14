@@ -148,14 +148,6 @@
                         <img class="crdIcon" src="images\icons\all-orders.svg" alt="" style="width: 70px; margin: auto;">
                             <span class="crdTitle">View All Orders</span>
                         </a>
-                        <a class="subCard dltPtdCrd" href="manageorder.php">
-                        <img class="crdIcon" src="images\icons\manage-orders.svg" alt="" style="width: 70px; margin: auto;">
-                            <span class="crdTitle">Manage Order</span>
-                        </a>
-                        <a class="subCard" href="updateorderstatus.php">
-                        <img class="crdIcon" src="images\icons\update-order-status.svg" alt="" style="width: 70px; margin: auto;">
-                            <span class="crdTitle">Update Order Status</span>
-                        </a>
                 </div>
 
 

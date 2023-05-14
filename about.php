@@ -130,35 +130,35 @@
                     <div class="col-lg-12">
                         <div class="tesimonialSlide">
                             <div class="ingleTestiItem text-center">
-                                <img src="images/home1/testi.png" alt=""/>
+                                <img src="images/girl3.png" alt=""/>
                                 <div class="ratings"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-half-o"></i></div>
                                 <div class="tesiCont">
                                     I'm so glad I found this store! The selection of traditional Japanese clothing is amazing, and the staff is so knowledgeable and helpful. I bought a kimono for a wedding and received so many compliments!
                                 </div>
                                 <div class="testiMeta">
-                                    <h4><a href="#">Gautham Ambani</a></h4>
+                                    <h4><a href="#">Anna</a></h4>
                                     <p>Verified Purchase</p>
                                 </div>
                             </div>
                             <div class="ingleTestiItem text-center">
-                                <img src="images/home1/testi.png" alt=""/>
+                                <img src="images/boy5.png" alt=""/>
                                 <div class="ratings"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-half-o"></i></div>
                                 <div class="tesiCont">
                                     The quality of the clothing is top-notch. I appreciate the attention to detail and craftsmanship that goes into every piece. You can tell the team at NZ Fashion and Clothing really cares about their products.
                                 </div>
                                 <div class="testiMeta">
-                                    <h4><a href="#">Mahinda Somapala Sirisena</a></h4>
+                                    <h4><a href="#"></a>Gautham</h4>
                                     <p>Verified Purchase</p>
                                 </div>
                             </div>
                             <div class="ingleTestiItem text-center">
-                                <img src="images/home1/testi.png" alt=""/>
+                                <img src="images/girl4.png" alt=""/>
                                 <div class="ratings"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-half-o"></i></div>
                                 <div class="tesiCont">
                                     I appreciate the range of sizes available here. It can be hard to find traditional Japanese clothing in larger sizes, but NZ Fashion and Clothing has a great selection for all body types.
                                 </div>
                                 <div class="testiMeta">
-                                    <h4><a href="#">Kimiun</a></h4>
+                                    <h4><a href="#">Maria</a></h4>
                                     <p>Verified Purchase</p>
                                 </div>
                             </div>

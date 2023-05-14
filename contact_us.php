@@ -90,8 +90,7 @@
                             <h2>Leave us a message</h2>
                             <div class="titleBars"></div>
                             <p>
-                                The Love Boat soon will be making another run the love boat promises something for everyone one two three four five
-                                six seven eight Sclemeel schlemazel hasenfeffer incorporated.
+                               If you have any inquiries, please feel free to contact us. We will get back to you as soon as possible.
                             </p>
                         </div>
                     </div>
@@ -99,7 +98,7 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="contactForms">
-                            <form method="post" action="#" id="contactForm">
+                            <form action="mail.php" method="post" id="contactForm">
                                 <div class="col-lg-6 noPaddingLeft">
                                     <label class="con_label">Your Name *</label>
                                     <input type="text" name="con_name" id="con_name" class="required"/>
