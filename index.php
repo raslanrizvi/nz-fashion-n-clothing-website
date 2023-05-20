@@ -101,7 +101,7 @@
                     </div>
                     <div class="col-lg-4 col-sm-2">
                         <div class="logo text-center">
-                            <a href="index.html"><img src="images/nzlogosm.png" alt="NZ LOGO"/></a>
+                            <a href="index.php"><img src="images/nzlogosm.png" alt="NZ LOGO"/></a>
                         </div>
                     </div>
                     <div class="col-lg-4 col-sm-5">
@@ -121,7 +121,7 @@
                     <div class="col-lg-12">
                         <nav class="mainMenu poppins">
                             <div class="logofixedHeader text-center">
-                                <a href="index.html"><img alt="Volta" src="images/nzlogosm.png"></a>
+                                <a href="index.php"><img alt="Volta" src="images/nzlogosm.png"></a>
                             </div>
                             <div class="mobileMenu">
                                 <span></span>
@@ -253,7 +253,7 @@
                                         <p>
                                             Welcome to NZ Fashion and Clothing, your go-to destination for authentic Japanese-inspired men's fashion. We are proud to offer a wide range of clothing, accessories, and footwear that reflect the timeless elegance and unique style of Japanese fashion. At NZ Fashion and Clothing, we believe that fashion is more than just clothing. It's an expression of individuality, a reflection of personality, and a celebration of culture. That's why we've curated a collection of men's clothing that combines classic Japanese design with modern style, to create a look that is both unique and stylish.
                                         </p>
-                                        <a  href="shop.html" class="vol_btn">View Products<i class="flaticon-arrows-3"></i></a>
+                                        <a  href="shop.php" class="vol_btn">View Products<i class="flaticon-arrows-3"></i></a>
                                     </div>
                                 </div>
                             </div>
@@ -421,8 +421,8 @@
                         <aside class="widget">
                             <h3 class="widgetTitle">Quick Links</h3>
                             <ul>
-                                <li><a href="about.html">About us</a></li>
-                                <li><a href="contact_us.html">Contact us</a></li>
+                                <li><a href="about.php">About us</a></li>
+                                <li><a href="contact_us.php">Contact us</a></li>
                                 <li><a href="#">Order History</a></li>
                                 <li><a href="#">Site Map</a></li>
                             </ul>

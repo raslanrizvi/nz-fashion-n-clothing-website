@@ -166,14 +166,14 @@
     //=========================
     if ($(".conuntDeals").length > 0)
     {
-        $('.conuntDeals').countdown({until: $.countdown.UTCDate(+5.5, 2023, 2 - 1, 14), format: 'DHMS'});
+        $('.conuntDeals').countdown({until: $.countdown.UTCDate(2023, 5 - 1, 21, 18, 30, 30), format: 'DHMS'});
     }
     //=========================
     // Home3 Daily Deals
     //=========================
     if ($(".arrCount01").length > 0)
     {
-        $('.arrCount01').countdown({until: $.countdown.UTCDate(+6, 2016, 8 - 1, 23), format: 'DHMS'});
+        $('.arrCount01').countdown({until: $.countdown.UTCDate(2023, 5 - 1, 21, 18, 30, 30), format: 'DHMS'});
     }
     if ($(".arrCount02").length > 0)
     {

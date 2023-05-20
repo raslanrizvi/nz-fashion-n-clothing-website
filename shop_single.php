@@ -161,7 +161,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['ptd_id']) && isset($_P
                     <div class="col-lg-12">
                         <nav class="mainMenu poppins">
                             <div class="logofixedHeader text-center">
-                                <a href="index.html"><img alt="Volta" src="images/nzlogosm.png"></a>
+                                <a href="index.php"><img alt="Volta" src="images/nzlogosm.png"></a>
                             </div>
                             <div class="mobileMenu">
                                 <span></span>
@@ -325,7 +325,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['ptd_id']) && isset($_P
                         </div>
                     </div>
                     <div class="cartButtons">
-                        <button type="submit" name="add" class="vol_btn vol_btn_bg">ADD TO CART<i class="flaticon-arrows-3"></i></buyyon>
+                        <button type="submit" name="add" class="vol_btn vol_btn_bg">ADD TO CART<i class="flaticon-arrows-3"></i></button>
                         <input type="hidden" name="ptd_id" value='<?php echo $ptd_id?>'>
                         <input type="hidden" name="title" value='<?php echo $row['title'] ?>'>
                         
@@ -413,8 +413,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['ptd_id']) && isset($_P
                         <aside class="widget">
                             <h3 class="widgetTitle">Quick Links</h3>
                             <ul>
-                                <li><a href="about.html">About us</a></li>
-                                <li><a href="contact_us.html">Contact us</a></li>
+                                <li><a href="about.php">About us</a></li>
+                                <li><a href="contact_us.php">Contact us</a></li>
                                 <li><a href="#">Order History</a></li>
                                 <li><a href="#">Site Map</a></li>
                             </ul>

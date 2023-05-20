@@ -112,7 +112,7 @@
                     </div>
                     <div class="col-lg-4 col-sm-2">
                         <div class="logo text-center">
-                            <a href="index.html"><img src="images/nzlogosm.png" alt="NZ LOGO"/></a>
+                            <a href="index.php"><img src="images/nzlogosm.png" alt="NZ LOGO"/></a>
                         </div>
                     </div>
                 </div>
@@ -124,7 +124,7 @@
                     <div class="col-lg-12">
                         <nav class="mainMenu poppins">
                             <div class="logofixedHeader text-center">
-                                <a href="index.html"><img alt="Volta" src="images/nzlogosm.png"></a>
+                                <a href="index.php"><img alt="Volta" src="images/nzlogosm.png"></a>
                             </div>
                             <div class="mobileMenu">
                                 <span></span>
@@ -225,8 +225,8 @@
                         <aside class="widget">
                             <h3 class="widgetTitle">Quick Links</h3>
                             <ul>
-                                <li><a href="about.html">About us</a></li>
-                                <li><a href="contact_us.html">Contact us</a></li>
+                                <li><a href="about.php">About us</a></li>
+                                <li><a href="contact_us.php">Contact us</a></li>
                                 <li><a href="#">Order History</a></li>
                                 <li><a href="#">Site Map</a></li>
                             </ul>

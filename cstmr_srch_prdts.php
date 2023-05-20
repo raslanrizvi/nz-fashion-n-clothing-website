@@ -104,7 +104,7 @@
                     </div>
                     <div class="col-lg-4 col-sm-2">
                         <div class="logo text-center">
-                            <a href="index.html"><img src="images/nzlogosm.png" alt="NZ LOGO"/></a>
+                            <a href="index.php"><img src="images/nzlogosm.png" alt="NZ LOGO"/></a>
                         </div>
                     </div>
                     <div class="col-lg-4 col-sm-5">
@@ -123,7 +123,7 @@
                     <div class="col-lg-12">
                         <nav class="mainMenu poppins">
                             <div class="logofixedHeader text-center">
-                                <a href="index.html"><img alt="NZFashion" src="images/nzlogosm.png"></a>
+                                <a href="index.php"><img alt="NZFashion" src="images/nzlogosm.png"></a>
                             </div>
                             <div class="mobileMenu">
                                 <span></span>
@@ -158,7 +158,7 @@
                         <div class="pageTitleContent">
                             <h2>Shop</h2>
                             <div class="breadcrumbs">
-                                <a href="index.html">HOME</a> &nbsp;/ &nbsp;<a href="#">shop</a>
+                                <a href="index.php">HOME</a> &nbsp;/ &nbsp;<a href="#">shop</a>
                             </div>
                         </div>
                     </div>
@@ -303,8 +303,8 @@
                         <aside class="widget">
                             <h3 class="widgetTitle">Quick Links</h3>
                             <ul>
-                                <li><a href="about.html">About us</a></li>
-                                <li><a href="contact_us.html">Contact us</a></li>
+                                <li><a href="about.php">About us</a></li>
+                                <li><a href="contact_us.php">Contact us</a></li>
                                 <li><a href="#">Order History</a></li>
                                 <li><a href="#">Site Map</a></li>
                             </ul>

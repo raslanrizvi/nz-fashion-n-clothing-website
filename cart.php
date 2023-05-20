@@ -51,7 +51,7 @@ session_start();
                     <div class="col-lg-12">
                         <nav class="mainMenu poppins">
                             <div class="logofixedHeader text-center">
-                                <a href="index.html"><img alt="Volta" src="images/nzlogosm.png"></a>
+                                <a href="index.php"><img alt="Volta" src="images/nzlogosm.png"></a>
                             </div>
                             <div class="mobileMenu">
                                 <span></span>
@@ -86,7 +86,7 @@ session_start();
                         <div class="pageTitleContent">
                             <h2>Blog</h2>
                             <div class="breadcrumbs">
-                                <a href="index.html">HOME</a> &nbsp;/ &nbsp;<a href="#">Cart</a>
+                                <a href="index.php">HOME</a> &nbsp;/ &nbsp;<a href="#">Cart</a>
                             </div>
                         </div>
                     </div>
@@ -228,8 +228,8 @@ session_start();
                         <aside class="widget">
                             <h3 class="widgetTitle">Quick Links</h3>
                             <ul>
-                                <li><a href="about.html">About us</a></li>
-                                <li><a href="contact_us.html">Contact us</a></li>
+                                <li><a href="about.php">About us</a></li>
+                                <li><a href="contact_us.php">Contact us</a></li>
                                 <li><a href="#">Order History</a></li>
                                 <li><a href="#">Site Map</a></li>
                             </ul>

@@ -5,9 +5,6 @@ $con_name = $_REQUEST ['con_name'];
 $con_email = $_REQUEST ['con_email'];
 $con_mess = $_REQUEST ['con_message'];
 
-echo "<pre>";
-print_r($_REQUEST);
-echo "</pre>";
 
 
 
@@ -24,3 +21,6 @@ $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
 $headers .= 'From: <'.$con_email.'>' . "\r\n";
 
 mail($to, $subject, $message, $headers);
+echo 1;
+
+?>
