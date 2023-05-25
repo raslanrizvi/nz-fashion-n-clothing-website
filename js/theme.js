@@ -166,7 +166,7 @@
     //=========================
     if ($(".conuntDeals").length > 0)
     {
-        $('.conuntDeals').countdown({until: $.countdown.UTCDate(2023, 5 - 1, 21, 18, 30, 30), format: 'DHMS'});
+        $('.conuntDeals').countdown({until: $.countdown.UTCDate(+5.5, 2023, 6 - 1, 6), format: 'DHMS'});
     }
     //=========================
     // Home3 Daily Deals
