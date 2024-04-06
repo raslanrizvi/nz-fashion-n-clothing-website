@@ -31,19 +31,19 @@ Welcome to the repository for **NZ Fashion and Clothing**, an E-Commerce website
 
 ## Screenshots
   ### Home Page
-  ![NZ Fashion and Clothing Home Page SS](images/screenshot/NZ1.jpeg)
+  ![NZ Fashion and Clothing Home Page SS](images/screenshots/NZ1.jpeg)
 
   ### Shop Page
-  ![NZ Fashion and Clothing Shop Page SS](images/screenshot/nz_shop.jpeg)
+  ![NZ Fashion and Clothing Shop Page SS](images/screenshots/nz_shop.jpeg)
 
   ### Admin Dashboard Page
-  ![NZ Fashion and Clothing Admin Dashboard Page SS](images/screenshot/nz_admin_dashboard.jpeg)
+  ![NZ Fashion and Clothing Admin Dashboard Page SS](images/screenshots/nz_admin_dashboard.jpeg)
 
   ### Add New Product Page
-  ![NZ Fashion and Clothing Add New Product Page SS](images/screenshot/nz_addnewproduct.jpeg)
+  ![NZ Fashion and Clothing Add New Product Page SS](images/screenshots/nz_addnewproduct.jpeg)
 
   ### Login Page
-  ![NZ Fashion and Clothing Login Page SS](images/screenshot/nz_login.jpeg)
+  ![NZ Fashion and Clothing Login Page SS](images/screenshots/nz_login.jpeg)
 
 
 
